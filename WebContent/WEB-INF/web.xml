@@ -34,6 +34,31 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/
   	<url-pattern>*.do</url-pattern>
   </servlet-mapping>
   
+  <filter>
+    <filter-name>encodingFilter</filter-name>
+    <filter-class>filter.CharacterEncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>encodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <listener>
+    <listener-class>jdbc.DBCPInitListener</listener-class>
+  </listener>
+  <context-param>
+    <param-name>poolConfig</param-name>
+    <param-value>
+  		jdbcDriver=com.mysql.cj.jdbc.Driver
+  		jdbcUrl=jdbc:mysql://localhost/test1?serverTimezone=Asia/Seoul
+  		dbUser=root
+  		dbPass=rootpw
+  		validationQuery=SELET 1
+  		minIdle=3
+  		maxTotal=30
+  		poolName=test1
+  	</param-value>
+  </context-param>
+  
   <jsp-config>
 	<jsp-property-group>	
 		<url-pattern>/WEB-INF/view/*</url-pattern>
@@ -41,5 +66,4 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/
         <include-coda>/WEB-INF/view/includes/developers.jspf</include-coda>
      </jsp-property-group>
  </jsp-config>
-  
 </web-app>
