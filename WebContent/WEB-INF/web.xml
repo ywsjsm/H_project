@@ -9,6 +9,31 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+
+  <!-- AddContextPath -->
+  <listener>
+  	<listener-class>init.AddContestPathListener</listener-class>
+  </listener>
+  
+  	<servlet>
+  	<servlet-name>FrontServlet</servlet-name>
+  	<servlet-class>init.servlet.FrontServlet</servlet-class>
+  	<init-param>
+  		<param-name>configFileLocation</param-name>
+  		<param-value>
+  			/WEB-INF/resources/ControllerURI.properties
+  		</param-value>
+  	</init-param>
+  	<load-on-startup>1</load-on-startup>
+  	<multipart-config></multipart-config>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>FrontServlet</servlet-name>
+  	<url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  
+  
   <filter>
     <filter-name>encodingFilter</filter-name>
     <filter-class>filter.CharacterEncodingFilter</filter-class>

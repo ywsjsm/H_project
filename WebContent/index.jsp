@@ -3,34 +3,32 @@
 <%@ page import="java.sql.*, java.util.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<!-- Mobile setting -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<!-- jQuery library -->
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css'>
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
-<!-- IconFontawesome ADD-->
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js'></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js'></script>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <title>Insert title here</title>
 </head>
 <body>
-<form action="" method="post">
-이름 입력 : <input type="text" name="test1" />
-<input type="submit" value="전송" />
-
-<hr />
-<c:if test="${empty test1 }">
-	비었네유
-</c:if>
-	<%= request.getParameter("test1") %>
-</form>
+		<div class="container">
+			<div class="row">
+				<%@include file="./WEB-INF/view/includes/navbar.jsp" %>
+			</div>
+			
+			<div class="jumbotron">
+  <h1 class="display-4">H_Project's main Page</h1>
+  <p class="lead">소소한 정보들을 찾고 또 공유해보세요!</p>
+  <hr class="my-4">
+  <p>회원 가입을 완료하시면 게시와 삭제 이용 가능합니다 :)</p>
+  <a class="btn btn-info btn-lg" href="#" role="button">시작하기</a>
+</div>
+		</div>
 </body>
 </html>
