@@ -1,0 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+    
+    <hr />
+   <div  class="container">
+   <div class="row justify-content-center">
+<address style="text"> <i>&copy; H_Project's [ developers JungSM , YunWS ]</i></address>
+</div>
+</div>
