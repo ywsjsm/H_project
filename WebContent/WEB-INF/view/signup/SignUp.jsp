@@ -21,9 +21,9 @@
 <body>
 	<div class="container">
 	
-	<div class="row">
+	<%-- <div class="row">
 				<%@include file="/WEB-INF/view/includes/navbar.jsp" %>
-			</div>
+			</div> --%>
 	
 	<form id="signup" style="width: 40%">
   <div class="form-row">

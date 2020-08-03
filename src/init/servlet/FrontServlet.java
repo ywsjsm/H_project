@@ -33,14 +33,14 @@ public class FrontServlet extends HttpServlet {
 			
 			while(keys.hasMoreElements()) {
 				String key = keys.nextElement();
-//				System.out.println("키 : " +key);
+				System.out.println("키 : " +key);
 				String className = properties.getProperty(key);
-//				System.out.println("클래스이름 : "+className);
+				System.out.println("클래스이름 : "+className);
 				
 				Class<Controller> clazz = (Class<Controller>) Class.forName(className);
 				
 				Controller com = clazz.newInstance();
-//				System.out.println(com);
+				System.out.println(com);
 				
 				controllerMap.put(key,com);
 				

@@ -21,20 +21,20 @@
 </head>
 <body>
 	<div class="container">
-		<div class="row">
+		<%-- <div class="row">
 				<%@include file="/WEB-INF/view/includes/navbar.jsp" %>
-			</div>
+			</div> --%>
 			
 	<form id="LoginForm">
   <div class="form-group">
     <label for="Id">Id</label>
-    <input type="text" class="form-control" id="Id" aria-describedby="IdHelp" required="required " name="userid"
+    <input type="text" class="form-control" id="Id" aria-describedby="IdHelp" required="required " name="id"
      placeholder="input your Id">
     <small id="Id" class="form-text text-muted">아이디오류</small>
   </div>
   <div class="form-group">
     <label for="Password">Password</label>
-    <input type="password" class="form-control" id="Password" required="required" name="uesrPassword" placeholder="input your password">
+    <input type="password" class="form-control" id="Password" required="required" name="password" placeholder="input your password">
   <small id="PasswordHelp" class="form-text text-muted">패스워드 오류</small>
   </div>
   <div class="form-group">

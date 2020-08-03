@@ -1,9 +1,6 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*, java.util.*" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,8 +24,10 @@
   <p class="lead">소소한 정보들을 찾고 또 공유해보세요!</p>
   <hr class="my-4">
   <p>회원 가입을 완료하시면 게시와 삭제 이용 가능합니다 :)</p>
-  <a class="btn btn-info btn-lg" href="#" role="button">시작하기</a>
+  <a class="btn btn-info btn-lg" href="${contextPath}/total.do" role="button">시작하기</a>
 </div>
 		</div>
+		
+		<%@ include file="/WEB-INF/view/includes/developers.jspf" %>
 </body>
 </html>

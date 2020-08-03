@@ -12,13 +12,13 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="main.do">동물 <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="${contextPath}/list/animal.do">동물 <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">음악</a>
+        <a class="nav-link" href="${contextPath}/list/music.do">음악</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">자동차</a>
+        <a class="nav-link" href="${contextPath}/list/moters.do">자동차</a>
       </li>
       
       <li class="nav-item dropdown">
