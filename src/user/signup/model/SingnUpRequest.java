@@ -80,7 +80,7 @@ public class SingnUpRequest {
 
 	@Override
 	public String toString() {
-		return "SingnUpRequest [regEx=" + regEx + ", email=" + email + ", name=" + name + ", id=" + id + ", password="
+		return "SingnUpRequest [ email=" + email + ", name=" + name + ", id=" + id + ", password="
 				+ password + ", confirmPassword=" + confirmPassword + ", agree=" + agree + ", regDate=" + regDate + "]";
 	}
 	
