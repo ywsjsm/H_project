@@ -10,31 +10,26 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js'></script>
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js'></script>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-
-<style type="text/css">
-	#signup{
-		margin-left: 30%;
-	}
-</style>
-<title>SignUp</title>
+<title>회원 탈퇴</title>
 </head>
 <body>
+
 	<div class="container">
 	
 	<form id="signup" style="width: 40%">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail">Email</label>
-      <input type="email" class="form-control" id="inputEmail" placeholder="이메일" name="email" required="required">
+      <input type="email" class="form-control" id="inputEmail" placeholder="이메일" name="email" value="\${}" readonly="readonly">
     </div>
     <div class="form-group col-md-6">
       <label for="inputName">Name</label>
-      <input type="text" class="form-control" id="inputName" placeholder="사용자 이름" name="name" required="required">
+      <input type="text" class="form-control" id="inputName" placeholder="사용자 이름" name="name" value="\${}" readonly="readonly">
     </div>
   </div>
   <div class="form-group">
     <label for="inputId">Id</label>
-    <input type="text" class="form-control" id="inputId" placeholder="아이디" name="id" required="required">
+    <input type="text" class="form-control" id="inputId" placeholder="아이디" name="id" value="\${}" readonly="readonly">
   </div>
   <div class="form-group">
     <label for="inputPassword">Password</label>
@@ -49,15 +44,14 @@
     <div class="form-check">
       <input class="form-check-input" type="checkbox" id="agree" required="required" name="agree">
       <label class="form-check-label" for="agree">
-        Agree to terms and conditions
+        Agree to WithDrawal Your Account.
       </label>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary">Sign in</button>
+  <button type="submit" class="btn btn-danger">WithDrawal</button>
 </form>
   
   </div>
-
-	
+  
 </body>
 </html>

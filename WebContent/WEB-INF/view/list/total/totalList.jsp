@@ -31,7 +31,7 @@
     </div>
     <div class="col-md-8">
       <div class="card-body" style="width: 1000px;">
-      <a href="" id="hoverLink">
+      <a href="${contextPath}/read.do" id="hoverLink">
         <h5 class="card-title">Title</h5>
         <p class="card-text">Content</p>
         <!-- 작성일 -->
