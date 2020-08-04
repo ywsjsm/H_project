@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,15 @@
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 	
 	<script type="text/javascript">/* 클릭일 필요는 없다. */
-		
+		$(function(){
+			$('#btnSignUp').click(function(){
+				var check = $('#signupHidden');
+				console.log(check.val());
+				if(check.val() == 'true'){
+				/* 	alert('회원가입이 완료되었습니다.');  */
+				}
+			});
+		});
 	</script>
 	
 <style type="text/css">
@@ -24,29 +33,59 @@
 </head>
 <body>
 	<div class="container">
-	
+	<h6>${signupHidden}</h6>
 	<form id="signup" style="width: 40%" method="post">
+	<input type="hidden" id="signupHidden" value="${signupHidden}" />
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail">Email</label>
       <input type="email" class="form-control" id="inputEmail" placeholder="이메일" name="email" required="required">
+    <c:if test="${errors.email}">
+    	<small id="emailHelp" class="form-text text-muted">공백은 허용하지 않습니다.</small>
+    </c:if>
+    <c:if test="${errors.emailnotmatch}">
+    	<small id="emailHelp" class="form-text text-muted">이메일이 형식에 맞지 않습니다.</small>
+    </c:if>
+    <c:if test="${errors.dulicateEmail}">
+    	<small id="emailHelp" class="form-text text-muted">중복된 이메일 입니다.</small>
+    </c:if>
     </div>
+    
+    
     <div class="form-group col-md-6">
       <label for="inputName">Name</label>
       <input type="text" class="form-control" id="inputName" placeholder="사용자 이름" name="name" required="required">
+    	 <c:if test="${errors.name}">
+    	<small id="nameHelp" class="form-text text-muted">공백은 허용하지 않습니다.</small>
+    </c:if>
     </div>
   </div>
+  
   <div class="form-group">
     <label for="inputId">Id</label>
     <input type="text" class="form-control" id="inputId" placeholder="아이디" name="id" required="required">
+    <c:if test="${errors.id}">
+    	<small id="idHelp" class="form-text text-muted">공백은 허용하지 않습니다.</small>
+    </c:if>
   </div>
+  
   <div class="form-group">
     <label for="inputPassword">Password</label>
-    <input type="text" class="form-control" id="inputPassword" placeholder="비밀번호" name="password" required="required">
+    <input type="password" class="form-control" id="inputPassword" placeholder="비밀번호" name="password" required="required">
+    <c:if test="${errors.password}">
+    	<small id="passwordHelp" class="form-text text-muted">공백은 허용하지 않습니다.</small>
+    </c:if>
   </div>
+  
   <div class="form-group">
     <label for="inputConfirmPassword">ConfirmPassword</label>
-    <input type="text" class="form-control" id="inputConfirmPassword" placeholder="비밀번호 확인" name="confirmPassword" required="required">
+    <input type="password" class="form-control" id="inputConfirmPassword" placeholder="비밀번호 확인" name="confirmPassword" required="required">
+  <c:if test="${errors.confirmPassword}">
+    	<small id="confirmPasswordHelp" class="form-text text-muted">공백은 허용하지 않습니다.</small>
+    </c:if>
+    <c:if test="${errors.confirmPasswordNotMatching}">
+    	<small id="confirmPasswordHelp" class="form-text text-muted">비밀번호와 확인이 일치하지 않습니다.</small>
+    </c:if>
   </div>
   
   <div class="form-group">
@@ -57,7 +96,7 @@
       </label>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary" >Sign in</button>
+  <button type="submit" class="btn btn-primary" id="btnSignUp">Sign in</button>
   
 </form>
   

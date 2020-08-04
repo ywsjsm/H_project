@@ -43,9 +43,9 @@
     <param-name>poolConfig</param-name>
     <param-value>
   		jdbcDriver=com.mysql.cj.jdbc.Driver
-  		jdbcUrl=jdbc:mysql://172.30.1.58/h_project?serverTimezone=Asia/Seoul
-  		dbUser=test
-  		dbPass=dntjq@1234
+  		jdbcUrl=jdbc:mysql://localhost/h_project?serverTimezone=Asia/Seoul
+  		dbUser=root
+  		dbPass=doli0413@
   		validationQuery=SELECT 1
   		minIdle=3
   		maxTotal=30
