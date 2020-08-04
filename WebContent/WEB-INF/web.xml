@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
-xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
- id="WebApp_ID" version="4.0">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>H_Project</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -11,29 +9,25 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <!-- AddContextPath -->
   <listener>
-  	<listener-class>init.AddContestPathListener</listener-class>
+    <listener-class>init.AddContestPathListener</listener-class>
   </listener>
-  
-  	<servlet>
-  	<servlet-name>FrontServlet</servlet-name>
-  	<servlet-class>init.servlet.FrontServlet</servlet-class>
-  	<init-param>
-  		<param-name>configFileLocation</param-name>
-  		<param-value>
+  <servlet>
+    <servlet-name>FrontServlet</servlet-name>
+    <servlet-class>init.servlet.FrontServlet</servlet-class>
+    <init-param>
+      <param-name>configFileLocation</param-name>
+      <param-value>
   			/WEB-INF/resources/ControllerURI.properties
   		</param-value>
-  	</init-param>
-  	<load-on-startup>1</load-on-startup>
-  	<multipart-config></multipart-config>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+    <multipart-config/>
   </servlet>
-  
   <servlet-mapping>
-  	<servlet-name>FrontServlet</servlet-name>
-  	<url-pattern>*.do</url-pattern>
+    <servlet-name>FrontServlet</servlet-name>
+    <url-pattern>*.do</url-pattern>
   </servlet-mapping>
-  
   <filter>
     <filter-name>encodingFilter</filter-name>
     <filter-class>filter.CharacterEncodingFilter</filter-class>
@@ -49,21 +43,20 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/
     <param-name>poolConfig</param-name>
     <param-value>
   		jdbcDriver=com.mysql.cj.jdbc.Driver
-  		jdbcUrl=jdbc:mysql://localhost/test1?serverTimezone=Asia/Seoul
-  		dbUser=root
-  		dbPass=rootpw
-  		validationQuery=SELET 1
+  		jdbcUrl=jdbc:mysql://172.30.1.58/h_project?serverTimezone=Asia/Seoul
+  		dbUser=test
+  		dbPass=dntjq@1234
+  		validationQuery=SELECT 1
   		minIdle=3
   		maxTotal=30
-  		poolName=test1
+  		poolName=h_project
   	</param-value>
   </context-param>
-  
   <jsp-config>
-	<jsp-property-group>	
-		<url-pattern>/WEB-INF/view/*</url-pattern>
-		 <include-prelude>/WEB-INF/view/includes/navbar.jsp</include-prelude>
-        <include-coda>/WEB-INF/view/includes/developers.jspf</include-coda>
-     </jsp-property-group>
- </jsp-config>
+    <jsp-property-group>
+      <url-pattern>/WEB-INF/view/*</url-pattern>
+      <include-prelude>/WEB-INF/view/includes/navbar.jsp</include-prelude>
+      <include-coda>/WEB-INF/view/includes/developers.jspf</include-coda>
+    </jsp-property-group>
+  </jsp-config>
 </web-app>

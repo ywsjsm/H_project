@@ -6,6 +6,6 @@ import java.sql.SQLException;
 
 public class ConnectionProvider {
 	public static Connection getConnection() throws SQLException {
-		return DriverManager.getConnection("jdbc:apache:commons:dbcp:test1");
+		return DriverManager.getConnection("jdbc:apache:commons:dbcp:h_project");
 	}
 }
