@@ -8,10 +8,7 @@ import java.util.regex.Pattern;
 public class SingnUpRequest {
 	
 	private final String regEx = "^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$";
-	
-	public SingnUpRequest() {
-		Pattern pattern = Pattern.compile(regEx);
-	}
+
 	
 	private String email;
 	private String name;
@@ -24,6 +21,7 @@ public class SingnUpRequest {
 
 	
 	public SingnUpRequest(String email, String name, String id, String password, String confirmPassword, boolean agree) {
+		Pattern pattern = Pattern.compile(regEx);
 		this.email = email;
 		this.name = name;
 		this.id = id;
@@ -79,6 +77,14 @@ public class SingnUpRequest {
 		}
 		return errors;
 	}
+
+	@Override
+	public String toString() {
+		return "SingnUpRequest [regEx=" + regEx + ", email=" + email + ", name=" + name + ", id=" + id + ", password="
+				+ password + ", confirmPassword=" + confirmPassword + ", agree=" + agree + ", regDate=" + regDate + "]";
+	}
+	
+	
 	
 	
 }
