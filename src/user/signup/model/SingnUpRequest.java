@@ -21,7 +21,6 @@ public class SingnUpRequest {
 
 	
 	public SingnUpRequest(String email, String name, String id, String password, String confirmPassword, boolean agree) {
-		Pattern pattern = Pattern.compile(regEx);
 		this.email = email;
 		this.name = name;
 		this.id = id;
@@ -54,6 +53,10 @@ public class SingnUpRequest {
 		return confirmPassword;
 	}
 	
+	public boolean checkMatchingPassword() {
+		return this.password.equals(confirmPassword);
+	}
+	
 // 객체 검증
 	public Map<String, Boolean> validate(Map<String, Boolean> errors){
 		if(email.trim().isEmpty() || email == null) {
@@ -62,7 +65,10 @@ public class SingnUpRequest {
 			if(!Pattern.matches(regEx, email)) {
 				errors.put("emailnotmatch", Boolean.TRUE);
 			}
-		}			
+		}
+		if(id.trim().isEmpty() | id == null) {
+			errors.put("id",Boolean.TRUE);
+		}
 		if(name.trim().isEmpty() || name == null) {
 			errors.put("name", Boolean.TRUE);
 		}

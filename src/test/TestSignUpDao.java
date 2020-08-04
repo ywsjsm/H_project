@@ -30,7 +30,7 @@ public class TestSignUpDao extends HttpServlet {
 		
 		try {
 			dao.Insert(req);
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

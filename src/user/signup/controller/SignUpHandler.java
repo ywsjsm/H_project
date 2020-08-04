@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
+import user.signup.exception.DuplicateMemberException;
 import user.signup.model.SingnUpRequest;
 import user.signup.service.SignUpService;
 
@@ -38,17 +39,20 @@ public class SignUpHandler implements Controller{
 		Map<String, Boolean> errors = new HashMap<>();
 		errors = req.validate(errors);
 		request.setAttribute("errors", errors);
-		if(!errors.isEmpty()) {
-			return VIEW_CODE;
-		}
+
 		 SignUpService service  = SignUpService.getSignUpService();
 		 try {
-			service.signUp(req);
-		} catch (SQLException e) {
+			service.signUp(req, errors);
+		} catch (DuplicateMemberException e) {
 			e.printStackTrace();
 			return VIEW_CODE;
 		}
-		return "/WEB-INF/view/login/Login.jsp";
+		 if(!errors.isEmpty()) {
+				return VIEW_CODE;
+			}
+		 request.setAttribute("signupHidden", Boolean.TRUE);
+//		return "/WEB-INF/view/login/Login.jsp";
+		 return VIEW_CODE;
 	}
 	
 	private static SingnUpRequest  mappingObject(HttpServletRequest request, HttpServletResponse response) {

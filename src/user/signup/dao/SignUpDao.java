@@ -9,6 +9,7 @@ import com.mysql.cj.xdevapi.Result;
 
 import jdbc.ConnectionProvider;
 import jdbc.JdbcUtil;
+import user.signup.exception.DuplicateMemberException;
 import user.signup.model.SingnUpRequest;
 
 //@Repository
@@ -22,7 +23,7 @@ public class SignUpDao {
 		return dao;
 	}
 	
-	public void Insert(SingnUpRequest req) throws SQLException {
+	public void Insert(SingnUpRequest req) throws DuplicateMemberException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -37,9 +38,13 @@ public class SignUpDao {
 			
 			 pstmt.executeUpdate();
 			 con.commit();//캐치 와 파이널리 블록 순서는 정해져 있지않다.
-		}catch(Exception e) {
-			e.printStackTrace();
+		}catch(SQLException e) {
+			try {
 				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			throw new DuplicateMemberException();
 		}finally {
 			JdbcUtil.close(con);
 		}
