@@ -3,6 +3,7 @@ package board.write.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import board.model.BoardWriteRequest;
 import controller.Controller;
 
 public class WriterBoardController implements Controller{
@@ -25,6 +26,10 @@ public class WriterBoardController implements Controller{
 	
 	
 	private String processPost(HttpServletRequest request, HttpServletResponse response) {
+		
+		request.getAttribute("title");
+		request.getAttribute("content");
+		request.getAttribute("fileName");
 		return "";
 	}
 	
