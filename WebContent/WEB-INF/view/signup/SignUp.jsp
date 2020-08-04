@@ -10,7 +10,11 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js'></script>
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js'></script>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-
+	
+	<script type="text/javascript">/* 클릭일 필요는 없다. */
+		
+	</script>
+	
 <style type="text/css">
 	#signup{
 		margin-left: 30%;
@@ -21,7 +25,7 @@
 <body>
 	<div class="container">
 	
-	<form id="signup" style="width: 40%">
+	<form id="signup" style="width: 40%" method="post">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail">Email</label>
@@ -53,7 +57,8 @@
       </label>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary">Sign in</button>
+  <button type="submit" class="btn btn-primary" >Sign in</button>
+  
 </form>
   
   </div>

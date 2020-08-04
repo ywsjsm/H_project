@@ -79,7 +79,7 @@ public class FrontServlet extends HttpServlet {
 				
 				Controller com = controllerMap.get(uri);
 				String view ="";
-				//System.out.println(com);
+//				System.out.println(com);
 				try {
 					view = com.process(request, response);	
 //					System.out.println(view);
