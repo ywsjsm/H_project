@@ -8,7 +8,7 @@
     	 <a class="btn btn-outline-info" style="width: 100px" href="${contextPath}/write.do" role="button">Writing</a>
     <!-- 회원탈퇴 -->
     	</div>
-    	<div class="col">
+    	<div class="col d-flex justify-content-between">
     <nav aria-label="Page navigation example">
   	<ul class="pagination justify-content-center">
     <li class="page-item disabled">
@@ -26,7 +26,7 @@
 	</nav>
 	</div>
 		<div class="col">
-		<a class="btn btn-outline-danger" style="margin-left: 50%; width: 100px;" href="${contextPath}/withdrawal.do" role="button">Withdrawal</a>
+		<a class="btn btn-outline-danger" style="margin-left: 50%; width: 100px;" href="${contextPath}/withDrawal.do" role="button">Withdrawal</a>
     <!-- 회원탈퇴 -->
 		</div>
 	

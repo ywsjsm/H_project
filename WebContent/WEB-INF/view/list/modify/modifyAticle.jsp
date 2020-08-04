@@ -10,12 +10,12 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js'></script>
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js'></script>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-<title>게시글 작성</title>
+<title>게시물 수정</title>
 </head>
 <body>
 	<div class="container">
 		<div class="row justify-content-center">
-				<h5 > <i>Writing your Infomations! :)</i></h5>			
+				<h5 > <i>Modify your Infomation :)</i></h5>			
 		</div>
 		<div class="row justify-content-center">			
 			<form style="width: 500px;" enctype="multipart/form-data">
