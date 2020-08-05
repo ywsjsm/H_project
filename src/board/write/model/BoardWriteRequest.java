@@ -1,4 +1,4 @@
-package board.model;
+package board.write.model;
 
 import java.util.Date;
 
