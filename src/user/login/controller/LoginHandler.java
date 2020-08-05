@@ -45,7 +45,7 @@ public class LoginHandler implements Controller{
 	
 	
 	private String processPost(HttpServletRequest request, HttpServletResponse response) {
-		
+		System.out.println("포스트요청 감지");
 		LoginRequest req = mappingObject(request, response);
 		
 		Map<String , Boolean> errors = new HashMap<>();

@@ -28,10 +28,6 @@
 </head>
 <body>
 	<div class="container">
-		<%-- <div class="row">
-				<%@include file="/WEB-INF/view/includes/navbar.jsp" %>
-			</div> --%>
-
 		<form action="" method="post" id="LoginForm">
 			<div class="form-group">
 				<label for="Id">Id</label> 
@@ -59,7 +55,7 @@
 				<input type="checkbox" class="form-check-input" id="RemeberId" name="rememberId"> 
 				<label class="form-check-label" for="RemeberId">Remember my Id</label>
 			</div>
-			<button type="submit" class="btn btn-primary">Submit</button>
+			<button type="submit" class="btn btn-outline-primary">Login</button>
 		</form>
 
 	</div>

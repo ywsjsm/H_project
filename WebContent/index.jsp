@@ -12,12 +12,19 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js'></script>
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js'></script>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-<title>Insert title here</title>
+
+<script type="text/javascript">
+/* 	$(function(){ */
+		
+/* 	}); */
+</script>
+
+<title>메인 페이지</title>
 </head>
 <body>
 		<div class="container">
 			<div class="row">
-				<%@include file="./WEB-INF/view/includes/navbar.jsp" %>
+				<%@include file="/WEB-INF/view/includes/navbar.jsp" %>
 			</div>
 			
 			<div class="jumbotron">

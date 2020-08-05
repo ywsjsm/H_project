@@ -34,6 +34,7 @@ public class SignUpService {
 			try {
 				dao.Insert(req);
 			}catch(RuntimeException e) {
+				e.printStackTrace();
 				throw new DuplicateMemberException(e);
 			}
 		}
