@@ -1,4 +1,4 @@
-package board.dao;
+package board.write.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Date;
 
-import board.model.BoardWriteRequest;
+import board.write.model.BoardWriteRequest;
 import jdbc.JdbcUtil;
 
 public class BoardDao {

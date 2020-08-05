@@ -1,10 +1,10 @@
-package board.service;
+package board.write.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import board.dao.BoardDao;
-import board.model.BoardWriteRequest;
+import board.write.dao.BoardDao;
+import board.write.model.BoardWriteRequest;
 import jdbc.ConnectionProvider;
 import jdbc.JdbcUtil;
 

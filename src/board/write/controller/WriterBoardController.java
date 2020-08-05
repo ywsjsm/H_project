@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import board.model.BoardWriteRequest;
-import board.service.WriteArticleService;
+import board.write.model.BoardWriteRequest;
+import board.write.service.WriteArticleService;
 import controller.Controller;
 import user.signup.model.SingnUpRequest;
 
