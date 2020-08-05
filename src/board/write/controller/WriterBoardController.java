@@ -1,6 +1,5 @@
 package board.write.controller;
 
-import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,9 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import board.write.model.WriteRequest;
-import board.write.model.tempUser;
 import board.write.service.WriteArticleService;
 import controller.Controller;
+import user.model.User;
 
 public class WriterBoardController implements Controller{
 	private final static String VIEW_CODE= "/WEB-INF/view/list/write/writeArticle.jsp";
@@ -43,13 +42,11 @@ public class WriterBoardController implements Controller{
 		Map<String, Boolean> errors = new HashMap<>();
 		request.setAttribute("errors", errors);
 		
-		//SingnUpRequest user = (SingnUpRequest) request.getSession(false).getAttribute(""); // user 작업 끝나면 추가
-		tempUser user = new tempUser("윤우섭", "yun123");
+		User user = (User) request.getSession(false).getAttribute("userInfo");
 		WriteRequest WriteReq = createWriteRequest(request, fileName);
-		//WriteReq.validate(errors); 에러 처리 필요
 		writeService.write(WriteReq, user);
 		
-		return "/WEB-INF/view/list/write/writeCheckbox.jsp";
+		return "/WEB-INF/view/list/total/totalList.jsp";
 	}
 	
 	private WriteRequest createWriteRequest(HttpServletRequest req, String fileName) {

@@ -5,14 +5,14 @@ import java.sql.SQLException;
 
 import board.dao.BoardDao;
 import board.write.model.WriteRequest;
-import board.write.model.tempUser;
 import jdbc.ConnectionProvider;
 import jdbc.JdbcUtil;
+import user.model.User;
 
 public class WriteArticleService {
 	private BoardDao boardDao = new BoardDao();
 
-	public void write(WriteRequest req, tempUser user) {
+	public void write(WriteRequest req, User user) {
 		Connection conn = null;
 		try {
 			conn = ConnectionProvider.getConnection();
