@@ -12,18 +12,6 @@
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js'></script>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 	
-	<script type="text/javascript">/* 클릭일 필요는 없다. */
-		$(function(){
-			$('#btnSignUp').click(function(){
-				var check = $('#signupHidden');
-				console.log(check.val());
-				if(check.val() == 'true'){
-				/* 	alert('회원가입이 완료되었습니다.');  */
-				}
-			});
-		});
-	</script>
-	
 <style type="text/css">
 	#signup{
 		margin-left: 30%;
@@ -33,13 +21,11 @@
 </head>
 <body>
 	<div class="container">
-	<h6>${signupHidden}</h6>
 	<form id="signup" style="width: 40%" method="post">
-	<input type="hidden" id="signupHidden" value="${signupHidden}" />
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail">Email</label>
-      <input type="email" class="form-control" id="inputEmail" placeholder="이메일" name="email" required="required">
+      <input type="email" class="form-control" id="inputEmail" placeholder="이메일" name="email" required="required" value="${req.email}">
     <c:if test="${errors.email}">
     	<small id="emailHelp" class="form-text text-muted">공백은 허용하지 않습니다.</small>
     </c:if>
@@ -54,7 +40,7 @@
     
     <div class="form-group col-md-6">
       <label for="inputName">Name</label>
-      <input type="text" class="form-control" id="inputName" placeholder="사용자 이름" name="name" required="required">
+      <input type="text" class="form-control" id="inputName" placeholder="사용자 이름" name="name" required="required" value="${req.name}">
     	 <c:if test="${errors.name}">
     	<small id="nameHelp" class="form-text text-muted">공백은 허용하지 않습니다.</small>
     </c:if>
@@ -63,7 +49,7 @@
   
   <div class="form-group">
     <label for="inputId">Id</label>
-    <input type="text" class="form-control" id="inputId" placeholder="아이디" name="id" required="required">
+    <input type="text" class="form-control" id="inputId" placeholder="아이디" name="id" required="required" value="${req.id}">
     <c:if test="${errors.id}">
     	<small id="idHelp" class="form-text text-muted">공백은 허용하지 않습니다.</small>
     </c:if>
@@ -90,7 +76,7 @@
   
   <div class="form-group">
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="agree" required="required" name="agree">
+      <input class="form-check-input" type="checkbox" id="agree" required="required" name="agree" >
       <label class="form-check-label" for="agree">
         Agree to terms and conditions
       </label>

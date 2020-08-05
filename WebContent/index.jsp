@@ -1,6 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +24,12 @@
   <h1 class="display-4">H_Project's main Page</h1>
   <p class="lead">소소한 정보들을 찾고 또 공유해보세요!</p>
   <hr class="my-4">
+  <c:if test="${not empty req.id}">
+  	<b><i>${req.id} 님 회원가입을 축하합니다.</i></b> 
+  </c:if>
+    <c:if test="${empty req.id}">
   <p>회원 가입을 완료하시면 게시와 삭제 이용 가능합니다 :)</p>
+  </c:if>
   <a class="btn btn-info btn-lg" href="${contextPath}/total.do" role="button">시작하기</a>
 </div>
 		</div>

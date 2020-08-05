@@ -75,7 +75,7 @@ public class FrontServlet extends HttpServlet {
 				
 				String uri = requestUri.substring(startIndex+contextPath.length(),requestUri.length());
 				
-//				System.out.println(uri);
+				System.out.println(uri);
 				
 				Controller com = controllerMap.get(uri);
 				String view ="";
@@ -86,8 +86,14 @@ public class FrontServlet extends HttpServlet {
 				}catch(Throwable e) {
 					throw new ServletException(e);
 				}
-				if(view != null) {
-					request.getRequestDispatcher(view).forward(request, response);
+				if(view != null ) {
+					if(view.startsWith("redirect ")) {
+						String redirectview = view.replace("redirect ", "");
+						//System.out.println(redirectview);
+						response.sendRedirect(request.getServletContext().getContextPath()+redirectview);
+					}else {
+						request.getRequestDispatcher(view).forward(request, response);
+					}
 				}
 	}
 
