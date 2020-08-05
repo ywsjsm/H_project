@@ -21,6 +21,7 @@ public class WriteArticleService {
 			boardDao.insert(conn, req, user);
 			
 			conn.commit();
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -23,4 +23,8 @@ public class BoardDao {
 			
 			pstmt.close();
 	}
+	
+	public void select(Connection conn, String id) {
+		
+	}
 }

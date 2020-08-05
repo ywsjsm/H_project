@@ -1,5 +1,7 @@
 package board.write.model;
 
+import java.util.Map;
+
 public class WriteRequest {
 
 		private String title;
@@ -21,5 +23,11 @@ public class WriteRequest {
 		}
 		public String getImageName() {
 			return imageName;
+		}
+		
+		public void validate(Map<String, Boolean> errors) {
+			if(title.trim().isEmpty() || title == null) {
+				errors.put("title", Boolean.TRUE);
+			}
 		}
 }
