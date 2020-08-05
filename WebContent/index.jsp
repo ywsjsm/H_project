@@ -27,7 +27,10 @@
   <c:if test="${not empty req.id}">
   	<b><i>${req.id} 님 회원가입을 축하합니다.</i></b> 
   </c:if>
-    <c:if test="${empty req.id}">
+  <c:if test="${not empty loginReq.id}">
+  	<b><i>${loginReq.id } 님 방문해주셔서 감사합니다 :)</i></b>
+  </c:if>
+    <c:if test="${empty req.id and loginReq.id}">
   <p>회원 가입을 완료하시면 게시와 삭제 이용 가능합니다 :)</p>
   </c:if>
   <a class="btn btn-info btn-lg" href="${contextPath}/total.do" role="button">시작하기</a>

@@ -2,35 +2,44 @@ package user.login.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Map;
 
 import jdbc.ConnectionProvider;
-import user.login.exception.LoginFailException;
-import user.login.model.User;
-import user.signup.dao.SignUpDao;
-import user.signup.model.SingnUpRequest;
+import user.login.model.LoginRequest;
+import user.model.User;
+import user.repository.dao.UserDao;
 
+//@Service
 public class LoginService {
-
-	private SignUpDao loginDao = SignUpDao.getSignUpDao();
-
-	public User login(String id, String password) {
-		// try-with-resources
-		try (Connection conn = ConnectionProvider.getConnection()) {
-			
-			SingnUpRequest userinfo = loginDao.selectUserInfo(conn, id);
-			
-			if (userinfo == null) {
-				throw new LoginFailException();
+	private static	LoginService service = new LoginService();
+	private static UserDao dao = UserDao.getUserDao();
+	
+	private LoginService() {
+	}
+	
+	public static LoginService getLoginService() {
+		return service;
+	}
+	
+	public User login(LoginRequest req, Map<String, Boolean> errors) throws RuntimeException {
+		
+		try(Connection con = ConnectionProvider.getConnection() ){
+			User user = dao.selectUserInfo(con, req.getId());
+			if(user == null) {
+				errors.put("memberNotFound", Boolean.TRUE);
+				return null;
 			}
-			
-			if (!userinfo.checkMatchingPassword(password)) {
-				throw new LoginFailException();
+			if(!(req.checkMatchingPassword(user.getPassword()))) {
+				errors.put("passwordNotMatch", Boolean.TRUE);
+				return null;
 			}
-			
-			return new User(userinfo.getId(), userinfo.getName());
-		} catch (SQLException e) {
-			e.printStackTrace();
+			return user;
+		}catch(SQLException e) {
 			throw new RuntimeException(e);
 		}
 	}
+	
+//	1. dao 에서 탐색, 입력값 비교, 검증, 서비스 실행
+
+
 }

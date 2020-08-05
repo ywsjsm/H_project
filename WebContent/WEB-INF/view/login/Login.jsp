@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,19 +35,26 @@
 		<form action="" method="post" id="LoginForm">
 			<div class="form-group">
 				<label for="Id">Id</label> 
-				<input type="text" class="form-control" id="Id" aria-describedby="IdHelp" required="required " name="id" placeholder="input your Id"> 
-					<small id="Id" class="form-text text-muted">아이디오류</small>
+				<input type="text" class="form-control" id="Id" aria-describedby="IdHelp"
+				 value="${UserIdCookie}" required="required " name="id" placeholder="input your Id"> 
+					<c:if test="${errors.id}">
+					<small id="Id" class="form-text text-muted">공백은 허용하지 않습니다.</small>
+					</c:if>
+					<c:if test="${!errors.id and errors.memberNotFound}">
+					<small id="Id" class="form-text text-muted">해당 아이디는 존재하지 않습니다.</small>
+					</c:if>
 			</div>
 			<div class="form-group">
 				<label for="Password">Password</label> 
 				<input type="password" class="form-control" id="Password" required="required" name="password" placeholder="input your password"> 
-					<small id="PasswordHelp" class="form-text text-muted">패스워드 오류</small>
+					<c:if test="${errors.password}">
+					<small id="Id" class="form-text text-muted">공백은 허용하지 않습니다.</small>
+					</c:if>
+					<c:if test="${errors.passwordNotMatch}">
+					<small id="Id" class="form-text text-muted">비밀번호가 일치하지 않습니다.</small>
+					</c:if>
 			</div>
-			<div class="form-group">
-				<label for="ConfirmPassword">ConfirmPassword</label> 
-				<input type="password" class="form-control" id="ConfirmPassword" required="required" name="confirmPassword" placeholder="input your ConfirmPassword"> 
-					<small id="ConfirmPasswordHelp" class="form-text text-muted">패스워드 확인 오류</small>
-			</div>
+			
 			<div class="form-group form-check">
 				<input type="checkbox" class="form-check-input" id="RemeberId" name="rememberId"> 
 				<label class="form-check-label" for="RemeberId">Remember my Id</label>
