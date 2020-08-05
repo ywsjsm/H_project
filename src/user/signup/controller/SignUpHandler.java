@@ -37,6 +37,7 @@ public class SignUpHandler implements Controller{
 		SingnUpRequest req = mappingObject(request, response);
 //		System.out.println(req.toString());
 		Map<String, Boolean> errors = new HashMap<>();
+		request.setAttribute("req", req);
 		errors = req.validate(errors);
 		request.setAttribute("errors", errors);
 
@@ -50,9 +51,10 @@ public class SignUpHandler implements Controller{
 		 if(!errors.isEmpty()) {
 				return VIEW_CODE;
 			}
-		 request.setAttribute("signupHidden", Boolean.TRUE);
+		 return "";
 //		return "/WEB-INF/view/login/Login.jsp";
-		 return VIEW_CODE;
+//		 return "redirect /login.do";
+//		 return null;
 	}
 	
 	private static SingnUpRequest  mappingObject(HttpServletRequest request, HttpServletResponse response) {
