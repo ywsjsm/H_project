@@ -1,45 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<link rel='stylesheet'
-	href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css'>
-<script
-	src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
-<script
-	src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js'></script>
-<script
-	src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js'></script>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css'>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js'></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js'></script>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-
-<script type="text/javascript">
-	$(function(){
-		$('#loginBtn').click(function(){			
-				var datab = $('#LoginForm').serialize();
-			$.ajax({
-				type: 'post',
-				url:'/H_Project/login.do',
-				data : datab,
-			}).done(function(data){
-				$('body').empty();
-				$('body').append(data); 	
-			});
-		});
-	});
-</script>
-
-<title>로그인</title>
-
 <style type="text/css">
 #LoginForm {
 	width: 40%;
 	margin-left: 30%;
 }
 </style>
+<title>Login Complete!</title>
+<script type="text/javascript">
+$(function(){			
+		alert('로그인에 성공했습니다. 게시글 목록으로 넘어갑니다.');
+		$.ajax({
+			type: 'get',
+			url:'/H_Project/total.do',
+		}).done(function(data){
+			$('html').empty();
+			$('html').append(data); 	
+		});
+
+});
+</script>
 </head>
 <body>
 	<div class="container">
