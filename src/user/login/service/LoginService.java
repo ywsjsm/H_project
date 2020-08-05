@@ -4,29 +4,30 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import jdbc.ConnectionProvider;
-import member.dao.MemberDao;
-import member.model.Member;
+import user.login.exception.LoginFailException;
 import user.login.model.User;
+import user.signup.dao.SignUpDao;
+import user.signup.model.SingnUpRequest;
 
 public class LoginService {
 
-	private MemberDao memberDao = new MemberDao();
+	private SignUpDao loginDao = SignUpDao.getSignUpDao();
 
 	public User login(String id, String password) {
 		// try-with-resources
 		try (Connection conn = ConnectionProvider.getConnection()) {
 			
-			Member member = memberDao.selectById(conn, id);
+			SingnUpRequest userinfo = loginDao.selectUserInfo(conn, id);
 			
-			if (member == null) {
+			if (userinfo == null) {
 				throw new LoginFailException();
 			}
 			
-			if (!member.matchPassword(password)) {
+			if (!userinfo.checkMatchingPassword(password)) {
 				throw new LoginFailException();
 			}
 			
-			return new User(member.getId(), member.getName());
+			return new User(userinfo.getId(), userinfo.getName());
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
