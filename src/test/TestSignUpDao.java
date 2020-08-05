@@ -8,7 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import user.signup.dao.SignUpDao;
+
+import user.repository.dao.UserDao;
 import user.signup.model.SingnUpRequest;
 
 
@@ -26,7 +27,7 @@ public class TestSignUpDao extends HttpServlet {
 		SingnUpRequest req = new SingnUpRequest(
 			"아이디","이메일","홍길동","비밀번호","비밀번호 확인",true);
 		
-		SignUpDao dao = SignUpDao.getSignUpDao();
+		UserDao dao = UserDao.getUserDao();
 		
 		try {
 			dao.Insert(req);

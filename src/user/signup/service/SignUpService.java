@@ -2,14 +2,14 @@ package user.signup.service;
 
 import java.util.Map;
 
-import user.signup.dao.SignUpDao;
+import user.repository.dao.UserDao;
 import user.signup.exception.DuplicateMemberException;
 import user.signup.model.SingnUpRequest;
 
 //@Service
 public class SignUpService {
 	private static SignUpService service = new SignUpService();
-	private SignUpDao dao = SignUpDao.getSignUpDao();
+	private UserDao dao = UserDao.getUserDao();
 	
 	public static SignUpService getSignUpService() {
 		return service;

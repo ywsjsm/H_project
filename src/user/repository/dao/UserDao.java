@@ -1,29 +1,28 @@
-package user.signup.dao;
+package user.repository.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.mysql.cj.xdevapi.Result;
-
 import jdbc.ConnectionProvider;
 import jdbc.JdbcUtil;
-import member.model.Member;
+import user.model.User;
 import user.signup.exception.DuplicateMemberException;
 import user.signup.model.SingnUpRequest;
 
 //@Repository
-public class SignUpDao {
-	private static SignUpDao dao = new SignUpDao();
+public class UserDao {
+	private static UserDao dao = new UserDao();
 	
-	private SignUpDao() {
+	private UserDao() {
 	} 
 	
-	public static SignUpDao getSignUpDao() {
+	public static UserDao getUserDao() {
 		return dao;
 	}
 	
+//	SignUp
 	public void Insert(SingnUpRequest req) throws DuplicateMemberException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -50,7 +49,7 @@ public class SignUpDao {
 			JdbcUtil.close(con);
 		}
 	}
-	
+
 	public String selectOne(SingnUpRequest req) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -79,11 +78,8 @@ public class SignUpDao {
 		}
 	}
 	
-	public void mappingObject(ResultSet rs) {
-		
-	}
-	
-	public SingnUpRequest selectUserInfo(Connection con, String id) {
+	// Login
+	public User selectUserInfo(Connection con, String id) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
@@ -93,13 +89,11 @@ public class SignUpDao {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
+			User userInfo = null;
 			if (rs.next()) {
-				SingnReq = new SingnUpRequest(
-						rs.getString("memberid"),
-						rs.getString("name"),
-						rs.getString("password"));
+				userInfo = mappingObject(rs);
 			}
-			return SingnReq;
+			return userInfo;
 		}catch(Exception e) {
 			try {
 				con.rollback();
@@ -109,7 +103,13 @@ public class SignUpDao {
 			e.printStackTrace();
 			return null;
 		}finally {
-			JdbcUtil.close(con);
+			JdbcUtil.close(rs,pstmt,con);
 		}
+	}
+	
+	public User mappingObject(ResultSet rs) throws SQLException {// Result Set ->  Vo로 맵핑 리턴 타입은 인터페이스 < --- VO 구현
+		return new User(rs.getString(1), rs.getString(2), 
+				rs.getString(3), rs.getString(4), 
+				rs.getTimestamp(5).toLocalDateTime());
 	}
 }

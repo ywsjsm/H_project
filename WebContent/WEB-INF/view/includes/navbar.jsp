@@ -37,16 +37,16 @@
       <li class="nav-item">
         <a class="nav-link" href="${contextPath}/signUp.do" tabindex="-1" aria-disabled="true">회원가입</a> <!-- disabled -->
       </li>
-     <%--  <c:if test="${not empty 로그인 세션정보확인}"> --%>
+     <c:if test="${empty sessionScope.userInfo}">
       <li class="nav-item">
         <a class="nav-link" href="${contextPath}/login.do" tabindex="-1" aria-disabled="true">로그인</a> <!-- disabled -->
       </li>
-      <%-- </c:if> --%>
-     <%--   <c:if test="${empty 로그인 세션정보확인}"> --%>
+      </c:if>
+     <c:if test="${not empty sessionScope.userInfo}">
       <li class="nav-item">
         <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">로그아웃</a> <!-- disabled -->
       </li>
-     <%--  </c:if> --%>
+     </c:if>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="글찾기" aria-label="글찾기">
