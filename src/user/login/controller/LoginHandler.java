@@ -18,6 +18,7 @@ import user.login.service.LoginService;
 import user.model.User;
 
 public class LoginHandler implements Controller{
+	private final static String COPLETE_VIEW_CODE="/WEB-INF/view/login/LoginComplete.jsp";
 	private static LoginService service = LoginService.getLoginService();
 	
 	private final static String VIEW_CODE= "/WEB-INF/view/login/Login.jsp";
@@ -58,6 +59,7 @@ public class LoginHandler implements Controller{
 			userInfo = service.login(req, errors);
 		}catch(Exception e) {
 			e.printStackTrace();
+			return VIEW_CODE;
 		}
 		if(!errors.isEmpty()) {
 			return VIEW_CODE;
@@ -74,7 +76,7 @@ public class LoginHandler implements Controller{
 		}
 		if(userInfo != null)
 		session.setAttribute("userInfo", userInfo);
-		return "";
+		return COPLETE_VIEW_CODE;
 	}
 	
 	private static LoginRequest  mappingObject(HttpServletRequest request, HttpServletResponse response) {

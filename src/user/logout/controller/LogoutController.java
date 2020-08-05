@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 import controller.Controller;
 
 public class LogoutController implements Controller{
-	private final static String VIEW_CODE= "/WEB-INF/view/signup/SignUp.jsp";
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		if(request.getMethod().equalsIgnoreCase("GET")) {
@@ -22,6 +21,7 @@ public class LogoutController implements Controller{
 	}
 	
 	private static String processGet(HttpServletRequest request, HttpServletResponse response){
+		System.out.println("Get 요청 받음");
 			HttpSession session = request.getSession();
 			
 			session.invalidate();

@@ -14,8 +14,8 @@ import user.signup.service.SignUpService;
 public class SignUpHandler implements Controller{
 	
 	private static SignUpService service  = SignUpService.getSignUpService();
-	
-	private final static String VIEW_CODE= "/WEB-INF/view/signup/SignUp.jsp";
+	private final static String COPLETE_VIEW_CODE="/WEB-INF/view/signup/SignUpComplete.jsp";
+ 	private final static String VIEW_CODE= "/WEB-INF/view/signup/SignUp.jsp";
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		if(request.getMethod().equalsIgnoreCase("GET")) {
@@ -51,7 +51,7 @@ public class SignUpHandler implements Controller{
 				return VIEW_CODE;
 			}
 		 response.setStatus(HttpServletResponse.SC_CREATED);
-		 return "redirect ";
+		 return COPLETE_VIEW_CODE;
 //		return "/WEB-INF/view/login/Login.jsp";
 //		 return "redirect /login.do";
 //		 return null;
