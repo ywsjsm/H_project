@@ -30,33 +30,33 @@ public class LoginHandler implements Controller{
 	
 	private String processPost(HttpServletRequest request, HttpServletResponse response) {
 		
-		String id = trim(request.getParameter("id"));
-		String password = trim(request.getParameter("password"));
-		
-		Map<String, Boolean> errors = new HashMap<>();
-		request.setAttribute("errors", errors);
-		
-		if (id == null || id.isEmpty()) {
-			errors.put("id", true);
-		}
-		
-		if (password == null || password.isEmpty()) {
-			errors.put("password", true);
-		}
-		
-		if (!errors.isEmpty()) {
-			return FORM_VIEW;
-		}
-		
-		try {
-			User user = LoginService.login(id, password);
-			request.getSession().setAttribute("authUser", user);
-			request.sendRedirect(request.getContextPath() + "/index.jsp");
-			return null;
-		} catch (LoginFailException e) {
-			errors.put("idOrPwNotMatch",  true);
-			return FORM_VIEW;
-		}
+//		String id = trim(request.getParameter("id"));
+//		String password = trim(request.getParameter("password"));
+//		
+//		Map<String, Boolean> errors = new HashMap<>();
+//		request.setAttribute("errors", errors);
+//		
+//		if (id == null || id.isEmpty()) {
+//			errors.put("id", true);
+//		}
+//		
+//		if (password == null || password.isEmpty()) {
+//			errors.put("password", true);
+//		}
+//		
+//		if (!errors.isEmpty()) {
+//			return FORM_VIEW;
+//		}
+//		
+//		try {
+//			User user = LoginService.login(id, password);
+//			request.getSession().setAttribute("authUser", user);
+//			request.sendRedirect(request.getContextPath() + "/index.jsp");
+//			return null;
+//		} catch (LoginFailException e) {
+//			errors.put("idOrPwNotMatch",  true);
+//			return FORM_VIEW;
+//		}
 		return "";
 	}
 	
