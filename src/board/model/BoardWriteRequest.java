@@ -8,9 +8,16 @@ public class BoardWriteRequest {
 		private String title;
 		private String content;
 		private String imageName;
-		private Date regdate;
 		private String userName;
 		private String userId;
+		private Date regdate;
+		
+		public BoardWriteRequest(String title, String content, String imageName, Date regdate) {
+			this.title = title;
+			this.content = content;
+			this.imageName = imageName;
+			this.regdate = regdate;
+		}
 		
 		public int getBoard_no() {
 			return board_no;

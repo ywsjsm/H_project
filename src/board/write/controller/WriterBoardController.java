@@ -1,13 +1,21 @@
 package board.write.controller;
 
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import board.model.BoardWriteRequest;
+import board.service.WriteArticleService;
 import controller.Controller;
+import user.signup.model.SingnUpRequest;
 
 public class WriterBoardController implements Controller{
 	private final static String VIEW_CODE= "/WEB-INF/view/list/write/writeArticle.jsp";
+	private WriteArticleService writeService = new WriteArticleService();
 	
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -25,12 +33,31 @@ public class WriterBoardController implements Controller{
 	}
 	
 	
-	private String processPost(HttpServletRequest request, HttpServletResponse response) {
+	private String processPost(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		request.getAttribute("title");
-		request.getAttribute("content");
-		request.getAttribute("fileName");
+		Part filePart = request.getPart("fileName");
+		String fileName = filePart.getSubmittedFileName();
+		
+		fileName = fileName == null ? "" : fileName;
+		
+		Map<String, Boolean> errors = new HashMap<>();
+		request.setAttribute("errors", errors);
+		
+		SingnUpRequest user = (SingnUpRequest) request.getSession(false).getAttribute("");
+		BoardWriteRequest WriteReq = createWriteRequest(request, fileName);
+		//WriteReq.validate(errors); 에러 처리 필요
+		writeService.write(WriteReq);
+		
 		return "";
 	}
 	
+	private BoardWriteRequest createWriteRequest(HttpServletRequest req, String fileName) {
+
+		return new BoardWriteRequest(
+						req.getParameter("title"),
+						req.getParameter("content"),
+						fileName,
+						new Date()
+						);
+	}
 }
