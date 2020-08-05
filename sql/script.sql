@@ -13,13 +13,14 @@ desc User;
 select * from User;
 
 create table Board(
-	board_no int unsigned,
+	board_no int unsigned auto_increment,
     title varchar(255),
     content varchar(255),
+    category_no int unsigned,
     imageName varchar(255),
-    regdate datetime default now(),
     userName varchar(255),
     userId varchar(255), 
+    regdate datetime default now(),
 	primary key (board_no),
     Foreign key(userId) references User(userId)
 );

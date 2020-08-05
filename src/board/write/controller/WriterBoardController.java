@@ -63,6 +63,6 @@ public class WriterBoardController implements Controller {
 
 	private WriteRequest createWriteRequest(HttpServletRequest req, String fileName) {
 
-		return new WriteRequest(req.getParameter("title"), req.getParameter("content"), fileName);
+		return new WriteRequest(req.getParameter("title"), req.getParameter("content"), req.getParameter("category"), fileName);
 	}
 }

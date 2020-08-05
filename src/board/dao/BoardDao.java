@@ -12,12 +12,13 @@ public class BoardDao {
 
 	public void insert(Connection conn, WriteRequest req, User user) throws SQLException {
 			PreparedStatement pstmt = conn.prepareStatement(
-					"INSERT INTO Board (title, content, imageName, userName, userId) VALUES (?, ?, ?, ?, ?)");
+					"INSERT INTO Board (title, content, category_no, imageName, userName, userId) VALUES (?, ?, ?, ?, ?, ?)");
 			pstmt.setString(1, req.getTitle());
 			pstmt.setString(2, req.getContent());
-			pstmt.setString(3, req.getImageName());
-			pstmt.setString(4, user.getUserName());
-			pstmt.setString(5, user.getUserId());
+			pstmt.setInt(3, req.getCategory());
+			pstmt.setString(4, req.getImageName());
+			pstmt.setString(5, user.getUserName());
+			pstmt.setString(6, user.getUserId());
 			
 			pstmt.executeUpdate();
 			

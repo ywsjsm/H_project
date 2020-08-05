@@ -26,6 +26,15 @@
 		<div class="row justify-content-center">
 			<form action="" method="post" style="width: 500px;" enctype="multipart/form-data">
 				<div class="form-group">
+					<label for="Title">Category</label>
+					<select name="category" class="custom-select" id="validatedInputGroupSelect" required>
+        				<option value="1">동물</option>
+       					<option value="2">음악</option>
+       					<option value="3">자동차</option>
+     				</select>
+				</div>
+				
+				<div class="form-group">
 					<label for="Title">Title</label> <input type="text"
 						class="form-control" id="Title" placeholder="input title"
 						required="required" name="title">
