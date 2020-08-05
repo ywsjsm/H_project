@@ -89,7 +89,7 @@ public class FrontServlet extends HttpServlet {
 				if(view != null ) {
 					if(view.startsWith("redirect ")) {
 						String redirectview = view.replace("redirect ", "");
-						//System.out.println(redirectview);
+						System.out.println("리다이렉트 발생 : "+redirectview);
 						response.sendRedirect(request.getServletContext().getContextPath()+redirectview);
 					}else {
 						request.getRequestDispatcher(view).forward(request, response);

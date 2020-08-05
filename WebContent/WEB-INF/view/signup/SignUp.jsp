@@ -12,6 +12,25 @@
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js'></script>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 	
+	<script type="text/javascript">
+	$(function(){
+		$('#btnSignUp').click(function(){
+			var dataa = $('#signup').serialize();
+			$.ajax({
+				type:"post",
+				url :"/H_Project/signUp.do",
+				data: dataa,
+				}).done(function(data){
+				 		$('body').empty();
+						$('body').append(data); 	
+
+					});
+				}
+				);
+		
+	});
+
+	</script>
 <style type="text/css">
 	#signup{
 		margin-left: 30%;
@@ -20,6 +39,8 @@
 <title>SignUp</title>
 </head>
 <body>
+	
+	<input type="hidden" id="hideFlag" value="check"  />
 	<div class="container">
 	<form id="signup" style="width: 40%" method="post">
   <div class="form-row">
@@ -82,8 +103,7 @@
       </label>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary" id="btnSignUp">Sign in</button>
-  
+  <button type="button" class="btn btn-primary" id="btnSignUp">Sign in</button>
 </form>
   
   </div>

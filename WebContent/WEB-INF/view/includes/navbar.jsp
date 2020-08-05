@@ -29,7 +29,6 @@
           <a class="dropdown-item" href="#">경제</a>
           <a class="dropdown-item" href="#">과학</a>
           <a class="dropdown-item" href="#">역사</a>
-          <a class="dropdown-item" href="#">문학</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
@@ -44,7 +43,7 @@
       </c:if>
      <c:if test="${not empty sessionScope.userInfo}">
       <li class="nav-item">
-        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">로그아웃</a> <!-- disabled -->
+        <a class="nav-link" href="${contextPath}/logout.do" tabindex="-1" aria-disabled="true">로그아웃</a> <!-- disabled -->
       </li>
      </c:if>
     </ul>

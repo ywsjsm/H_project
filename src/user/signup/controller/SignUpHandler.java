@@ -1,6 +1,5 @@
 package user.signup.controller;
 
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +13,7 @@ import user.signup.service.SignUpService;
 
 public class SignUpHandler implements Controller{
 	
-//	private SignUpService service  = SignUpService.getSignUpService();
+	private static SignUpService service  = SignUpService.getSignUpService();
 	
 	private final static String VIEW_CODE= "/WEB-INF/view/signup/SignUp.jsp";
 	@Override
@@ -35,13 +34,13 @@ public class SignUpHandler implements Controller{
 	
 	private static String processPost(HttpServletRequest request, HttpServletResponse response) {
 		SingnUpRequest req = mappingObject(request, response);
-//		System.out.println(req.toString());
+		System.out.println(req.toString());
+		
 		Map<String, Boolean> errors = new HashMap<>();
 		request.setAttribute("req", req);
 		errors = req.validate(errors);
 		request.setAttribute("errors", errors);
-
-		 SignUpService service  = SignUpService.getSignUpService();
+		
 		 try {
 			service.signUp(req, errors);
 		} catch (DuplicateMemberException e) {
@@ -51,7 +50,8 @@ public class SignUpHandler implements Controller{
 		 if(!errors.isEmpty()) {
 				return VIEW_CODE;
 			}
-		 return "";
+		 response.setStatus(HttpServletResponse.SC_CREATED);
+		 return "redirect ";
 //		return "/WEB-INF/view/login/Login.jsp";
 //		 return "redirect /login.do";
 //		 return null;
