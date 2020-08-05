@@ -3,6 +3,7 @@ package board.total.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import board.total.model.ArticlePage;
 import controller.Controller;
 
 public class TotalListController implements Controller{
@@ -10,22 +11,18 @@ public class TotalListController implements Controller{
 	private final static String VIEW_CODE= "/WEB-INF/view/list/total/totalList.jsp";
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		if(request.getMethod().equalsIgnoreCase("GET")) {
-			return processGet(request,response);
-		}else if(request.getMethod().equalsIgnoreCase("POST")) {
-			return processPost(request, response);
-		}else {
-		 	response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-			return null;
-		}
-	}
-	private String processGet(HttpServletRequest request, HttpServletResponse response) {
+		
+//		String pageNoVal = request.getParameter("pageNo");
+//		int pageNo = 1;
+//		
+//		if (pageNoVal != null) {
+//			pageNo = Integer.parseInt(pageNoVal);
+//		}
+//		
+//		ArticlePage articlePage = listService.getArticlePage(pageNo);
+//		request.setAttribute("articlePage", articlePage);
+		
 		return VIEW_CODE;
-	}
-	
-	
-	private String processPost(HttpServletRequest request, HttpServletResponse response) {
-		return "";
 	}
 	
 	

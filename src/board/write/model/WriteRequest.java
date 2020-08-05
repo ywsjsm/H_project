@@ -7,14 +7,20 @@ public class WriteRequest {
 		private String title;
 		private String content;
 		private String imageName;
+		private int category;
 		
-		public WriteRequest(String title, String content, String imageName) {
+		public WriteRequest(String title, String content, String category, String imageName) {
 			super();
 			this.title = title;
 			this.content = content;
+			this.category = Integer.parseInt(category);
 			this.imageName = imageName;
 		}
 		
+		public int getCategory() {
+			return category;
+		}
+
 		public String getTitle() {
 			return title;
 		}
