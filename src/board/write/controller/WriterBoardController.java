@@ -1,6 +1,6 @@
 package board.write.controller;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import board.write.model.BoardWriteRequest;
+import board.write.model.WriteRequest;
+import board.write.model.tempUser;
 import board.write.service.WriteArticleService;
 import controller.Controller;
-import user.signup.model.SingnUpRequest;
 
 public class WriterBoardController implements Controller{
 	private final static String VIEW_CODE= "/WEB-INF/view/list/write/writeArticle.jsp";
@@ -43,21 +43,20 @@ public class WriterBoardController implements Controller{
 		Map<String, Boolean> errors = new HashMap<>();
 		request.setAttribute("errors", errors);
 		
-		SingnUpRequest user = (SingnUpRequest) request.getSession(false).getAttribute("");
-		BoardWriteRequest WriteReq = createWriteRequest(request, fileName);
+		//SingnUpRequest user = (SingnUpRequest) request.getSession(false).getAttribute(""); // user 작업 끝나면 추가
+		tempUser user = new tempUser("윤우섭", "yun123");
+		WriteRequest WriteReq = createWriteRequest(request, fileName);
 		//WriteReq.validate(errors); 에러 처리 필요
-		writeService.write(WriteReq);
+		writeService.write(WriteReq, user);
 		
-		return "";
+		return "/WEB-INF/view/list/write/writeCheckbox.jsp";
 	}
 	
-	private BoardWriteRequest createWriteRequest(HttpServletRequest req, String fileName) {
+	private WriteRequest createWriteRequest(HttpServletRequest req, String fileName) {
 
-		return new BoardWriteRequest(
+		return new WriteRequest(
 						req.getParameter("title"),
 						req.getParameter("content"),
-						fileName,
-						new Date()
-						);
+						fileName);
 	}
 }
