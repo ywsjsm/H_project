@@ -18,7 +18,11 @@ public class SingnUpRequest {
 	private boolean agree = false;
 	private LocalDateTime regDate;
 
-
+	public SingnUpRequest(String name, String id, String password) {
+		this.name = name;
+		this.id = id;
+		this.password = password;
+	}
 	
 	public SingnUpRequest(String email, String name, String id, String password, String confirmPassword, boolean agree) {
 		this.email = email;
@@ -55,6 +59,10 @@ public class SingnUpRequest {
 	
 	public boolean checkMatchingPassword() {
 		return this.password.equals(confirmPassword);
+	}
+	
+	public boolean checkMatchingPassword(String pw) {
+		return this.password.equals(pw);
 	}
 	
 // 객체 검증

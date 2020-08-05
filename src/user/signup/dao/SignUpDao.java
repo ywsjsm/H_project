@@ -9,6 +9,7 @@ import com.mysql.cj.xdevapi.Result;
 
 import jdbc.ConnectionProvider;
 import jdbc.JdbcUtil;
+import member.model.Member;
 import user.signup.exception.DuplicateMemberException;
 import user.signup.model.SingnUpRequest;
 
@@ -80,5 +81,35 @@ public class SignUpDao {
 	
 	public void mappingObject(ResultSet rs) {
 		
+	}
+	
+	public SingnUpRequest selectUserInfo(Connection con, String id) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			final String sql ="SELECT * FROM user WHERE userId = ?";
+			con.setAutoCommit(false);
+			SingnUpRequest SingnReq = null;
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				SingnReq = new SingnUpRequest(
+						rs.getString("memberid"),
+						rs.getString("name"),
+						rs.getString("password"));
+			}
+			return SingnReq;
+		}catch(Exception e) {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e.printStackTrace();
+			}
+			e.printStackTrace();
+			return null;
+		}finally {
+			JdbcUtil.close(con);
+		}
 	}
 }
