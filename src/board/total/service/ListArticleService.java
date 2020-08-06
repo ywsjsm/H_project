@@ -4,25 +4,23 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-import article.dao.ArticleDao;
-import article.model.Article;
-import jdbc.connection.ConnectionProvider;
+import board.dao.BoardDao;
+import board.total.model.ArticlePage;
+import board.total.model.totalRequest;
+import jdbc.ConnectionProvider;
 
 public class ListArticleService {
-	private ArticleDao articleDao = new ArticleDao();
-	private int size = 10;
+	private BoardDao boardDao = new BoardDao();
+	private int size = 3;
 
 	public ArticlePage getArticlePage(int pageNum) {
-		try (Connection conn = ConnectionProvider
-				.getConnection()) {
+		try (Connection conn = ConnectionProvider.getConnection()) {
 			
-			int total = articleDao.selectCount(conn);
+			int total = boardDao.selectCount(conn);
 			
-			List<Article> content = articleDao.select(conn,
-					(pageNum - 1) * size, size);
+			List<totalRequest> content = boardDao.selectList(conn, (pageNum - 1) * size, size);
 
-			return new ArticlePage(total, pageNum, size,
-					content);
+			return new ArticlePage(total, pageNum, size, content);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
