@@ -14,15 +14,15 @@
 			<nav aria-label="Page navigation example">
 				<ul class="pagination justify-content-center">
 					<c:if test="${articlePage.startPage > 5 }">
-						<li class="page-item disabled"><a class="page-link" href="#"
-							tabindex="-1" aria-disabled="true">Previous</a></li>
+						<li class="page-item">
+						<a class="page-link" href="${contextPath }/total.do?pageNo=${articlePage.startPage - 5 }">Previous</a></li>
 					</c:if>
 					<c:forEach var="pNo" begin="${articlePage.startPage }" end="${articlePage.endPage }">
 						<li class="page-item"><a class="page-link" href="${contextPath }/total.do?pageNo=${pNo }">${pNo }</a></li>
 					</c:forEach>
-					<c:if test="${articlePage.endPage < articlePae.totalPages }">
-						<li class="page-item"><a class="page-link" 
-						href="${contextPath }/total.do?pageNo=${articlePage.startPage + 5 }">Next</a></li>
+					<c:if test="${articlePage.endPage < articlePage.totalPages }">
+						<li class="page-item">
+						<a class="page-link" href="${contextPath }/total.do?pageNo=${articlePage.startPage + 5 }">Next</a></li>
 					</c:if>
 				</ul>
 			</nav>
