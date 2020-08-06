@@ -57,6 +57,7 @@ public class BoardDao {
 	
 	private totalRequest convertTotalRequest(ResultSet rs) throws SQLException {
 		return new totalRequest(
+							rs.getInt(1),
 							rs.getString("title"),
 							rs.getString("content"),
 							rs.getString("imageName"),

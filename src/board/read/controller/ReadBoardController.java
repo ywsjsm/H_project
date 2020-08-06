@@ -21,11 +21,18 @@ public class ReadBoardController implements Controller{
 		}
 	}
 	private String processGet(HttpServletRequest request, HttpServletResponse response) {
+			Object check = request.getAttribute("articlePage");
+					
+					System.out.println(check);
 		return VIEW_CODE;
 	}
 	
 	
 	private String processPost(HttpServletRequest request, HttpServletResponse response) {
+String check = request.getRequestURI().toString();
+		
+		System.out.println(check);
+		
 		return "";
 	}
 }
