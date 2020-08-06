@@ -8,7 +8,7 @@ import javax.servlet.http.Part;
 public class WriteFileService {
 
 	public void write(Part part) {
-		String path = "C:/Users/admin/git/H_project/WebContent/WEB-INF/image";
+		String path = "C:/Users/admin/git/H_project/WebContent/image";
 		File file = new File(path);
 		
 		if (!file.exists() ) {
