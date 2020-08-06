@@ -25,6 +25,7 @@
 				url :"/H_Project/signUp.do",
 				data: dataa,
 				}).done(function(data){
+					alert(data);
 				 		$('body').empty();
 						$('body').append(data); 	
 					});
