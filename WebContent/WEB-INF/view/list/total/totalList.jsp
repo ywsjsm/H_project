@@ -31,14 +31,14 @@
 			<div class="card mb-3" style="max-width: 90%;" id="content">
 				<div class="row no-gutters">
 					<div class="col-md-4">
-						<img src="..." class="card-img" alt="..." id="listImg" style="width: 200px">
+						<img src="${contextPath}/image/${article.imageName }" class="card-img" alt="..." id="listImg" style="width: 200px">
 					</div>
 					<div class="col-md-8">
 						<div class="card-body" style="width: 1000px;">
 							<a href="${contextPath}/read.do" id="hoverLink">
 								<h5 class="card-title">${article.title }</h5>
-								<p class="card-text">Content</p> <!-- 작성일 -->
-								<p class="card-text"><small class="text-muted">RegDate</small></p>
+								<p class="card-text">${article.content }</p> <!-- 작성일 -->
+								<p class="card-text"><small class="text-muted">${article.regdate }</small></p>
 							</a>
 						</div>
 					</div>
