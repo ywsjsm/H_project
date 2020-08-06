@@ -107,6 +107,21 @@ public class UserDao {
 		}
 	}
 	
+	// WithDrawal
+	public void deleteUserInfo(Connection con, String id) throws SQLException{
+		final String sql ="DELETE FROM user WHERE userId = ?";
+		PreparedStatement pstmt = null;
+		try{
+			pstmt = con.prepareStatement(sql);//<<<<<요녀석 스테이트먼트에 이상있음.
+			/*pstmt.setString(1, id);
+			pstmt.executeUpdate();*/
+		}catch(Exception e) {
+			e.printStackTrace();
+			JdbcUtil.rollback(con);
+			throw new RuntimeException(e);			
+		}
+	}
+	
 	public User mappingObject(ResultSet rs) throws SQLException {// Result Set ->  Vo로 맵핑 리턴 타입은 인터페이스 < --- VO 구현
 		return new User(rs.getString(1), rs.getString(2), 
 				rs.getString(3), rs.getString(4), 
