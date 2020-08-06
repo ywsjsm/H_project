@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import controller.Controller;
 
 public class LogoutController implements Controller{
+	
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		if(request.getMethod().equalsIgnoreCase("GET")) {
@@ -19,14 +20,14 @@ public class LogoutController implements Controller{
 			return null;
 		}
 	}
-	
+
+
 	private static String processGet(HttpServletRequest request, HttpServletResponse response){
-		System.out.println("Get 요청 받음");
+		System.out.println("로그아웃 Get 요청 받음");
 			HttpSession session = request.getSession();
 			
 			session.invalidate();
-			response.setStatus(HttpServletResponse.SC_FOUND);
-			return "redirect ";
+		return "redirect ";
 	}
 
 	
