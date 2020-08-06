@@ -19,7 +19,6 @@
 				type:"get",
 				url :"/H_Project",// 얼럿 띄우고 넘길 요청
 				}).done(function(data){
-					 alert('회원 가입이 완료 되었습니다.');
 				 		$('html').empty();
 						$('html').append(data); 	
 					});
