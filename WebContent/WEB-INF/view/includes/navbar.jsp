@@ -10,21 +10,8 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js'></script>
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js'></script>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    
-    <script type="text/javascript">
-   $(function(){
-	   $('#logOut').click(function(){
-		   alert('로그아웃 되었습니다. 시작페이지로 이동합니다.')
-			  $.ajax({
-				  type:'get',
-				  url:'/H_Project/logout.do',
-			  }).done(function(data){
-				  $('body').empty();
-				  $('body').load(data);
-			  });
-		  });
-   });
-</script>
+<script src='<c:url value='/js/head.js' />'></script>
+
 </head>
 <div class="container-fluid">
 
@@ -68,7 +55,7 @@
       </c:if>
      <c:if test="${not empty sessionScope.userInfo}">
       <li class="nav-item">
-        <a class="nav-link" href="<%-- ${contextPath}/logout.do --%>" tabindex="-1" aria-disabled="true" id="logOut">로그아웃</a> <!-- disabled -->
+        <a class="nav-link" href="${contextPath}/logout.do" tabindex="-1" aria-disabled="true" id="logOut">로그아웃</a> <!-- disabled -->
       </li>
      </c:if>
     </ul>

@@ -17,9 +17,9 @@
 			
 			$.ajax({
 				type:"get",
-				url :"/H_Project/login.do",// 얼럿 띄우고 넘길 요청
+				url :"/H_Project",// 얼럿 띄우고 넘길 요청
 				}).done(function(data){
-					 alert('회원 가입이 완료 되었습니다, 로그인 화면으로 이동합니다.');
+					 alert('회원 가입이 완료 되었습니다.');
 				 		$('html').empty();
 						$('html').append(data); 	
 					});
