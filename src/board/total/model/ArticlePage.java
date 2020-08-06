@@ -29,6 +29,7 @@ public class ArticlePage {
 			
 			endPage = startPage + 4;
 			endPage = Math.min(endPage, totalPages);
+			System.out.println(endPage);
 			
 			
 		}

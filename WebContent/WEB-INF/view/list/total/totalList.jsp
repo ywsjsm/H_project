@@ -37,6 +37,20 @@
 	});
 </script>
 
+<style type="text/css">
+	.text-overFlow{
+		font-size: 10px;
+		overflow: hidden;
+ 	 	text-overflow: ellipsis;
+ 		white-space: nowrap;
+ 		width: 500px;
+  		height: 46px;
+	}
+	.card-body{
+		padding: 5px;
+	}
+	
+</style>
 
 <title>전체 게시물</title>
 </head>
@@ -51,7 +65,7 @@
 			<div class="card mb-3" style=" width: 100%; " id="content" onmouseenter="" onmouseleave="">
 
 				<div class="row no-gutters">
-					<div class="col-md-4">
+					<div class="col-md-3">
 						<img src="${contextPath}/image/${article.imageName }" 
 						class="card-img rounded" alt="이미지를 찾을 수 없습니다..😇" id="listImg" 
 						style="width: 200px; max-width: 200px; height:112px; max-height: 112px; margin-top: 8px; margin-left: 7px">
@@ -59,11 +73,11 @@
 					<div class="col-md-8" >
 						<div class="card-body border" style="width: inherit;height: inherit; ">
 								<h5 class="card-title" >${article.title }</h5>
+							<div class="text-overFlow">
 								<p class="card-text" style="white-space: pre-wrap;">${article.content }</p> <!-- 작성일 -->
 								<a href="${contextPath}/" class="stretched-link"></a>
 								<p class="card-text"><small class="text-muted">${article.regdate }</small></p>
 						</div>
-							
 					</div>
 				</div>
 			</div>
