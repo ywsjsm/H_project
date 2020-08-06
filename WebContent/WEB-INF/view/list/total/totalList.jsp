@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <%-- <meta charset="UTF-8">
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <link rel='stylesheet'
@@ -40,6 +41,9 @@
 <title>전체 게시물</title>
 </head>
 <body>
+
+<!-- 2020-08-06 각 게시물당 고유번호 부여 후 호버링 이벤트 주어야 함! 아직 못함....-->
+
 	<div class="container">
 	<c:forEach var="article" items="${articlePage.content }">
 		<div class="row" id="articles">
@@ -53,12 +57,10 @@
 						style="width: 200px; max-width: 200px; height:112px; max-height: 112px; margin-top: 8px; margin-left: 7px">
 					</div>
 					<div class="col-md-8" >
-					
-
 						<div class="card-body border" style="width: inherit;height: inherit; ">
 								<h5 class="card-title" >${article.title }</h5>
 								<p class="card-text" style="white-space: pre-wrap;">${article.content }</p> <!-- 작성일 -->
-								<a href="" class="stretched-link"></a>
+								<a href="${contextPath}/" class="stretched-link"></a>
 								<p class="card-text"><small class="text-muted">${article.regdate }</small></p>
 						</div>
 							

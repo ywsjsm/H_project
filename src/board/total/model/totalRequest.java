@@ -3,18 +3,23 @@ package board.total.model;
 import java.util.Date;
 
 public class totalRequest {
+	private int boardNum;
 	private String title;
 	private String content;
 	private String imageName;
 	private Date regdate;
 	
 	
-	public totalRequest(String title, String content, String imageName, Date regdate) {
+	public totalRequest(int boardNum,String title, String content, String imageName, Date regdate) {
 		super();
+		this.boardNum = boardNum;
 		this.title = title;
 		this.content = content;
 		this.imageName = imageName;
 		this.regdate = regdate;
+	}
+	public int getBoardNum() {
+		return boardNum;
 	}
 	public String getTitle() {
 		return title;
@@ -39,6 +44,11 @@ public class totalRequest {
 	}
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
+	}
+	@Override
+	public String toString() {
+		return "totalRequest [boardNum=" + boardNum + ", title=" + title + ", content=" + content + ", imageName="
+				+ imageName + ", regdate=" + regdate + "]";
 	}
 	
 	

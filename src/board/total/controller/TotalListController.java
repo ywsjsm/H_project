@@ -13,7 +13,6 @@ public class TotalListController implements Controller{
 	private final static String VIEW_CODE= "/WEB-INF/view/list/total/totalList.jsp";
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
 		String pageNoVal = request.getParameter("pageNo");
 		int pageNo = 1;
 		
@@ -22,6 +21,10 @@ public class TotalListController implements Controller{
 		}
 		
 		ArticlePage articlePage = listService.getArticlePage(pageNo);
+		
+				articlePage.getContent().stream().forEach( content -> System.out.println(content.toString())
+						);
+		
 		request.setAttribute("articlePage", articlePage);
 		
 		return VIEW_CODE;
