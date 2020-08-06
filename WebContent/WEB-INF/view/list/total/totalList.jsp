@@ -72,7 +72,9 @@
 							<div class="text-overFlow">
 								<p class="card-text" style="white-space: pre-wrap;">${article.content }</p> <!-- 작성일 -->
 							</div>
-								<a href="" class="stretched-link"></a>
+
+								<a href="${contextPath }/read.do?no=${article.boardNum}" class="stretched-link"></a>
+
 								<p class="card-text"><small class="text-muted">- ${article.regdate }</small></p>
 						</div>
 					</div>

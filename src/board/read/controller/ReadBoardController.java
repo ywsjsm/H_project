@@ -21,9 +21,9 @@ public class ReadBoardController implements Controller{
 		}
 	}
 	private String processGet(HttpServletRequest request, HttpServletResponse response) {
-			Object check = request.getAttribute("articlePage");
+			Object check = request.getParameter("no");
 					
-					System.out.println(check);
+					
 		return VIEW_CODE;
 	}
 	
