@@ -61,6 +61,7 @@ public class BoardDao {
 							rs.getString("title"),
 							rs.getString("content"),
 							rs.getString("imageName"),
+							rs.getString(7),
 							toDate(rs.getTimestamp("regdate")));
 	}
 	
