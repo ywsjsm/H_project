@@ -2,17 +2,15 @@ package board.total.model;
 
 import java.util.List;
 
-import article.model.Article;
-
 public class ArticlePage {
 	private int total;
 	private int currentPage;
-	private List<Article> content;
+	private List<totalRequest> content;
 	private int totalPages;
 	private int startPage;
 	private int endPage;
 	
-	public ArticlePage(int total, int currentPage, int size, List<Article> content) {
+	public ArticlePage(int total, int currentPage, int size, List<totalRequest> content) {
 		this.total = total;
 		this.currentPage = currentPage;
 		this.content = content;
@@ -56,7 +54,7 @@ public class ArticlePage {
 		return totalPages;
 	}
 	
-	public List<Article> getContent() {
+	public List<totalRequest> getContent() {
 		return content;
 	}
 	
