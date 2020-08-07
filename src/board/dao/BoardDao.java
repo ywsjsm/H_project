@@ -20,9 +20,10 @@ public class BoardDao {
 
 	public void insert(Connection conn, WriteRequest req, User user) throws SQLException {
 
+		PreparedStatement pstmt = null;
 		try {
-			PreparedStatement pstmt = conn.prepareStatement(
-					"INSERT INTO Board (title, content, category_no, imageName, userName, userId,userNo) VALUES (?, ?, ?, ?, ?, ?, ?)");
+			pstmt = conn.prepareStatement(
+					"INSERT INTO Board (title, content, category_no, imageName, userName, userId, userNo) VALUES (?, ?, ?, ?, ?, ?, ?)");
 			pstmt.setString(1, req.getTitle());
 			pstmt.setString(2, req.getContent());
 			pstmt.setInt(3, req.getCategory());
