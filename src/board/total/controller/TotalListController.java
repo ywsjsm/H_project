@@ -24,7 +24,7 @@ public class TotalListController implements Controller{
 		
 				articlePage.getContent().stream().forEach( content -> System.out.println(content.toString())
 						);
-		
+//		request.setAttribute("pageNo", pageNo);
 		request.setAttribute("articlePage", articlePage);
 		
 		return VIEW_CODE;

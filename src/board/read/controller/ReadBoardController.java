@@ -23,6 +23,7 @@ public class ReadBoardController implements Controller {
 
 			readBoardInfo boardInfo = boardservice.getArticle(boardNum);
 			request.setAttribute("boardInfo", boardInfo);
+			request.setAttribute("pageNo",boardNum);
 
 			return VIEW_CODE;
 		} catch (ArticleNotFoundException e) {
