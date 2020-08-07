@@ -9,16 +9,16 @@ import board.total.model.ArticlePage;
 import board.total.model.totalRequest;
 import jdbc.ConnectionProvider;
 
-public class ListArticleService {
+public class totalListArticleService {
 	private BoardDao boardDao = new BoardDao();
 	private int size = 4;
 
-	public ArticlePage getArticlePage(int pageNum, int cateNum) {
+	public ArticlePage getArticlePage(int pageNum) {
 		try (Connection conn = ConnectionProvider.getConnection()) {
 			
-			int total = boardDao.selectCateCount(conn, cateNum);
+			int total = boardDao.selectCount(conn);
 			
-			List<totalRequest> content = boardDao.selectCateList(conn, (pageNum - 1) * size, size, cateNum);
+			List<totalRequest> content = boardDao.selectList(conn, (pageNum - 1) * size, size);
 
 			return new ArticlePage(total, pageNum, size, content);
 		} catch (SQLException e) {

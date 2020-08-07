@@ -26,7 +26,7 @@
     <c:if test="${empty req.id and loginReq.id}">
   <p>회원 가입을 완료하시면 게시와 삭제 이용 가능합니다 :)</p>
   </c:if>
-  <a class="btn btn-info btn-lg" href="${contextPath}/total.do" role="button">시작하기</a>
+  <a class="btn btn-info btn-lg" href="${contextPath}/list/total.do" role="button">시작하기</a>
 </div>
 		</div>
 		
