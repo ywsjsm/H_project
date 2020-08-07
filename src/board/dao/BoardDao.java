@@ -127,7 +127,10 @@ public class BoardDao {
 	}
 
 	private readBoardInfo convertToBoardInfo(ResultSet rs) throws SQLException {
-		return new readBoardInfo(rs.getString("title"), rs.getString("content"), rs.getString("imageName"));
+		return new readBoardInfo(
+				rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),
+				rs.getString(6),rs.getString(7),rs.getTimestamp(8).toLocalDateTime(),rs.getInt(9)
+				);
 	}
 	
 	public void SelectbyCategory(Connection conn, int CateNo) throws SQLException {

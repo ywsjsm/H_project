@@ -13,14 +13,14 @@
 <title>게시물 수정</title>
 </head>
 <body>
-	<div class="container">
+	<div class="container" >
 		<div class="row justify-content-center">
 				<h5 > <i>Modify your Infomation :)</i></h5>			
 		</div>
 		<div class="row justify-content-center">			
 			<form style="width: 500px;" enctype="multipart/form-data">
   <div class="form-group">
-    <label for="Title">Title</label>
+    <label for="Title" ">Title</label>
     <input type="text" class="form-control" id="Title" placeholder="input title" required="required" name="title" value="${boardInfo.title}">
   </div>
   <div class="form-group">
@@ -28,13 +28,15 @@
     <textarea class="form-control" id="content" rows="10" placeholder="Your Infomations Write Here!" name="content" style="white-space: pre-wrap;">${boardInfo.content}
     </textarea>
     <div class="form-group">
-     <label for="ImgInfo">Your Image</label>
+     <label for="ImgInfo">Your Image <c:if test="${not empty boardInfo.imageName }">
+       : <i style="font-weight: 100;text-decoration: underline;">${boardInfo.imageName }</i>
+     </c:if></label>
      <br />
      
      <c:if test="${not empty  boardInfo.imageName}">
      <figure class="figure border">
   <img src="${contextPath}/image/${boardInfo.imageName }" class="figure-img img-fluid rounded" alt="..." style="max-width: 255px;max-height: 255px">
-  <figcaption class="figure-caption">Uploaded \${boardInfo.등록일}</figcaption>
+  <figcaption class="figure-caption">Uploaded ${boardInfo.regdate}</figcaption>
 </figure>
 </c:if>
     
