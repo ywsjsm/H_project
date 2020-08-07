@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import board.modify.model.ModifyArticleRequest;
 import board.read.model.readBoardInfo;
 import board.total.model.totalRequest;
 import board.write.model.WriteRequest;
@@ -168,6 +169,20 @@ public class BoardDao {
 
 		} finally {
 			JdbcUtil.close(rs, pstmt);
+		}
+	}
+
+	public void update(Connection con, ModifyArticleRequest req, User user) throws RuntimeException{
+		final String sql ="";
+		try(PreparedStatement pstmt = con.prepareStatement(sql)){
+			
+		}catch(SQLException e) {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			throw new RuntimeException(e);
 		}
 	}
 }
