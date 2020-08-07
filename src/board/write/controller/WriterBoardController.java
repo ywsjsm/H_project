@@ -59,7 +59,6 @@ public class WriterBoardController implements Controller {
 		}
 		
 		return VIEW_CODE;
-//		return "redirect /list/total.do";//<<<나중에 요청 날라오게 끔 수정해야함
 	}
 
 	private WriteRequest createWriteRequest(HttpServletRequest req, String fileName) {

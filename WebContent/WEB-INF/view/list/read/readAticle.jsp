@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib prefix="convertTime" tagdir="/WEB-INF/tags"  %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +21,7 @@
 	<div class="container border">
 		<div class="row d-flex justify-content-between">
 			<h5>
+			<br />
 				<b> <i>Title : ${boardInfo.title }</i></b>
 			</h5>
 		</div>
@@ -35,26 +37,30 @@
 		
 		<figure class="figure">
   <img src="${contextPath}/image/${boardInfo.imageName }" class="figure-img img-fluid rounded" alt="..." style="max-height: 255px;max-width: 255px">
-  <figcaption class="figure-caption">Uploaded ${boardInfo.regdate}</figcaption>
+  <figcaption class="figure-caption" style="font-size: small; font-style: italic;"> -Uploaded : <convertTime:ConversionLocalDataTime dateTime="${boardInfo.regdate}"/></figcaption>
 </figure>
-		<%-- <img src="${contextPath}/image/${boardInfo.imageName }" class="img-fluid" alt="Responsive image" style="align-content: center;"/> --%>
 			<p>${boardInfo.content }</p>		
 		</div>
 		<div class="row">
+		<c:if test="${not empty sessionScope.userInfo }">
 			<div class="col d-flex justify-content-start">
 				<a class="btn btn-outline-info"
 					style="margin-left: 50%; width: 100px;"
 					href="${contextPath}/modify.do?no=${pageNo}" role="button">Modify</a>
 			</div>
+					</c:if>
+			<c:if test="${not empty sessionScope.userInfo }">
 			<!-- 세션정보 아이디와 작성자가 일치할때만 띄움 -->
 			<div class="col">
 				<a class="btn btn-outline-danger"
 					style="margin-left: 50%; width: 100px;"
 					href="${contextPath}/delete.do" role="button">Delete</a>
 			</div>
+			</c:if>
 		</div>
 		<hr />
 		<!-- 로그인 정보에 따라 활성화 -->
+		<c:if test="${not empty sessionScope.userInfo}">
 		<form>
 			<div class="form-group">
 				<div class="col">
@@ -68,17 +74,18 @@
 				</div>
 			</div>
 		</form>
+		</c:if>
 		<!--  -->
 
-		<!-- 댓글란 -->
+		<!-- 댓글란  -->
 
-		<div class="form-group">
+		<div class="form-group" style="size: inherit;">
 			<div class="col">
 				<div class="row">
 					<input class="form-control form-control-sm" value="Coment"
 						type="text" style="width: 90%;" readonly="readonly">
-					<!-- 해당버튼은 유저아이디와 개시한 댓글 아이디가 같은 경우 사용 -->
-					<button type="submit" class="btn btn-danger btn-sm"
+					<!-- 해당버튼은 유저아이디와 개시한 댓글 아이디가 같은 경우 사용  댓글 작성자 정보 와 세션 유저 번호가 같으면 활성-->
+					 <button type="submit" class="btn btn-danger btn-sm"
 						style="width: 70px;">Delete</button>
 					<!--  -->
 				</div>

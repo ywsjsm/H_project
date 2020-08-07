@@ -18,7 +18,7 @@
 				type:"get",
 				url:"/H_Project"
 				
-			});
+			}).done(function(data){console.log(data);});
 		});
 	</script>
 <title>로그아웃 성공</title>
