@@ -19,17 +19,17 @@ import user.model.User;
 public class BoardDao {
 
 	public void insert(Connection conn, WriteRequest req, User user) throws SQLException {
-		PreparedStatement pstmt = null;
 
 		try {
-			pstmt = conn.prepareStatement(
-					"INSERT INTO Board (title, content, category_no, imageName, userName, userId) VALUES (?, ?, ?, ?, ?, ?)");
+			PreparedStatement pstmt = conn.prepareStatement(
+					"INSERT INTO Board (title, content, category_no, imageName, userName, userId,userNo) VALUES (?, ?, ?, ?, ?, ?, ?)");
 			pstmt.setString(1, req.getTitle());
 			pstmt.setString(2, req.getContent());
 			pstmt.setInt(3, req.getCategory());
 			pstmt.setString(4, req.getImageName());
 			pstmt.setString(5, user.getUserName());
 			pstmt.setString(6, user.getUserId());
+			pstmt.setInt(7, user.getUserNo());
 
 			pstmt.executeUpdate();
 
@@ -42,9 +42,10 @@ public class BoardDao {
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-
+		
+			final String sql ="SELECT * FROM board where userNo Not in (select userNo from withdrawaluser) ORDER BY board_no DESC LIMIT ?, ?";
 		try {
-			pstmt = conn.prepareStatement("SELECT * FROM Board ORDER BY board_no DESC LIMIT ?, ? ");
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, size);
 

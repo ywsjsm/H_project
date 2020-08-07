@@ -13,7 +13,7 @@ import user.withdrawal.model.WithDrawalRequest;
 public class WithDrawalService {
 
 	private static WithDrawalService service = new WithDrawalService();
-	private UserDao dao = UserDao.getUserDao();
+	private static UserDao dao = UserDao.getUserDao();
 	
 	private WithDrawalService() {
 	}
@@ -42,15 +42,24 @@ public class WithDrawalService {
 				}
 			}
 			if(errors.isEmpty()) {
+				Connection con1= ConnectionProvider.getConnection();
+				con1.setAutoCommit(false);
 				//삭제 메서드
-				dao.deleteUserInfo(con,req.getId());
+				try {
+					dao.deleteUserInfo(con1,req.getId());
+					dao.insertWithDrawal(userInfo, con1);
+					con1.commit();
+				}catch(Exception e) {
+					JdbcUtil.rollback(con1);
+					e.printStackTrace();			
+				}finally {
+					JdbcUtil.close(con1);
+				}
 			}
 			return errors;			
 		}catch(Exception e) {
 			e.printStackTrace();
 			return errors;	
-		}finally {
-			JdbcUtil.close(con);
 		}
 	}
 	

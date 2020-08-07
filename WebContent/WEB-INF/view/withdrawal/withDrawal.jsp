@@ -13,7 +13,7 @@
 <title>회원 탈퇴</title>
 </head>
 <body>
-	<%-- <form action="" method="post">
+<%-- 	<form action="" method="post">
 	기존 계정 존재 하지 않음 : ${ errors.userNotMatching} <br />
 	<input type="hidden" name="email" value="${userInfo.userEmail}" />
 	<input type="hidden" name="id" value="${userInfo.userId}" />
@@ -39,7 +39,7 @@
 	</form> --%>
 	
 	
-	<div class="container d-flex justify-content-center">
+ 	<div class="container d-flex justify-content-center">
 <form method="post" action="${contextPath }/withDrawal.do" style="width: 40%">
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -89,7 +89,7 @@
   </div>
   <button type="submit" class="btn btn-outline-danger">WithDrawal</button>
 </form>
-</div>
+</div> 
   
 </body>
 </html>

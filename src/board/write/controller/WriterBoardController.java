@@ -58,7 +58,7 @@ public class WriterBoardController implements Controller {
 			writeFile.write(filePart);
 		}
 
-		return "/WEB-INF/view/list/total/totalList.jsp";
+		return "/WEB-INF/view/list/total/totalList.jsp";//<<<나중에 요청 날라오게 끔 수정해야함
 	}
 
 	private WriteRequest createWriteRequest(HttpServletRequest req, String fileName) {
