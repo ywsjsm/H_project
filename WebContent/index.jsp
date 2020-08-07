@@ -5,6 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src='<c:url value='/js/head.js' />'></script>
+
 <title>메인 페이지</title>
 </head>
 <body>

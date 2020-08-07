@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- 회원가입 완료 창<<<<<<< -->
 <meta charset="UTF-8">
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css'>
@@ -13,15 +14,14 @@
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 	
 	<script type="text/javascript">
-	$(function(){
-			
+	$(function(){			
 				alert('회원가입이 완료되었습니다.');
 			$.ajax({
 				type:"get",
-				url :"/H_Project"
+				url :"/H_Project/login.do"
 				}).done(function(data){
-				 		$('html').empty();
-						$('html').append(data); 	
+				 		 $('body').empty();
+						$('body').append(data); 	 
 					});
 
 		

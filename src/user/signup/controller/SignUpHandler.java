@@ -51,6 +51,7 @@ public class SignUpHandler implements Controller{
 				return VIEW_CODE;
 			}
 		 response.setStatus(HttpServletResponse.SC_CREATED);
+		 System.out.println("회원가입 완료 창으로 포워드");
 		 return COPLETE_VIEW_CODE;
 //		return "/WEB-INF/view/login/Login.jsp";
 //		 return "redirect /login.do";

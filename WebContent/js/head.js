@@ -1,10 +1,14 @@
 /**
+
  * 
  */
  $(function(){
-  $('#logOut').click(function(){
-		   alert('로그아웃 되었습니다.');
+  $('#logOut').on('click',function(){
+		   $.ajax({
+				type: 'get',
+				url:'/H_Project/logout.do'
 		  });
+  });
 	   
 	   $('#loginBtn').click(function(){			
 			var datab = $('#LoginForm').serialize();
@@ -25,9 +29,8 @@
 				url :"/H_Project/signUp.do",
 				data: dataa,
 				}).done(function(data){
-				 		$('html').empty();
-						$('html').append(data); 	
+				 		$('body').empty();
+						$('body').append(data); 	
 					});
 				});
-	   
    });

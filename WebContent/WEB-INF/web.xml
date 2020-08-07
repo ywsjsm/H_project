@@ -55,7 +55,7 @@
   <jsp-config>
     <jsp-property-group>
       <url-pattern>/WEB-INF/view/*</url-pattern>
-      <include-prelude>/WEB-INF/view/includes/navbar.jsp</include-prelude>
+      <include-prelude>/WEB-INF/view/includes/navbar.jsp</include-prelude>     
       <include-coda>/WEB-INF/view/includes/developers.jspf</include-coda>
     </jsp-property-group>
   </jsp-config>
