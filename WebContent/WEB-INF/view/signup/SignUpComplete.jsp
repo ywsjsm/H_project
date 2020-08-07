@@ -15,9 +15,10 @@
 	<script type="text/javascript">
 	$(function(){
 			
+				alert('회원가입이 완료되었습니다.');
 			$.ajax({
 				type:"get",
-				url :"/H_Project",// 얼럿 띄우고 넘길 요청
+				url :"/H_Project"
 				}).done(function(data){
 				 		$('html').empty();
 						$('html').append(data); 	

@@ -9,16 +9,21 @@ public class User {
 	private String userName;
 	private String password;
 	private LocalDateTime regdate;
+	private int userNo;
 	
-	public User(String userId, String userEmail, String userName, String password, LocalDateTime regdate) {
+	public User(String userId, String userEmail, String userName, String password, LocalDateTime regdate, int userNo) {
 		super();
 		this.userId = userId;
 		this.userEmail = userEmail;
 		this.userName = userName;
 		this.password = password;
 		this.regdate = regdate;
+		this.userNo = userNo;
 	}
-
+	
+	public int getUserNo() {
+		return userNo;
+	}
 	public String getUserId() {
 		return userId;
 	}
@@ -42,8 +47,11 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", userEmail=" + userEmail + ", userName=" + userName + ", password="
-				+ password + ", regdate=" + regdate + "]";
+				+ password + ", regdate=" + regdate + ", userNo=" + userNo + "]";
 	}
+
+	
+	
 	
 	
 	
