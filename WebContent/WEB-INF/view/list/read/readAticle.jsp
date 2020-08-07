@@ -20,15 +20,22 @@
 	<div class="container border">
 		<div class="row d-flex justify-content-between">
 			<h5>
-				<b> <i>${boardInfo.title }</i></b>
+				<b> <i>Title : ${boardInfo.title }</i></b>
 			</h5>
 		</div>
+		<hr  class="border"/>
+		<div class="row d-flex justify-content-center">
+			<h6>
+				<b> <i> Author : ${boardInfo.userId }</i></b>
+			</h6>
+		</div>
+		
 		<hr />
 		<div class="row" style="white-space: pre-wrap;">
 		
 		<figure class="figure">
   <img src="${contextPath}/image/${boardInfo.imageName }" class="figure-img img-fluid rounded" alt="..." style="max-height: 255px;max-width: 255px">
-  <figcaption class="figure-caption">Uploaded \${boardInfo.등록일}</figcaption>
+  <figcaption class="figure-caption">Uploaded ${boardInfo.regdate}</figcaption>
 </figure>
 		<%-- <img src="${contextPath}/image/${boardInfo.imageName }" class="img-fluid" alt="Responsive image" style="align-content: center;"/> --%>
 			<p>${boardInfo.content }</p>		
