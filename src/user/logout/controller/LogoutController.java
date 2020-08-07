@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import controller.Controller;
 
 public class LogoutController implements Controller{
+	private static final String VIEW_CODE = "/WEB-INF/view/logout/logoutComplete.jsp";
 	
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -27,7 +28,7 @@ public class LogoutController implements Controller{
 			HttpSession session = request.getSession();
 			
 			session.invalidate();
-		return "redirect ";
+		return VIEW_CODE;
 	}
 
 	

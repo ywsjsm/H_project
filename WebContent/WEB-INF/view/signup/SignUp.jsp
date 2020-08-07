@@ -22,9 +22,8 @@
 </head>
 <body>
 	
-	<input type="hidden" id="hideFlag" value="check"  />
 	<div class="container">
-	<form id="signup" style="width: 40%" method="post">
+	<form id="signup" action="${contextPath }/signUp.do"  style="width: 40%" method="post">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail">Email</label>

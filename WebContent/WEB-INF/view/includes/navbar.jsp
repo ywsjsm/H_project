@@ -12,6 +12,7 @@
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <script src='<c:url value='/js/head.js' />'></script>
 
+
 </head>
 <div class="container-fluid">
 

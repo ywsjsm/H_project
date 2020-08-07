@@ -82,7 +82,7 @@ public class FrontServlet extends HttpServlet {
 //				System.out.println(com);
 				try {
 					view = com.process(request, response);	
-//					System.out.println(view);
+					System.out.println("날아온 뷰코드 : "+view);
 				}catch(Throwable e) {
 					throw new ServletException(e);
 				}
