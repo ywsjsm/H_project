@@ -4,6 +4,7 @@ import java.util.Map;
 
 public class WriteRequest {
 
+		private Integer number;
 		private String title;
 		private String content;
 		private String imageName;
