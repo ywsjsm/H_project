@@ -25,14 +25,19 @@
 		</div>
 		<hr />
 		<div class="row" style="white-space: pre-wrap;">
-		<img src="${contextPath}/image/${boardInfo.imageName }" class="img-fluid" alt="Responsive image" style="align-content: center;"/>
+		
+		<figure class="figure">
+  <img src="${contextPath}/image/${boardInfo.imageName }" class="figure-img img-fluid rounded" alt="..." style="max-height: 255px;max-width: 255px">
+  <figcaption class="figure-caption">Uploaded \${boardInfo.등록일}</figcaption>
+</figure>
+		<%-- <img src="${contextPath}/image/${boardInfo.imageName }" class="img-fluid" alt="Responsive image" style="align-content: center;"/> --%>
 			<p>${boardInfo.content }</p>		
 		</div>
 		<div class="row">
 			<div class="col d-flex justify-content-start">
 				<a class="btn btn-outline-info"
 					style="margin-left: 50%; width: 100px;"
-					href="${contextPath}/modify.do" role="button">Modify</a>
+					href="${contextPath}/modify.do?no=${pageNo}" role="button">Modify</a>
 			</div>
 			<!-- 세션정보 아이디와 작성자가 일치할때만 띄움 -->
 			<div class="col">
