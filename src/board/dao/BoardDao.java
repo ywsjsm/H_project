@@ -87,6 +87,24 @@ public class BoardDao {
 			JdbcUtil.close(rs, stmt);
 		}
 	}
+	
+	public int selectCateCount(Connection conn, int cateNum) throws SQLException {
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery("SELECT count(*) FROM board where category_no = " + cateNum);
+			if (rs.next()) {
+				return rs.getInt(1);
+			}
+
+			return 0;
+		} finally {
+			JdbcUtil.close(rs, stmt);
+		}
+	}
+	
 
 	public readBoardInfo SelectbyBoardId(Connection conn, int boardNo) throws SQLException {
 		PreparedStatement pstmt = null;
@@ -110,5 +128,43 @@ public class BoardDao {
 
 	private readBoardInfo convertToBoardInfo(ResultSet rs) throws SQLException {
 		return new readBoardInfo(rs.getString("title"), rs.getString("content"), rs.getString("imageName"));
+	}
+	
+	public void SelectbyCategory(Connection conn, int CateNo) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		pstmt = conn.prepareStatement("select * from board where category_no = ?");
+		pstmt.setInt(1, CateNo);
+		rs = pstmt.executeQuery();
+		
+		if(rs.next()) {
+			
+		}
+		
+	}
+	
+	public List<totalRequest> selectCateList(Connection conn, int startRow, int size, int cateNum) throws SQLException {
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+			final String sql ="SELECT * FROM board where userNo Not in (select userNo from withdrawaluser) AND category_no = ? ORDER BY board_no DESC LIMIT ?, ?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, cateNum);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, size);
+
+			rs = pstmt.executeQuery();
+			List<totalRequest> result = new ArrayList<>();
+			while (rs.next()) {
+				result.add(convertTotalRequest(rs));
+			}
+			return result;
+
+		} finally {
+			JdbcUtil.close(rs, pstmt);
+		}
 	}
 }
