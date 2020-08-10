@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,13 +60,20 @@
 <body>
 	<div class="container" style="margin-top: 20px">
 		<c:forEach var="article" items="${articlePage.content }">
+		<c:if test="${empty article}">
+			<div class="row">
+				<h5>작성 된 글이 없습니다, 첫 글의 주인공이 되어보세요!</h5>
+			</div>
+		</c:if>
+		<c:if test="${not empty article }">
 			<div class="row" id="articles">
 				<div class="card mb-3" style="width: 100%;" id="content"
 					onmouseenter="" onmouseleave="">
 
 					<div class="row no-gutters">
 						<div class="col-md-3">
-							<img src="${contextPath}/image/${article.imageName }"
+							<%-- <img src="${contextPath}/image/${article.imageName }" --%>
+							<img src="${contextPath}/image/${article.userNo}/${article.boardNum}/${article.imageName}"
 								class="card-img rounded" alt="이미지를 찾을 수 없습니다..😇" id="listImg"
 								style="width: 200px; max-width: 200px; height: 112px; max-height: 112px; margin-top: 8px; margin-left: 7px">
 						</div>
@@ -84,6 +91,7 @@
 					</div>
 				</div>
 			</div>
+		</c:if>
 		</c:forEach>
 
 

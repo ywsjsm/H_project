@@ -12,7 +12,20 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js'></script>
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js'></script>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-<title>게시글 삭제</title>
+
+<script type="text/javascript">
+	$(function(){
+		alert('게시글 삭제가 처리되었습니다.');
+		$.ajax({
+			type: 'get',
+			url:'/H_Project/delete/redirect.do'
+		}).done(function(data) {
+			$('html').empty();
+			$('html').append(data);
+		});
+	});
+</script>
+<title>게시글 삭제완료</title>
 </head>
 <body>
 <div class="container border">

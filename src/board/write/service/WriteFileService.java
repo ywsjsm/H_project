@@ -16,7 +16,7 @@ public class WriteFileService {
 	private BoardDao dao = new BoardDao();
 
 	public void write(Part part,WriteRequest req , User user, int boardNo) {
-		String path = "C:/Users/admin/git/H_project/WebContent/image/"+user.getUserId()+"/"+boardNo;
+		String path = "C:/Users/admin/git/H_project/WebContent/image/"+user.getUserNo()+"/"+boardNo;
 		System.out.println("----------------------------------------------");
 		System.out.println("생성될 경로 : "+path);
 		System.out.println("----------------------------------------------");
@@ -53,7 +53,7 @@ public class WriteFileService {
 				file.mkdirs();
 			}
 			
-			File oldFile = new File(path+oldFileName);
+			File oldFile = new File(path+"/"+oldFileName);
 			try {
 				boolean fileDelete = oldFile.delete();//기본 파일 이름으로 경로따야함
 				System.out.println("기존 파일 삭제여부 : "+fileDelete);

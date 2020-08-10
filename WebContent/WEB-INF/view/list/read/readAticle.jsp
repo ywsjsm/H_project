@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@taglib prefix="convertTime" tagdir="/WEB-INF/tags"  %>
+	<%@taglib prefix="category" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,11 +21,22 @@
 <body>
 	<div class="container border">
 		<div class="row d-flex justify-content-between">
+		<div class="col">
 			<h5>
 			<br />
 				<b> <i>Title : ${boardInfo.title }</i></b>
 			</h5>
+			</div>
+			<div class="justify-content-end">
+				<h5>
+			<br />
+				<figcaption class="figure-caption" style="font-size: small; font-style: oblique; margin-right:25px; font-weight: bold; font-size: medium;">- Category : <category:categoryNumConvert categoryNum="${boardInfo.categoryNo}"/></figcaption>
+			</h5>
+			</div>
 		</div>
+		
+		
+		
 		<hr  class="border"/>
 		<div class="row d-flex justify-content-center">
 			<h6>
@@ -36,7 +48,7 @@
 		<div class="row" style="white-space: pre-wrap;">
 		
 		<figure class="figure">
-  <img src="${contextPath}/image/${boardInfo.imageName }" class="figure-img img-fluid rounded" alt="..." style="max-height: 255px;max-width: 255px">
+  <img src="${contextPath}/image/${boardInfo.userNo }/${boardInfo.boardNo }/${boardInfo.imageName }" class="figure-img img-fluid rounded" alt="..." style="max-height: 255px;max-width: 255px">
   <figcaption class="figure-caption" style="font-size: small; font-style: italic;"> -Uploaded : <convertTime:ConversionLocalDataTime dateTime="${boardInfo.regdate}"/></figcaption>
 </figure>
 			<p>${boardInfo.content }</p>		
@@ -54,7 +66,7 @@
 			<div class="col">
 				<a class="btn btn-outline-danger"
 					style="margin-left: 50%; width: 100px;"
-					href="${contextPath}/delete.do" role="button">Delete</a>
+					href="${contextPath}/delete.do?no=${pageNo}" role="button">Delete</a>
 			</div>
 			</c:if>
 		</div>
