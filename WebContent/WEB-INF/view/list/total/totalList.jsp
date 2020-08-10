@@ -81,8 +81,7 @@
 							<h5 class="card-title">${article.title }</h5>
 							<p class="card-text text-overFlow" style="white-space: pre-wrap;">${article.content }</p>
 
-							<a href="${contextPath }/read.do?no=${article.boardNum}"
-								class="stretched-link"></a>
+							<a href="${contextPath }/read.do?no=${article.boardNum}" class="stretched-link"></a>
 
 							<p class="card-text">
 								<small class="text-muted">- ${article.regdate }</small>

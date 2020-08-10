@@ -58,7 +58,7 @@
 			<div class="col d-flex justify-content-start">
 				<a class="btn btn-outline-info"
 					style="margin-left: 50%; width: 100px;"
-					href="${contextPath}/modify.do?no=${pageNo}" role="button">Modify</a>
+					href="${contextPath}/modify.do?no=${boardNo}" role="button">Modify</a>
 			</div>
 					</c:if>
 			<c:if test="${not empty sessionScope.userInfo }">
