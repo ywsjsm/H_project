@@ -31,10 +31,6 @@ public class WriteRequest {
 		public String getImageName() {
 			return imageName;
 		}
+
 		
-		public void validate(Map<String, Boolean> errors) {
-			if(title.trim().isEmpty() || title == null) {
-				errors.put("title", Boolean.TRUE);
-			}
-		}
 }

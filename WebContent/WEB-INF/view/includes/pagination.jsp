@@ -7,7 +7,7 @@
 		<c:if test="${not empty sessionScope.userInfo}">
 			<div class="col">
 				<a class="btn btn-outline-info" style="width: 100px"
-					href="${contextPath}/write.do" role="button">Writing</a>
+					href="${contextPath}/write.do?" role="button">Writing</a>
 			</div>
 		</c:if>
 		<div class="col d-flex justify-content-center">

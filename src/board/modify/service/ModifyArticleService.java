@@ -53,9 +53,6 @@ public class ModifyArticleService {
 			con.setAutoCommit(false);
 			boardDao.update(con,req,user);
 			con.commit();
-			
-			
-			return errors;
 		}catch(Exception e) {
 			throw new RuntimeException(e);
 		}finally {

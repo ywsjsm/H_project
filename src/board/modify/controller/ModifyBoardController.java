@@ -65,25 +65,36 @@ public class ModifyBoardController implements Controller{
 		User user = (User) request.getSession().getAttribute("userInfo");
 		
 		request.setAttribute("errors", errors);
-		errors = req.validate(errors);
 		
-		if(!errors.isEmpty()) {
-			return VIEW_CODE;
+			String oldFileName ="";
+		try (Connection con = ConnectionProvider.getConnection()){
+			readBoardInfo boardInfo = dao.SelectbyBoardId(con, req.getBoardNo());
+			oldFileName = boardInfo.getImageName();
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
-			
+		
 		try {
-			service.modify(req,user,errors);//<내용 채우기 필요
+			errors = service.modify(req,user,errors);//<내용 채우기 필요
+			System.out.println("----------------------------------------------");
+			System.out.println("넘어온 파일 정보 : "+filePart.getSubmittedFileName()+" : "+filePart.getSize());
+			System.out.println("----------------------------------------------");
 			if(!(fileName  == null || fileName.isEmpty() || filePart.getSize() ==0)) {
-				writeFile.write(filePart);//< 중복 파일 로직 추가 필요
+				writeFile.write(filePart,req,user,oldFileName);//< 중복 파일 로직 추가 필요
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return "";
+		if(!errors.isEmpty()) {
+			return VIEW_CODE;
+		}
+		return "redirect /total.do";
 	}
 	
 	private ModifyArticleRequest mappingObject(HttpServletRequest request,String fileName) {
 		int no = Integer.valueOf(request.getParameter("no"));
-		return new ModifyArticleRequest(no,request.getParameter("title"),request.getParameter("content"),fileName);
+		int categoryNo = Integer.valueOf(request.getParameter("category"));
+//		System.out.println("수정 요청 시 넘어온 카테고리 번호 : "+categoryNo);
+		return new ModifyArticleRequest(no,categoryNo,request.getParameter("title"),request.getParameter("content"),fileName);
 	}
 }
