@@ -14,7 +14,7 @@
 						style="width: 90%;" required="required">
 					<button type="submit" class="btn btn-success btn-sm"
 						style="width: 70px">Enter</button>
-					<input type="text" hidden="true" name="no" value="${pageNo}" />
+					<input type="text" hidden="true" name="no" value="${boardNo}" />
 				</div>
 			</div>
 		</div>
@@ -22,15 +22,14 @@
 </c:if>
 
 <!--  -->
-<form action="" method="post">
-	<div class="form-group" style="size: inherit;">
-		<div class="col">
-			<div class="row">
-				<input class="form-control form-control-sm" value="Coment"
-					type="text" style="width: 90%;" readonly="readonly">
-				<!-- 해당버튼은 유저아이디와 개시한 댓글 아이디가 같은 경우 사용  댓글 작성자 정보 와 세션 유저 번호가 같으면 활성-->
-				<button type="submit" class="btn btn-danger btn-sm" style="width: 70px;">Delete</button>
+<c:forEach var="Comment" items="${CommentPage.content }">
+		<div class="form-group" style="size: inherit;">
+			<div class="col">
+				<div class="row">
+					<input class="form-control form-control-sm" value="${Comment.content }" type="text" style="width: 90%;" readonly="readonly">
+					<!-- 해당버튼은 유저아이디와 개시한 댓글 아이디가 같은 경우 사용  댓글 작성자 정보 와 세션 유저 번호가 같으면 활성-->
+					<button type="submit" class="btn btn-danger btn-sm"style="width: 70px;">Delete</button>
+				</div>
 			</div>
 		</div>
-	</div>
-</form>
+</c:forEach>
