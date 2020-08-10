@@ -59,54 +59,13 @@
 			</c:if>
 		</div>
 		<hr />
-		<!-- 로그인 정보에 따라 활성화 -->
-		<c:if test="${not empty sessionScope.userInfo}">
-		<form>
-			<div class="form-group">
-				<div class="col">
-					<div class="row">
-						<input class="form-control form-control-sm" type="text"
-							placeholder="Enter Your Opinions" name="content"
-							style="width: 90%;" required="required">
-						<button type="submit" class="btn btn-success btn-sm"
-							style="width: 70px">Enter</button>
-					</div>
-				</div>
-			</div>
-		</form>
-		</c:if>
-		<!--  -->
 
 		<!-- 댓글란  -->
-
-		<div class="form-group" style="size: inherit;">
-			<div class="col">
-				<div class="row">
-					<input class="form-control form-control-sm" value="Coment"
-						type="text" style="width: 90%;" readonly="readonly">
-					<!-- 해당버튼은 유저아이디와 개시한 댓글 아이디가 같은 경우 사용  댓글 작성자 정보 와 세션 유저 번호가 같으면 활성-->
-					 <button type="submit" class="btn btn-danger btn-sm"
-						style="width: 70px;">Delete</button>
-					<!--  -->
-				</div>
-			</div>
-		</div>
-		</form>
-
-
+		<%@include file="/WEB-INF/view/includes/comments.jsp"%>
+		
 		<!-- 페이지네이션 -->
-		<div class="col d-flex justify-content-center">
-			<nav aria-label="...">
-				<ul class="pagination pagination-sm">
-					<li class="page-item disabled"><a class="page-link" href="#"
-						tabindex="-1" aria-disabled="true">Previous</a></li>
-					<li class="page-item"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item"><a class="page-link" href="#">Next</a></li>
-				</ul>
-			</nav>
-		</div>
+		<%@include file="/WEB-INF/view/includes/commentPagination.jsp"%>
+
 	</div>
 </body>
 </html>
