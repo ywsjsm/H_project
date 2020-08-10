@@ -19,7 +19,9 @@ public class totalListArticleService {
 			int total = boardDao.selectCount(conn);
 			
 			List<totalRequest> content = boardDao.selectList(conn, (pageNum - 1) * size, size);
-
+//			System.out.println("--------------------------------------------------");
+//			System.out.println("total가져온 글목록 수 : "+content.size());
+//			System.out.println("--------------------------------------------------");
 			return new ArticlePage(total, pageNum, size, content);
 		} catch (SQLException e) {
 			e.printStackTrace();
