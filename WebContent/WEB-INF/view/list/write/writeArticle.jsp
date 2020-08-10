@@ -48,14 +48,14 @@
 				<div class="row justify-content-center">
 					<div class="form-group">
 						<label for="Image">Upload Yout Image!</label> <input type="file"
-							class="form-control-file" id="Image" name="fileName">
+							class="form-control-file" id="Image" name="fileName" accept="image/gif,image/jpeg,image/png,image/svg+xml" >
 					</div>
 				</div>
 
 				<div class="col d-flex justify-content-between">
 					<a class="btn btn-outline-danger" href="${contextPath}/total.do"
 						role="button">Back</a>
-					<button type="submit" class="btn btn-outline-info">Write</button>
+					<button id="writeAritcleBtn"  type="submit" class="btn btn-outline-info">Write</button>
 				</div>
 
 

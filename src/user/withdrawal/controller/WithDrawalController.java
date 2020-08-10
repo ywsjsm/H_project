@@ -16,6 +16,7 @@ public class WithDrawalController implements Controller{
 	private WithDrawalService service = WithDrawalService.getWithDrawalService();
 	
 	private final static String VIEW_CODE= "/WEB-INF/view/withdrawal/withDrawal.jsp";
+	private final static String VIEW_REDIRECT ="/WEB-INF/view/withdrawal/withDrawalComplete.jsp";
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println(request.getMethod());
@@ -62,7 +63,7 @@ public class WithDrawalController implements Controller{
 		if(!errors.isEmpty()) {
 			return VIEW_CODE;
 		}
-		  return "redirect ";
+		  return VIEW_REDIRECT;
 	}
 	
 	private WithDrawalRequest mappingObject(HttpServletRequest request) {

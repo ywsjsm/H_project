@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="convertTime" tagdir="/WEB-INF/tags" %>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,18 +16,47 @@
 </head>
 <body>
 	<div class="container" >
-	<input type="hidden" name="no" value="${boardInfo.boardNo}" />
+	<%-- <input type="hidden" name="no" value="${boardInfo.boardNo}" /> --%>
 		<div class="row justify-content-center">
 				<h5 > <i>Modify your Infomation :)</i></h5>			
 		</div>
 		<div class="row justify-content-center">			
 			<form method="post" action="${contextPath }/modify.do" style="width: 500px;" enctype="multipart/form-data">
+			<input type="hidden" name="no" value="${boardInfo.boardNo}" />
+			<div class="form-group">
+					<label for="Title">Category</label>
+					<select name="category" class="custom-select" id="validatedInputGroupSelect" required>
+					<c:choose>
+						<c:when test="${boardInfo.categoryNo eq 1}">
+							<option value="1" selected="selected">동물</option>
+							<option value="2">음악</option>
+       					<option value="3">자동차</option>
+						</c:when>
+					</c:choose>
+					<c:choose>
+						<c:when test="${boardInfo.categoryNo eq 2}">
+						<option value="1">동물</option>
+						<option value="2" selected="selected">음악</option>
+       					<option value="3">자동차</option>
+						</c:when>
+					</c:choose>
+					<c:choose>
+						<c:when test="${boardInfo.categoryNo eq 3}">
+							<option value="1">동물</option>
+       						<option value="2">음악</option>
+							<option value="3" selected="selected">자동차</option>
+						</c:when>
+					</c:choose>
+        				<!-- <option value="1">동물</option>
+       					<option value="2">음악</option>
+       					<option value="3">자동차</option> -->
+     				</select>
+				</div>
+			
   <div class="form-group">
     <label for="Title">Title</label>
     <input type="text" class="form-control" id="Title" placeholder="input title" required="required" name="title" value="${boardInfo.title}">
-  	<c:if test="${errors.title}">
-					<small id="title" class="form-text text-muted">공백은 허용하지 않습니다.</small>
-	</c:if>
+
   </div>
   <div class="form-group">
     <label for="content">Infomations</label>
@@ -57,7 +87,7 @@
 		
 		<div class="col d-flex justify-content-between">
 		<a class="btn btn-outline-danger" href="${contextPath}/total.do" role="button">Back</a>
-		 <button type="submit" class="btn btn-outline-success">Write</button>
+		 <button id="modifyBtn" type="submit" class="btn btn-outline-success">Modify</button>
   	</div>
 
 

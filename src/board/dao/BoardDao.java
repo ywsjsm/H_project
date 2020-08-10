@@ -18,6 +18,20 @@ import jdbc.JdbcUtil;
 import user.model.User;
 
 public class BoardDao {
+	
+	public int selectBoardNo(Connection con) {
+		ResultSet rs = null;
+		try(Statement stmt = con.createStatement()){
+			rs = stmt.executeQuery("select max(last_insert_id(board_no)) from board");
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+			return 0;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
 
 	public void insert(Connection conn, WriteRequest req, User user) throws SQLException {
 
@@ -173,9 +187,16 @@ public class BoardDao {
 	}
 
 	public void update(Connection con, ModifyArticleRequest req, User user) throws RuntimeException{
-		final String sql ="";
+		final String sql ="update board set category_no=?,title=?, content=?, imageName=? where board_no =?";
 		try(PreparedStatement pstmt = con.prepareStatement(sql)){
-			
+			con.setAutoCommit(false);
+			pstmt.setInt(1, req.getCategoryNo());
+			pstmt.setString(2, req.getTitle());
+			pstmt.setString(3, req.getContent());
+			pstmt.setString(4, req.getFileName());
+			pstmt.setInt(5, req.getBoardNo());
+			pstmt.executeUpdate();
+			con.commit();
 		}catch(SQLException e) {
 			try {
 				con.rollback();
