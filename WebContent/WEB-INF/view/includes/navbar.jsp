@@ -12,7 +12,38 @@
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <script src='<c:url value='/js/head.js' />'></script>
 
-	
+	<script type="text/javascript">
+	$(function (){
+		
+		
+		function getValidationTime() {
+			var date = new Date();
+			var secondes = date.getSeconds();
+			var minute = date.getMinutes();
+			var hours = date.getHours();
+			
+			if(secondes <10){
+				secondes = '0'+secondes;
+			}
+			if(minute < 10){
+				minute = '0'+minute;
+			}
+			if(hours < 10){
+				hours = '0'+hours;
+			}
+			
+			var clock =  minute+ ':'+secondes;
+			
+			$('#clock').html(clock.toString());
+		}
+		/* getValidationTime(); */
+		function init() {
+			getValidationTime();
+			setInterval(getValidationTime,1000);
+		}
+		init();
+	});
+	</script>
 
 </head>
 <div class="container-fluid">

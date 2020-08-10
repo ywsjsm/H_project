@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import board.delete.model.DeleteArticleRequest;
 import board.modify.model.ModifyArticleRequest;
 import board.read.model.readBoardInfo;
 import board.total.model.totalRequest;
@@ -18,6 +19,17 @@ import jdbc.JdbcUtil;
 import user.model.User;
 
 public class BoardDao {
+	
+	public void deleteArticle(Connection con, DeleteArticleRequest req) throws RuntimeException{
+		final String sql ="DELETE FROM board WHERE board_no=?";
+		try(PreparedStatement pstmt = con.prepareStatement(sql)){
+			pstmt.setInt(1, req.getBoardNo());
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+		
 	
 	public int selectBoardNo(Connection con) {
 		ResultSet rs = null;
@@ -79,7 +91,7 @@ public class BoardDao {
 
 	private totalRequest convertTotalRequest(ResultSet rs) throws SQLException {
 		return new totalRequest(rs.getInt(1), rs.getString("title"), rs.getString("content"), rs.getString("imageName"),
-				rs.getString(7), toDate(rs.getTimestamp("regdate")));
+				rs.getString(7), toDate(rs.getTimestamp("regdate")),rs.getInt(9));
 	}
 
 	private Date toDate(Timestamp timestamp) {
