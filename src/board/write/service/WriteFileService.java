@@ -2,16 +2,14 @@ package board.write.service;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Connection;
 
 import javax.servlet.http.Part;
 
 import board.dao.BoardDao;
 import board.modify.model.ModifyArticleRequest;
-import board.read.model.readBoardInfo;
 import board.write.model.WriteRequest;
-import jdbc.ConnectionProvider;
 import user.model.User;
+
 
 public class WriteFileService {
 	
