@@ -12,6 +12,7 @@
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <script src='<c:url value='/js/head.js' />'></script>
 
+	
 
 </head>
 <div class="container-fluid">
@@ -59,6 +60,10 @@
         <a class="nav-link" href="${contextPath}/logout.do" tabindex="-1" aria-disabled="true" id="logOut">로그아웃</a> <!-- disabled -->
       </li>
      </c:if>
+     <li class="nav-item">
+        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true" id="clock">00:00</a> <!-- clock -->
+      </li>
+     
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="글찾기" aria-label="글찾기">

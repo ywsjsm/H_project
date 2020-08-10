@@ -48,6 +48,9 @@ public class ListViewController implements Controller {
 		default:
 			
 			articlePage = totallistService.getArticlePage(pageNo);
+			System.out.println("--------------------------------------------------");
+			System.out.println("controller 에서 넘겨준 글 개수 "+articlePage.getContent().size());
+			System.out.println("--------------------------------------------------");
 			
 			//articlePage.getContent().stream().forEach( content -> System.out.println(content.toString()));
 			break;
