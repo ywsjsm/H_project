@@ -54,14 +54,14 @@
 			<p>${boardInfo.content }</p>		
 		</div>
 		<div class="row">
-		<c:if test="${not empty sessionScope.userInfo }">
+		<c:if test="${not empty sessionScope.userInfo and sessionScope.userInfo.userId eq boardInfo.userId }">
 			<div class="col d-flex justify-content-start">
 				<a class="btn btn-outline-info"
 					style="margin-left: 50%; width: 100px;"
 					href="${contextPath}/modify.do?no=${boardNo}" role="button">Modify</a>
 			</div>
 					</c:if>
-			<c:if test="${not empty sessionScope.userInfo }">
+			<c:if test="${not empty sessionScope.userInfo and sessionScope.userInfo.userId eq boardInfo.userId }">
 			<!-- 세션정보 아이디와 작성자가 일치할때만 띄움 -->
 			<div class="col">
 				<a class="btn btn-outline-danger"

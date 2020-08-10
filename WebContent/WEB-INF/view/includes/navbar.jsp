@@ -46,7 +46,7 @@
 	</script>
 
 </head>
-<div class="container-fluid">
+<div class="container">
 
 				<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="${contextPath}"><b> [H_Project] </b></a>
@@ -66,18 +66,7 @@
         <a class="nav-link" href="${contextPath}/list/moters.do">자동차</a>
       </li>
       
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">경제</a>
-          <a class="dropdown-item" href="#">과학</a>
-          <a class="dropdown-item" href="#">역사</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
+     
       <li class="nav-item">
         <a class="nav-link" href="${contextPath}/signUp.do" tabindex="-1" aria-disabled="true">회원가입</a> <!-- disabled -->
       </li>
@@ -96,9 +85,9 @@
       </li>
      
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="글찾기" aria-label="글찾기">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">글찾기</button>
+    <form class="form-inline my-2 my-lg-0" id="searchForm" action="${contextPath }/selectPart.do" method="post">
+      <input class="form-control mr-sm-2" type="search" id="foundText" name="find" placeholder="글찾기" aria-label="글찾기">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="btnFound">글찾기</button>
     </form>
   </div>
 </nav>

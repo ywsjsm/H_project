@@ -15,6 +15,7 @@ public class totalRequest {
 	private int boardNum;
 	private String title;
 	private String content;
+	private int categoryNum;
 	private String imageName;
 	private String userId;
 	private Date regdate;
