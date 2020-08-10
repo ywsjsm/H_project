@@ -21,6 +21,10 @@ public class ArticlePage {
 			endPage = 0;
 		} else {
 			totalPages = total / size;
+//			System.out.println("totalPages : "+totalPages+" / total ");
+			System.out.println("--------------------------------------------------");
+			System.out.println("total 값  : "+ total);
+			System.out.println("--------------------------------------------------");
 			if (total % size > 0) {
 				totalPages++;
 			}
@@ -29,7 +33,9 @@ public class ArticlePage {
 			
 			endPage = startPage + 4;
 			endPage = Math.min(endPage, totalPages);
-			System.out.println(endPage);
+			System.out.println("--------------------------------------------------");
+			System.out.println("마지막 페이지네이션 번호 : "+ endPage);
+			System.out.println("--------------------------------------------------");
 			
 			
 		}
