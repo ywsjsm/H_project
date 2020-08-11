@@ -75,5 +75,19 @@ public class CommentDao {
 			JdbcUtil.close(rs, stmt);
 		}
 	}
+	
+	public void delete(Connection conn) throws SQLException {
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement("delete from comment where reply_no = ?");
+			
+			pstmt.setString(1, "1");
+			pstmt.executeUpdate();
+			
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+	}
 
 }
