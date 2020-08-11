@@ -65,6 +65,31 @@ public class BoardDao {
 			JdbcUtil.close(pstmt);
 		}
 	}
+	
+	public List<totalRequest> selectPartList(Connection conn, int startRow, int size, String find ) throws SQLException {
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+			final String sql ="SELECT * FROM board where userNo Not in (select userNo from withdrawaluser) AND title LIKE ? ORDER BY board_no DESC LIMIT ?, ?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+find+"%");
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, size);
+
+			rs = pstmt.executeQuery();
+			List<totalRequest> result = new ArrayList<>();
+			while (rs.next()) {
+				result.add(convertTotalRequest(rs));
+			}
+			return result;
+
+		} finally {
+			JdbcUtil.close(rs, pstmt);
+		}
+	}
+	
 
 	public List<totalRequest> selectList(Connection conn, int startRow, int size) throws SQLException {
 
@@ -90,7 +115,7 @@ public class BoardDao {
 	}
 
 	private totalRequest convertTotalRequest(ResultSet rs) throws SQLException {
-		return new totalRequest(rs.getInt(1), rs.getString("title"), rs.getString("content"), rs.getString("imageName"),
+		return new totalRequest(rs.getInt(1), rs.getString("title"), rs.getString("content"),rs.getInt(4), rs.getString("imageName"),
 				rs.getString(7), toDate(rs.getTimestamp("regdate")),rs.getInt(9));
 	}
 

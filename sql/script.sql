@@ -29,7 +29,7 @@ desc Board;
 select * from Board;
 
 create table Comment(
-	reply_no int unsigned,
+	reply_no int unsigned auto_increment,
     Board_no int unsigned,
     userId varchar(255),
     content varchar(255),

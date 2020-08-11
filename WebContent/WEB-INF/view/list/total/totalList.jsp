@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="tc" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +79,8 @@
 								style="width: 200px; max-width: 200px; height: 112px; max-height: 112px; margin-top: 8px; margin-left: 7px">
 						</div>
 						<div class="col-md-9 card-body border">
-							<h5 class="card-title">${article.title }</h5>
+							<small class="text-muted"> <b><i>- Author : ${article.userId } / Category : <tc:categoryNumConvert categoryNum="${article.categoryNum }"/></i></b></small>
+							<h5 class="card-title">${article.title }</h5> 
 							<p class="card-text text-overFlow" style="white-space: pre-wrap;">${article.content }</p>
 
 							<a href="${contextPath }/read.do?no=${article.boardNum}" class="stretched-link"></a>
