@@ -16,6 +16,14 @@
 <script
 	src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js'></script>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<script type="text/javascript">
+if(${checkPw}==true){
+	alert("삭제 완료");
+	
+}
+
+</script>
+<c:set var="checkPw" value="false" scope="session"/>
 <title>게시물 보기</title>
 </head>
 <body>

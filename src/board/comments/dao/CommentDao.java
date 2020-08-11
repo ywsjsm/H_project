@@ -20,10 +20,11 @@ public class CommentDao {
 
 		PreparedStatement pstmt = null;
 		try {
-			pstmt = conn.prepareStatement("INSERT INTO comment (Board_no, userId, content) VALUES (?, ?, ?)");
+			pstmt = conn.prepareStatement("INSERT INTO comment (Board_no, userId, content, userPw) VALUES (?, ?, ?, ?)");
 			pstmt.setInt(1, boardno);
 			pstmt.setString(2, user.getUserId());
 			pstmt.setString(3, req.getContent());
+			pstmt.setString(4, user.getPassword());
 			pstmt.executeUpdate();
 
 		} finally {
@@ -76,17 +77,38 @@ public class CommentDao {
 		}
 	}
 	
-	public void delete(Connection conn) throws SQLException {
+	public void delete(Connection conn, String replyNo) throws SQLException {
 		PreparedStatement pstmt = null;
 		
 		try {
 			pstmt = conn.prepareStatement("delete from comment where reply_no = ?");
 			
-			pstmt.setString(1, "1");
+			pstmt.setString(1, replyNo);
 			pstmt.executeUpdate();
 			
 		} finally {
 			JdbcUtil.close(pstmt);
+		}
+	}
+	
+	public String selectBypassword(Connection conn, String replyNo) throws SQLException {
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		final String sql = "SELECT userPw FROM comment where reply_no = ?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, replyNo);
+
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				return rs.getString("userPw");
+			}
+			return "";
+
+		} finally {
+			JdbcUtil.close(rs, pstmt);
 		}
 	}
 

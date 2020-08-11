@@ -4,7 +4,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import board.comments.model.CommentInfo;
 import board.comments.model.commentWriteRequest;
+import board.comments.service.DeleteCommentService;
 import board.comments.service.writeCommentService;
 import controller.Controller;
 import user.model.User;
@@ -12,7 +14,7 @@ import user.model.User;
 public class writeCommentController implements Controller {
 
 	private writeCommentService writeService = new writeCommentService();
-
+	private DeleteCommentService deleteService = new DeleteCommentService();
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
@@ -28,7 +30,12 @@ public class writeCommentController implements Controller {
 
 		switch (tokenPath) {
 		case "delete":
-			
+			String CheckPW = request.getParameter("checkPW");
+			String CommentNo = request.getParameter("commentNo");
+			if(deleteService.checkPW(CheckPW, CommentNo)) {
+				deleteService.delete(CommentNo);
+				session.setAttribute("checkPw", true);
+			}
 			break;
 
 		case "comments":
