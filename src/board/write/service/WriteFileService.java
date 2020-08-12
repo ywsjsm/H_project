@@ -5,15 +5,12 @@ import java.io.IOException;
 
 import javax.servlet.http.Part;
 
-import board.dao.BoardDao;
 import board.modify.model.ModifyArticleRequest;
 import board.write.model.WriteRequest;
 import user.model.User;
 
 
 public class WriteFileService {
-	
-	private BoardDao dao = new BoardDao();
 
 	public void write(Part part,WriteRequest req , User user, int boardNo) {
 		String path = "C:/Users/admin/git/H_project/WebContent/image/"+user.getUserNo()+"/"+boardNo;

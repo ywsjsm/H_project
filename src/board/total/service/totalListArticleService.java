@@ -8,13 +8,17 @@ import board.dao.BoardDao;
 import board.total.model.ArticlePage;
 import board.total.model.totalRequest;
 import jdbc.ConnectionProvider;
+import jdbc.JdbcUtil;
 
 public class totalListArticleService {
 	private BoardDao boardDao = new BoardDao();
 	private int size = 4;
 
 	public ArticlePage getArticlePage(int pageNum) {
-		try (Connection conn = ConnectionProvider.getConnection()) {
+		Connection conn = null;
+		try{
+			
+			 conn = ConnectionProvider.getConnection();
 			
 			int total = boardDao.selectCount(conn);
 			
@@ -26,6 +30,8 @@ public class totalListArticleService {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
+		}finally {
+			JdbcUtil.close(conn);
 		}
 	}
 	

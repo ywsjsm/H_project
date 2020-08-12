@@ -15,7 +15,6 @@ import jdbc.ConnectionProvider;
 import user.model.User;
 
 public class WriterBoardController implements Controller {
-	private final static String TOTAL_VIEW_CODE="/WEB-INF/view/list/total/totalList.jsp";
 	private final static String VIEW_CODE = "/WEB-INF/view/list/write/writeArticle.jsp";
 	private WriteArticleService writeService = new WriteArticleService();
 	private WriteFileService writeFile = new WriteFileService();
@@ -43,8 +42,6 @@ public class WriterBoardController implements Controller {
 		String fileName = filePart.getSubmittedFileName();
 
 		fileName = fileName == null ? "" : fileName;
-
-		
 
 		User user = (User) request.getSession(false).getAttribute("userInfo");
 		WriteRequest WriteReq = createWriteRequest(request, fileName);
