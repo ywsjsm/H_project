@@ -1,0 +1,6 @@
+
+tomcat_server.xml 추가할 코드
+<Context docBase="C:/image" path="/image"  />
+
+image 폴더 경로
+c:image

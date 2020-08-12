@@ -57,7 +57,7 @@
 					<div class="row no-gutters">
 						<div class="col-md-3">
 							<%-- <img src="${contextPath}/image/${article.imageName }" --%>
-							<img src="${contextPath}/image/${article.userNo}/${article.boardNum}/${article.imageName}"
+							<img src="/image/${article.userNo}/${article.boardNum}/${article.imageName}"
 								class="card-img rounded" alt="이미지를 찾을 수 없습니다..😇" id="listImg"
 								style="width: 200px; max-width: 200px; height: 112px; max-height: 112px; margin-top: 8px; margin-left: 7px">
 						</div>

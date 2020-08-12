@@ -13,7 +13,7 @@ import user.model.User;
 public class WriteFileService {
 
 	public void write(Part part,WriteRequest req , User user, int boardNo) {
-		String path = "C:/Users/admin/git/H_project/WebContent/image/"+user.getUserNo()+"/"+boardNo;
+		String path = "c:/image/"+user.getUserNo()+"/"+boardNo;
 		System.out.println("----------------------------------------------");
 		System.out.println("생성될 경로 : "+path);
 		System.out.println("----------------------------------------------");
@@ -24,7 +24,6 @@ public class WriteFileService {
 		}
 		
 		try {
-			
 			part.write(path + "/" + part.getSubmittedFileName());
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -33,7 +32,7 @@ public class WriteFileService {
 	
 	public void write(Part part, ModifyArticleRequest req, User user,String oldFileName) {
 		//유저번호 / 보드번호 / 파일
-		String path = "C:/Users/admin/git/H_project/WebContent/image/"+user.getUserNo()+"/"+req.getBoardNo();
+		String path = "/image/"+user.getUserNo()+"/"+req.getBoardNo();
 		File file = new File(path);
 		
 		
