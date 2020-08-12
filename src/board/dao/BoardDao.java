@@ -165,7 +165,7 @@ public class BoardDao {
 
 		try {
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("SELECT count(*) FROM board where category_no = " + cateNum);
+			rs = stmt.executeQuery("SELECT count(*) FROM board where userNo Not in (select userNo from withdrawaluser) AND category_no = " + cateNum);
 			if (rs.next()) {
 				return rs.getInt(1);
 			}

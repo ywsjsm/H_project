@@ -10,7 +10,7 @@
 				<ul class="pagination justify-content-center">
 					<c:if test="${CommentPage.startPage > 3 }">
 						<li class="page-item">
-						<a class="page-link" href="${contextPath }/read.do?no=${boardNo}&compageNo=${CommentPage.startPage - 3 }">Previous</a></li>
+							<a class="page-link" href="${contextPath }/read.do?no=${boardNo}&compageNo=${CommentPage.startPage - 3 }">Previous</a></li>
 					</c:if>
 					<c:forEach var="pNo" begin="${CommentPage.startPage }" end="${CommentPage.endPage }">
 						<li class="page-item"><a class="page-link" href="${contextPath }/read.do?no=${boardNo}&compageNo=${pNo }">${pNo }</a></li>

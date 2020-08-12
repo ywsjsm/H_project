@@ -18,7 +18,9 @@
 						<a class="page-link" href="${contextPath }${ReqServletPath }?pageNo=${articlePage.startPage - 5 }">Previous</a></li>
 					</c:if>
 					<c:forEach var="pNo" begin="${articlePage.startPage }" end="${articlePage.endPage }">
+					<c:if test="${articlePage.total > 0 }">
 						<li class="page-item"><a class="page-link" href="${contextPath }${ReqServletPath }?pageNo=${pNo }">${pNo }</a></li>
+					</c:if>
 					</c:forEach>
 					<c:if test="${articlePage.endPage < articlePage.totalPages }">
 						<li class="page-item">
