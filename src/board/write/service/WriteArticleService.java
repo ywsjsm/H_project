@@ -1,7 +1,6 @@
 package board.write.service;
 
 import java.sql.Connection;
-import java.sql.SQLException;
 
 import board.dao.BoardDao;
 import board.write.model.WriteRequest;
@@ -22,10 +21,11 @@ public class WriteArticleService {
 			
 			conn.commit();
 			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
+			JdbcUtil.rollback(conn);
 			e.printStackTrace();
-		}finally {
+			throw new RuntimeException(e);
+		} finally {
 			JdbcUtil.close(conn);
 		}
 		

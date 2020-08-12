@@ -8,14 +8,17 @@ import board.dao.BoardDao;
 import board.total.model.ArticlePage;
 import board.total.model.totalRequest;
 import jdbc.ConnectionProvider;
+import jdbc.JdbcUtil;
 
 public class ListArticleService {
 	private BoardDao boardDao = new BoardDao();
 	private int size = 4;
 
 	public ArticlePage getArticlePage(int pageNum, int cateNum) {
-		try (Connection conn = ConnectionProvider.getConnection()) {
-			
+		Connection conn = null;
+		
+		try{
+			conn = ConnectionProvider.getConnection();
 			int total = boardDao.selectCateCount(conn, cateNum);
 			
 			List<totalRequest> content = boardDao.selectCateList(conn, (pageNum - 1) * size, size, cateNum);
@@ -26,6 +29,8 @@ public class ListArticleService {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
+		} finally {
+			JdbcUtil.close(conn);
 		}
 	}
 }

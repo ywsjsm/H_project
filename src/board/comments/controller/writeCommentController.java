@@ -19,7 +19,7 @@ public class writeCommentController implements Controller {
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		String ReqServletPath = request.getServletPath();
-		String tokenPath = ReqServletPath.replace("/", "").replace(".do", "");
+		String tokenPath = ReqServletPath.replace("/comment/", "").replace(".do", "");
 		System.out.println(tokenPath);
 
 		String strNo = request.getParameter("no");
@@ -28,22 +28,31 @@ public class writeCommentController implements Controller {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("userInfo");
 
+		System.out.println("스위치문 진입");
 		switch (tokenPath) {
 		case "delete":
 			String CheckPW = request.getParameter("checkPW");
 			String CommentNo = request.getParameter("commentNo");
+			System.out.println("조건 딜리트 실행");
 			if(deleteService.checkPW(CheckPW, CommentNo)) {
 				deleteService.delete(CommentNo);
 				session.setAttribute("checkPw", true);
 			}
+			System.out.println("브레이크 문 도달");
 			break;
 
-		case "comments":
+		case "write":
 			writeService.write(boardno, createWriteRequest(request), user);
 			break;
 		}
-		response.sendRedirect(request.getContextPath() + "/read.do?no=" + boardno);
-		return null;
+		
+		//private final static String COPLETE_VIEW_CODE="/WEB-INF/view/signup/SignUpComplete.jsp";
+		String pathTemp = "/read.do?no=" + boardno;
+		
+		System.out.println(pathTemp);
+		
+		//response.sendRedirect(request.getContextPath() + "/read.do?no=" + boardno);
+		return "redirect "+pathTemp;
 	}
 
 	private commentWriteRequest createWriteRequest(HttpServletRequest req) {
