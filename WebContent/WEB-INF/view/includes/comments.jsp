@@ -13,7 +13,7 @@ function deletecheck() {
 
 <!-- 로그인 정보에 따라 활성화 -->
 <c:if test="${not empty sessionScope.userInfo}">
-	<form action="comments.do" method="post">
+	<form action="${contextPath }/comments/write.do" method="post">
 		<div class="form-group">
 			<div class="col">
 				<div class="row">
@@ -31,7 +31,7 @@ function deletecheck() {
 
 <!--  -->
 <c:forEach var="Comment" items="${CommentPage.content }">
-	<form name ="deleteform" id="deleteform" action="delete.do" method="post">
+	<form name ="deleteform" id="deleteform" action="${contextPath }/comment/delete.do" method="post">
 	<input name="checkPW" id="checkPW" type="text" hidden="true" value="" />
 		<div class="form-group" style="size: inherit;">
 			<div class="col">

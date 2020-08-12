@@ -74,7 +74,7 @@ if(${checkPw}==true){
 			<div class="col">
 				<a class="btn btn-outline-danger"
 					style="margin-left: 50%; width: 100px;"
-					href="${contextPath}/delete.do?no=${pageNo}" role="button">Delete</a>
+					href="${contextPath}/delete.do?no=${boardNo}" role="button">Delete</a>
 			</div>
 			</c:if>
 		</div>
