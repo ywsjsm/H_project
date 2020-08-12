@@ -70,7 +70,7 @@
      
      <c:if test="${not empty  boardInfo.imageName}">
      <figure class="figure border">
-  <img src="${contextPath}/image/${boardInfo.imageName }" class="figure-img img-fluid rounded" alt="..." style="max-width: 255px;max-height: 255px">
+  <img src="${contextPath}/image/${boardInfo.userNo }/${boardInfo.boardNo }/${boardInfo.imageName }" class="figure-img img-fluid rounded" alt="..." style="max-width: 255px;max-height: 255px">
    <figcaption class="figure-caption" style="font-size: small; font-style: italic;"> -Uploaded : <convertTime:ConversionLocalDataTime dateTime="${boardInfo.regdate}"/></figcaption>
 </figure>
 </c:if>
