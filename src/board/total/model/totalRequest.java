@@ -20,6 +20,7 @@ public class totalRequest {
 	private String userId;
 	private Date regdate;
 	private int userNo;
+	private int readCount;
 	
 	
 	

@@ -7,18 +7,37 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+
 
 import board.delete.model.DeleteArticleRequest;
 import board.modify.model.ModifyArticleRequest;
 import board.read.model.readBoardInfo;
 import board.total.model.totalRequest;
 import board.write.model.WriteRequest;
+import jdbc.ConnectionProvider;
 import jdbc.JdbcUtil;
 import user.model.User;
 
 public class BoardDao {
+	
+	/*JSON Parse Data */
+	public List<String> selectTotalTitleData(){
+		ArrayList<String> list = new ArrayList<>();
+		final String sql = "SELECT title FROM board";
+		try(Connection con= ConnectionProvider.getConnection(); Statement stmt = con.createStatement()
+				;  ResultSet rs = stmt.executeQuery(sql)){
+			while(rs.next()) {
+				list.add(rs.getString(1));
+			}
+			return list;			
+		}catch(Exception e) {
+			e.printStackTrace();
+			return Collections.<String>emptyList();
+		}
+	}
 	
 	public void deleteArticle(Connection con, DeleteArticleRequest req) throws RuntimeException{
 		final String sql ="DELETE FROM board WHERE board_no=?";
@@ -116,7 +135,7 @@ public class BoardDao {
 
 	private totalRequest convertTotalRequest(ResultSet rs) throws SQLException {
 		return new totalRequest(rs.getInt(1), rs.getString("title"), rs.getString("content"),rs.getInt(4), rs.getString("imageName"),
-				rs.getString(7), toDate(rs.getTimestamp("regdate")),rs.getInt(9));
+				rs.getString(7), toDate(rs.getTimestamp("regdate")),rs.getInt(9),rs.getInt(10));
 	}
 
 	private Date toDate(Timestamp timestamp) {
@@ -181,7 +200,7 @@ public class BoardDao {
 	private readBoardInfo convertToBoardInfo(ResultSet rs) throws SQLException {
 		return new readBoardInfo(
 				rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),
-				rs.getString(6),rs.getString(7),rs.getTimestamp(8).toLocalDateTime(),rs.getInt(9)
+				rs.getString(6),rs.getString(7),rs.getTimestamp(8).toLocalDateTime(),rs.getInt(9),rs.getInt(10)
 				);
 	}
 	
@@ -243,4 +262,36 @@ public class BoardDao {
 			throw new RuntimeException(e);
 		}
 	}
+
+
+	public void increaseReadCount(int boardNo) {
+		System.out.println("================================");
+		System.out.println("조회수 증가 로직 실행 할 보드 PK : "+boardNo);
+		System.out.println("================================");
+		final String sql = "UPDATE board SET readCount = readCount+1 WHERE board_no = ? ";
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try{
+			 con = ConnectionProvider.getConnection(); 
+			pstmt =con.prepareStatement(sql); 
+			con.setAutoCommit(false);
+			
+			
+			pstmt.setInt(1, boardNo);
+			pstmt.executeUpdate();
+			con.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}finally {
+			JdbcUtil.close(pstmt,con);
+		}
+	}
+
+
+	
 }

@@ -52,16 +52,14 @@
   		poolName=h_project
   	</param-value>
   </context-param>
-  
   <error-page>
-  	<error-code>404</error-code>
-  	<location>/WEB-INF/view/404/handle404.jsp</location>
+    <error-code>404</error-code>
+    <location>/WEB-INF/view/404/handle404.jsp</location>
   </error-page>
-  
   <jsp-config>
     <jsp-property-group>
       <url-pattern>/WEB-INF/view/*</url-pattern>
-      <include-prelude>/WEB-INF/view/includes/navbar.jsp</include-prelude>     
+      <include-prelude>/WEB-INF/view/includes/navbar.jsp</include-prelude>
       <include-coda>/WEB-INF/view/includes/developers.jspf</include-coda>
     </jsp-property-group>
   </jsp-config>

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
+import json.search.util.JsonData;
 
 
 public class FrontServlet extends HttpServlet {
@@ -94,10 +95,20 @@ public class FrontServlet extends HttpServlet {
 						System.out.println("리다이렉트 발생 : "+redirectview);
 						System.out.println("------------------------------------------------");
 						response.sendRedirect(request.getServletContext().getContextPath()+redirectview);
+						return;
+					}else if(view.startsWith("Json ")){
+						String jsonData = view.replace("Json ", "");
+						response.getWriter().write(jsonData);
+						return;
 					}else {
 						request.getRequestDispatcher(view).forward(request, response);
+						return;
 					}
 				}
+	}
+	
+	public String returnJson() {
+		return "Hello";
 	}
 
 }

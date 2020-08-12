@@ -18,28 +18,7 @@
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <script src='<c:url value='/js/head.js' />'></script> --%>
 
-<script type="text/javascript">
-	$(function() {
-		$('#articles').mouseenter(function() {
-			console.log('active!')
-			$('#listImg').fadeOut();
-		});
 
-		$('#articles').mouseenter(function() {
-			$('#listImg').animate({
-				height : '112px',
-				width : '200px'
-			});
-		});
-
-		$('card mb-9').mouseenter(
-				function() {
-					alert('작동')
-					$('card mb-9').children('.card-title').css('text-decoration', 'underline');
-				});
-
-	});
-</script>
 
 <style type="text/css">
 .text-overFlow {
@@ -54,6 +33,10 @@
 .card-body {
 	padding: 5px;
 }
+
+.my-underline:hover * {
+	text-decoration: underline;
+}
 </style>
 
 <title>전체 게시물</title>
@@ -67,7 +50,7 @@
 			</div>
 		</c:if>
 		<c:if test="${not empty article }">
-			<div class="row" id="articles">
+			<div class="row my-underline" id="articles">
 				<div class="card mb-3" style="width: 100%;" id="content"
 					onmouseenter="" onmouseleave="">
 
@@ -78,11 +61,18 @@
 								class="card-img rounded" alt="이미지를 찾을 수 없습니다..😇" id="listImg"
 								style="width: 200px; max-width: 200px; height: 112px; max-height: 112px; margin-top: 8px; margin-left: 7px">
 						</div>
-						<div class="col-md-9 card-body border">
-							<small class="text-muted"> <b><i>- Author : ${article.userId } / Category : <tc:categoryNumConvert categoryNum="${article.categoryNum }"/></i></b></small>
+						<div class="col-md-9 card-body border ">
+						<div class="d-flex justify-content-between">
+							<small class="text-muted" style="margin-top: 1.1%"> <b><i>- Author : ${article.userId } / Category : <tc:categoryNumConvert categoryNum="${article.categoryNum }"/></i></b>
+							</small>
+							<a role="button" href="" class="btn btn-success btn-sm" style="margin-right: 1.1%;margin-top: 5px;margin-bottom: -5px">
+  									조회수<span class="badge badge-light">${article.readCount }</span>
+									</a>
+							</div>
+							<hr />
 							<h5 class="card-title">${article.title }</h5> 
 							<p class="card-text text-overFlow" style="white-space: pre-wrap;">${article.content }</p>
-
+								
 							<a href="${contextPath }/read.do?no=${article.boardNum}" class="stretched-link"></a>
 
 							<p class="card-text">

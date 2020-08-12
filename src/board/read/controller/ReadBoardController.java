@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import board.comments.model.CommentPage;
 import board.comments.service.ReadCommentService;
+import board.dao.BoardDao;
 import board.read.exception.ArticleNotFoundException;
 import board.read.model.readBoardInfo;
 import board.read.service.ReadBoardService;
@@ -31,7 +32,6 @@ public class ReadBoardController implements Controller {
 		}
 			
 		try {
-
 			readBoardInfo boardInfo = boardservice.getArticle(boardNum);
 			request.setAttribute("boardInfo", boardInfo);
 			request.setAttribute("boardNo",boardNum);
