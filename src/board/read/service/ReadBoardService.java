@@ -18,12 +18,15 @@ public class ReadBoardService {
 		
 		try{
 			conn = ConnectionProvider.getConnection();
+      boardDao.increaseReadCount(boardNo);
 			readBoardInfo boardinfo = boardDao.SelectbyBoardId(conn, boardNo);
-			
 			if(boardinfo == null) {
 				throw new ArticleNotFoundException();
 			}
 			
+			System.out.println("======================================");
+			System.out.println("조회수 증가 후 게시글 정보 "+boardinfo.toString());
+			System.out.println("======================================");
 			return boardinfo;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

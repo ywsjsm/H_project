@@ -13,7 +13,45 @@
 <script
 	src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js'></script>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src='<c:url value='/js/head.js' />'></script>
+
+<script type="text/javascript">
+
+//<![CDATA[
+
+$(function() {
+	var dataa = "";
+	$.ajax({
+		type:'get',
+		url:'/H_Project/sendTitle.do'
+	}).done(function(data) {
+		dataa = data;
+	if(dataa != null){
+		console.log('동작');
+    var availableTitle = dataa; //< 검색어 리스트
+    var titleData = JSON.parse(availableTitle);
+	console.log(titleData);
+    $("#search").autocomplete({
+	       source: titleData, 
+	       minLength: 2,
+        select: function(event, ui) { // 아이템 선택시 실행
+            console.log(ui.item);
+        },
+        focus: function(event, ui) {// 한글 깨짐 현상 수정
+            return false;
+            /* event.preventDefault(); */
+        }
+    });
+	}
+	});
+	
+	
+});
+//]]>
+</script>
 
 <script type="text/javascript">
 	$(function() {
@@ -87,13 +125,15 @@
 					aria-disabled="true" id="clock">00:00</a> <!-- clock --></li>
 
 			</ul>
+			<div class="ui-widget">
 			<form class="form-inline my-2 my-lg-0" id="searchForm"
 				action="${contextPath }/selectPart.do" method="post">
-				<input class="form-control mr-sm-2" type="search" id="foundText"
+				<input class="form-control mr-sm-2" type="search" id="search"
 					name="find" placeholder="글찾기" aria-label="글찾기">
 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit"
 					id="btnFound">글찾기</button>
 			</form>
+			</div>
 		</div>
 	</nav>
 </div>
