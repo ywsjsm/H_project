@@ -19,6 +19,8 @@ public class ReadBoardController implements Controller {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
+		System.out.println("Readboard진입");
+		
 		// 게시글 번호
 		String noVal = request.getParameter("no");
 		int boardNum = Integer.parseInt(noVal);
@@ -31,12 +33,13 @@ public class ReadBoardController implements Controller {
 		}
 			
 		try {
-
+			System.out.println("getArticle 시작");
 			readBoardInfo boardInfo = boardservice.getArticle(boardNum);
 			request.setAttribute("boardInfo", boardInfo);
 			request.setAttribute("boardNo",boardNum);
 			
 			// 댓글 리스트
+			System.out.println("getCommentPage 시작");
 			CommentPage commentpage = readcommentservice.getCommentPage(pageNo, boardNum);
 			request.setAttribute("CommentPage", commentpage);
 

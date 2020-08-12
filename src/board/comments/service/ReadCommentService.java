@@ -8,14 +8,17 @@ import board.comments.dao.CommentDao;
 import board.comments.model.CommentInfo;
 import board.comments.model.CommentPage;
 import jdbc.ConnectionProvider;
+import jdbc.JdbcUtil;
 
 public class ReadCommentService {
 	CommentDao commentdao = new CommentDao();
 	private int size = 5;
 	
 	public CommentPage getCommentPage(int contPageNum, int boardno) {
+		
+		Connection conn = null;
 		try {
-			Connection conn = ConnectionProvider.getConnection();
+			conn = ConnectionProvider.getConnection();
 	
 			int total = commentdao.selectCount(conn, boardno);
 			
@@ -26,6 +29,8 @@ public class ReadCommentService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw new RuntimeException(e);
+		}finally {
+			JdbcUtil.close(conn);
 		}
 	}
 }
