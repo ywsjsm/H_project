@@ -34,7 +34,7 @@
 	padding: 5px;
 }
 
-.my-underline:hover * {
+.my-underline:hover #title {
 	text-decoration: underline;
 }
 </style>
@@ -70,8 +70,8 @@
 									</a>
 							</div>
 							<hr />
-							<h5 class="card-title">${article.title }</h5> 
-							<p class="card-text text-overFlow" style="white-space: pre-wrap;">${article.content }</p>
+							<h5 class="card-title" id="title">${article.title }</h5> 
+							<p class="card-text text-overFlow" style="white-space: pre-wrap;" id="content">${article.content }</p>
 								
 							<a href="${contextPath }/read.do?no=${article.boardNum}" class="stretched-link"></a>
 

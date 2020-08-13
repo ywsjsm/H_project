@@ -82,6 +82,11 @@ $(function() {
 			setInterval(getValidationTime, 1000);
 		}
 		init();
+		
+		$('#logOut').click(function(event) {
+			alert('로그아웃 되었습니다.');
+		})
+		
 	});
 </script>
 
