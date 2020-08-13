@@ -35,6 +35,11 @@
 	padding: 5px;
 }
 
+
+.row.my-underline:hover #title {
+	text-decoration: underline;
+  }
+
 body {
 	background-image: url("${contextPath}/image/qorud1.jpg");
 	background-repeat: no-repeat;

@@ -47,12 +47,16 @@
 	  $('#mainText1').animate({left : '40%'}, 2000, function() {
 		  	$('#mainBtn').animate({right : '40%'}, 2000,function(){
 		  		$('#mainPara').animate({right:'20%'}, function() {
+		  			$('#mainLoginForm').fadeToggle(3000);
+		  			$('#test').slideToggle();
 		  			
 		  		});
 		  		$('#mainBtn').attr("class", 'btn btn-outline-warning');
 		  		$('#btnFound').attr("class", 'btn btn-outline-warning my-2 my-sm-0');
 		  	});
 	  });
+
+	  
 
 	   
    });
