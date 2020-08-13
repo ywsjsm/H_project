@@ -18,6 +18,10 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src='<c:url value='/js/head.js' />'></script>
 
+<style>
+
+</style>
+
 <script type="text/javascript">
 
 //<![CDATA[
@@ -72,7 +76,7 @@ $(function() {
 				hours = '0' + hours;
 			}
 
-			var clock = minute + ':' + secondes;
+			var clock = hours+':'+minute + ':' + secondes;
 
 			$('#clock').html(clock.toString());
 		}
@@ -90,12 +94,12 @@ $(function() {
 	});
 </script>
 
-<div class="container">
+<div class="container-fluid" id="Navar">
 
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg navbar-dark">
 		<a class="navbar-brand" href="${contextPath}"><b> [H_Project]
 		</b></a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
+		<button class="navbar-toggler"  type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
 			aria-label="Toggle navigation">
@@ -127,7 +131,14 @@ $(function() {
 						id="logOut">로그아웃</a> <!-- disabled --></li>
 				</c:if>
 				<li class="nav-item"><a class="nav-link" href="#" tabindex="-1"
-					aria-disabled="true" id="clock">00:00</a> <!-- clock --></li>
+					aria-disabled="true"> </a> 
+					</li>
+					<li class="nav-item"><a class="nav-link" href="#" tabindex="-1"
+					aria-disabled="true"> </a> <!-- clock --></li>
+				<li class="nav-item"><a class="nav-link" href="#" tabindex="-1"
+					aria-disabled="true" > 현재 시간 </a> <!-- clock --></li>
+					<li class="nav-item"><a class="nav-link" href="#" tabindex="-1"
+					aria-disabled="true" id="clock">00::00:00</a> <!-- clock --></li>
 
 			</ul>
 			<div class="ui-widget">
@@ -135,7 +146,7 @@ $(function() {
 				action="${contextPath }/selectPart.do" method="post">
 				<input class="form-control mr-sm-2" type="search" id="search"
 					name="find" placeholder="글찾기" aria-label="글찾기">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit"
+				<button class="btn btn-outline-black my-2 my-sm-0" type="submit"
 					id="btnFound">글찾기</button>
 			</form>
 			</div>

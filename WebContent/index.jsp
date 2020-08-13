@@ -6,32 +6,76 @@
 <html>
 <head>
 <script src='<c:url value='/js/head.js' />'></script>
-
+	<style type="text/css">
+		.backgorund{
+			position: absolute;
+			z-index: -99;
+			top: 0;
+			left: 0;
+			opacity: 0.9;
+			background-size: contain; 
+		}
+		.container-fluid{
+            background-color: rgb(rgba(255, 0, 0, 0), rgba(0, 128, 0, 0), rgba(0, 0, 255, 0));
+        }
+		#developers{
+			position: absolute;
+			bottom: 0;
+			color: white;
+		}
+		.row.mainText{
+			position: fixed;
+			left: 30%;
+			top: 50%;
+			size: 50%;
+		}
+		.row.text{
+		color: white;
+		font-style: italic;	
+		}
+		#mainText1{
+		position: absolute;
+		  /* left: 40px; */
+		   top: 40%;
+		   opacity: 0.0;
+		   color: white;
+		}
+	#mainPara{
+		position: fixed;
+		top: 45%;
+		white-space: pre-wrap;
+	}
+	</style>
 <title>메인 페이지</title>
 </head>
 <body>
-		<div class="container">
-			<div class="row">
+	
+
 			 <%@include file="/WEB-INF/view/includes/navbar.jsp" %> 
+		<div class="container-fluid">
+			<div class="row">
 			</div>
+			<div class="backgorund">
+				<video src='<c:url value='/video/Drone - 32657.mp4' />' autoplay="autoplay" loop="loop" muted="muted" ></video>
+			</div>	
+				<span id="mainText1" style="left: 10%; position: relative; left: 200px;"><h4>H - PROjECT</h4></span>
 			
-			<div class="jumbotron">
-  <h1 class="display-4">H_Project's main Page</h1>
-  <p class="lead">소소한 정보들을 찾고 또 공유해보세요!</p>
-  <hr class="my-4">
-  <c:if test="${not empty req.id}">
-  	<b><i>${req.id} 님 회원가입을 축하합니다.</i></b> 
-  </c:if>
-  <c:if test="${not empty loginReq.id}">
-  	<b><i>${loginReq.id } 님 방문해주셔서 감사합니다 :)</i></b>
-  </c:if>
-    <c:if test="${empty req.id and loginReq.id}">
-  <p>회원 가입을 완료하시면 게시와 삭제 이용 가능합니다 :)</p>
-  </c:if>
-  <a class="btn btn-outline-success btn-lg" href="${contextPath}/list/total.do" role="button">시작하기</a>
-</div>
-		</div>
+		<div class="row mainText"  id="mainText">
+                <div class="col d-flex justify-content-center" style="flex-direction: column;" >
+
+                    <div class="row text  justify-content-center" >
+                    <p id="mainPara">소소한 정보들을 찾고 이야기를 나누어 보세요.
+                    회원 가입 후에 글 작성 및 댓글 작성이 가능합니다.</p>       
+                    </div>
+                    <div class="row butnStart">
+                    	<a href="${contextPath }/list/total.do" role="button" style="position: fixed;" class="btn btn-outline-dark" id="mainBtn"> 시작 </a>
+                    </div>
+                </div>
+         </div>
+        
+			<!-- 로그인 폼 -->
 		
 		<%@ include file="/WEB-INF/view/includes/developers.jspf" %>
+		</div>
 </body>
 </html>

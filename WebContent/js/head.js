@@ -9,6 +9,7 @@
 				url:'/H_Project/logout.do'
 		  });
   });
+  			
 	   
 	   $('#loginBtn').click(function(){			
 			var datab = $('#LoginForm').serialize();
@@ -42,7 +43,16 @@
   		alert('게시글 수정이 완료되었습니다.');
   });
   
+  // 메인 화면
+	  $('#mainText1').animate({left : '40%'}, 2000, function() {
+		  	$('#mainBtn').animate({right : '40%'}, 2000,function(){
+		  		$('#mainPara').animate({right:'20%'}, function() {
+		  			
+		  		});
+		  		$('#mainBtn').attr("class", 'btn btn-outline-warning');
+		  		$('#btnFound').attr("class", 'btn btn-outline-warning my-2 my-sm-0');
+		  	});
+	  });
 
-  
 	   
    });
