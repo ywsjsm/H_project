@@ -13,10 +13,8 @@ import user.model.User;
 public class WriteFileService {
 
 	public void write(Part part,WriteRequest req , User user, int boardNo) {
-		String path = "C:/Users/admin/git/H_project/WebContent/image/"+user.getUserNo()+"/"+boardNo;
-		System.out.println("----------------------------------------------");
+		String path = "C:/image/"+user.getUserNo()+"/"+boardNo;
 		System.out.println("생성될 경로 : "+path);
-		System.out.println("----------------------------------------------");
 		File file = new File(path);
 		
 		if (!file.exists() ) {

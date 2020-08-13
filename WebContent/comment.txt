@@ -1,0 +1,2 @@
+tomcat server.xml 파일 수정하기
+<Context docBase="C:/image" path="/image"  />

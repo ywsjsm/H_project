@@ -21,7 +21,6 @@
 <script type="text/javascript">
 
 //<![CDATA[
-
 $(function() {
 	var dataa = "";
 	$.ajax({
@@ -50,6 +49,7 @@ $(function() {
 	
 	
 });
+
 //]]>
 </script>
 
