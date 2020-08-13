@@ -45,6 +45,14 @@
 		top: 45%;
 		white-space: pre-wrap;
 	}
+	.form-group.formLabel{
+	color: white;
+	font-weight: lighter;
+	}
+	.form-text.text-muted.error{
+	color: yellow;
+	font-weight: lighter;
+	}
 	</style>
 <title>메인 페이지</title>
 </head>
@@ -74,6 +82,24 @@
          </div>
         
 			<!-- 로그인 폼 -->
+			<form style="width: 15%;height: 60%;" class="border">
+  <div class="form-group formLabel" >
+    <label for="formId" id="formIdLabel">ID</label>
+    <input type="email" class="form-control form-control-sm" id="formId" name="formId" aria-describedby="emailHelp">
+    <small id="emailHelp" class="form-text text-muted error">에러메세지1</small>
+  </div>
+  <div class="form-group formLabel" id="formLabel">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control form-control-sm" id="exampleInputPassword1">
+    <small id="emailHelp" class="form-text text-muted">에러메세지2</small>
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-group formLabel" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-outline-dark">Submit</button>
+</form>
+			
 		
 		<%@ include file="/WEB-INF/view/includes/developers.jspf" %>
 		</div>
