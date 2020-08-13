@@ -70,7 +70,9 @@
 	#mainBtn:hover{
 		color: black;
 	}
-	
+	 body {
+	 overflow:hidden;
+	 }
 	</style>
 <title>메인 페이지</title>
 </head>
