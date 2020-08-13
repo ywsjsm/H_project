@@ -40,12 +40,6 @@
 	text-decoration: underline;
   }
 
-body {
-	background-image: url("${contextPath}/image/qorud1.jpg");
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-
 hr#hr1 {
 	border: 0;
 	height: 1px;
@@ -56,14 +50,33 @@ hr#hr1 {
 	margin-top: 0px;
 	margin-bottom: 0px;
 }
+
+#background{
+			position: absolute;
+			z-index: -99;
+			top: 0;
+			left: 0;
+			opacity: 0.9;
+			background-size: contain; 
+		}
+		
+		#developers{
+			position: absolute;
+			bottom: 0;
+			color: white;
+		}
 </style>
 
 <title>전체 게시물</title>
 </head>
 <body>
+
+
 	<div class="container-fluid"
 		style="margin-top: 20px; text-align: center;">
-
+<div id="background">
+	<video muted="muted" autoplay="autoplay" loop="loop" src="${contextPath }/video/Boat - 44549.mp4"></video>
+</div>
 		<c:forEach var="article" items="${articlePage.content }">
 			<c:if test="${empty article}">
 				<div class="row">
