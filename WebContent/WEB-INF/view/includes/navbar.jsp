@@ -19,7 +19,10 @@
 <script src='<c:url value='/js/head.js' />'></script>
 
 <style>
-
+ #clock{
+ 	color: orange;
+ 	font-weight: lighter;
+ }
 </style>
 
 <script type="text/javascript">
@@ -59,6 +62,13 @@ $(function() {
 
 <script type="text/javascript">
 	$(function() {
+		
+		 $('#btnFound').mouseenter(function() {
+			 $('#btnFound').attr("class", 'btn btn-outline-warning');
+		 });
+		 $('#btnFound').mouseout(function() {
+			 $('#btnFound').attr("class", 'btn btn-outline-secondary');
+		 });
 
 		function getValidationTime() {
 			var date = new Date();
@@ -93,7 +103,7 @@ $(function() {
 		
 	});
 </script>
-
+<body>
 <div class="container-fluid" id="Navar">
 
 	<nav class="navbar navbar-expand-lg navbar-dark">
@@ -153,3 +163,4 @@ $(function() {
 		</div>
 	</nav>
 </div>
+</body>
