@@ -34,15 +34,19 @@
 	padding: 5px;
 }
 
-.my-underline:hover #title {
-	text-decoration: underline;
+#background{
+	
 }
 </style>
 
 <title>전체 게시물</title>
 </head>
 <body>
-	<div class="container" style="margin-top: 20px">
+	<div class="container-fluid" style="margin-top: 20px">
+		<div class="row" id="background" style='background-image: url("${contextPath }/viewImage/404-Pages.jpg");'  >
+		h1
+		</div>
+	
 		<c:forEach var="article" items="${articlePage.content }">
 		<c:if test="${empty article}">
 			<div class="row">
