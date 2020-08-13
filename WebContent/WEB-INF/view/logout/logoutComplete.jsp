@@ -11,20 +11,21 @@
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js'></script>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
-	<script type="text/javascript">
-		$(function(){
-			alert('로그아웃을 완료 했습니다. 메인 화면으로 이동합니다.');
-			$.ajax({
-				type:"get",
-				url:"/H_Project"
-				
-			}).done(function(data){console.log(data);});
-		});
-	</script>
 <title>로그아웃 성공</title>
 </head>
 <body>
+	<script type="text/javascript">
+		$(function(){
+			alert('로그아웃을 완료 했습니다. 메인 화면으로 이동합니다.');
+		/* 	$.ajax({
+				type:"get",
+				url:"/H_Project"
+				
+			}).done(function(data){console.log(data);}); */
+		});
+	</script>
 <div class="container">
+<h5>55</h5>
 		<div class="jumbotron">
   <h1 class="display-4">H_Project's main Page</h1>
   <p class="lead">소소한 정보들을 찾고 또 공유해보세요!</p>
