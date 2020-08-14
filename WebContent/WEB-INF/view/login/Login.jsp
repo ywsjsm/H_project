@@ -26,10 +26,41 @@
 	width: 40%;
 	margin-left: 30%;
 }
+#developers{
+	position: absolute;
+	bottom: 0;
+}
+.background {
+position:absolute;
+background-image:url("https://cdn.pixabay.com/photo/2018/05/28/22/11/message-in-a-bottle-3437294_960_720.jpg");
+/* background-image:url("https://cdn.pixabay.com/photo/2016/09/07/15/48/sunset-1651878_960_720.jpg"); */
+	/* background-image: url('${contextPath}/image/hello.jpg'); */
+	background-size: cover;
+	opacity:0.8;
+	z-index: -99;
+	width: 100%;
+	height: 100%;
+	top:0;
+	left: 0;
+}
 </style>
 </head>
 <body>
-	<div class="container">
+	<script type="text/javascript">
+	$(function(number a){
+		Array urlArr = new Array();
+		
+		urlArr.push("https://cdn.pixabay.com/photo/2018/05/28/22/11/message-in-a-bottle-3437294_960_720.jpg");
+		urlArr.push("https://cdn.pixabay.com/photo/2016/09/07/15/48/sunset-1651878_960_720.jpg");
+		if()
+		$('#background').attr("background-image", urlArr[i]);
+
+	});
+</script>
+
+	<div class="container-fluid">
+	<div class="background">
+	</div>
 		<form  method="post" id="LoginForm">
 			<div class="form-group">
 				<label for="Id">Id</label> 

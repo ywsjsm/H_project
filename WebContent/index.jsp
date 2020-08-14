@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- css -->
 <script src='<c:url value='/js/head.js' />'></script>
 	<style type="text/css">
 		.backgorund{

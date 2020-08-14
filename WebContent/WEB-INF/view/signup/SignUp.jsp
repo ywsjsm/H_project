@@ -14,6 +14,10 @@
 <%--  <script src='<c:url value='/js/head.js' />'></script>   --%>
 
 <style type="text/css">
+#developers{
+position: absolute;
+bottom: 0;
+}
 	#signup{
 		margin-left: 30%;
 	}
@@ -40,6 +44,7 @@
 	body {
 	 overflow:hidden;
 	 }
+	 
 </style>
 <title>SignUp</title>
 </head>
@@ -80,6 +85,7 @@
 		 	check.push($(element).val());//<<
 			 }
 		 });
+		/*  ------- */
 		/* check += $('#inputEmail').val(); */
 		 $('input:password').each(function(i, element) {
 			 if($(element).val().trim().length > 0){			 

@@ -12,7 +12,9 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js'></script>
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js'></script>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-	
+
+
+
 	<script type="text/javascript">
 	$(function(){			
 				alert('회원가입이 완료되었습니다.');
@@ -26,17 +28,23 @@
 
 		
 	});
-
+	$('.parallax-window').parallax({
+		imageSrc: '${contextPath }/image/스프링.jpg',
+		imageSrc: '${contextPath }/image/MySQL.jpg''
+		});
 	</script>
-<style type="text/css">
-	#signup{
-		margin-left: 30%;
-	}
-</style>
+	
+	<style type="text/css">
+	.parallax-window {
+	position:relative;
+    min-height: 400px;
+    background: transparent;
+}
+	</style>
 <title>SignUpComplete!</title>
 </head>
 <body>
-	
+
 	<input type="hidden" id="hideFlag" value="check"  />
 	<div class="container">
 	<form id="signup" style="width: 40%" method="post">
@@ -103,7 +111,7 @@
   <button type="button" class="btn btn-primary" id="btnSignUp">Sign in</button>
 </form>
   
-  </div>
+  </div> 
 
 	
 </body>
