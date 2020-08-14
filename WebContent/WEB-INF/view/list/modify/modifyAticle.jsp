@@ -12,10 +12,25 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js'></script>
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js'></script>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<style type="text/css">
+#background{
+	position: absolute;
+	z-index: -99;
+	top: 0;
+	left: 0;
+	opacity: 0.9;
+	background-size: contain; 
+}
+</style>
 <title>게시물 수정</title>
 </head>
 <body>
+
 	<div class="container" >
+		<div id="background">
+			<video src="${contextPath }/video/Ocean - 36589.mp4" muted="muted"
+				autoplay="autoplay" loop="loop"></video>
+		</div>
 	<%-- <input type="hidden" name="no" value="${boardInfo.boardNo}" /> --%>
 		<div class="row justify-content-center">
 				<h5 > <i>Modify your Infomation :)</i></h5>			
@@ -70,7 +85,7 @@
      
      <c:if test="${not empty  boardInfo.imageName}">
      <figure class="figure border">
-  <img src="${contextPath}/image/${boardInfo.userNo }/${boardInfo.boardNo }/${boardInfo.imageName }" class="figure-img img-fluid rounded" alt="..." style="max-width: 255px;max-height: 255px">
+  <img src="/image/${boardInfo.userNo }/${boardInfo.boardNo }/${boardInfo.imageName }" class="figure-img img-fluid rounded" alt="..." style="max-width: 255px;max-height: 255px">
    <figcaption class="figure-caption" style="font-size: small; font-style: italic;"> -Uploaded : <convertTime:ConversionLocalDataTime dateTime="${boardInfo.regdate}"/></figcaption>
 </figure>
 </c:if>

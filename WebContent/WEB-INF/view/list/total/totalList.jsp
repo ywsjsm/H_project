@@ -22,15 +22,22 @@
 
 <style type="text/css">
 .text-overFlow {
-	font-size: 15px;
+	font-size: 13px;
 	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
 	width: 100%;
 	height: 60px;
 	margin-bottom: 0px;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+  	text-overflow: ellipsis; 
+ 	display: -webkit-box;  
 }
 
+.title-overFlow{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .card-body {
 	padding: 5px;
 }
@@ -96,9 +103,8 @@ hr#hr1 {
 									</a>
 								</div>
 								<hr id="hr1" />
-								<h5 class="card-title" id="title" style="margin-bottom: 0px;">${article.title }</h5>
-								<p class="card-text text-overFlow"
-									style="white-space: pre-wrap;" id="content">${article.content }</p>
+								<h5 class="card-title title-overFlow" id="title" style="margin-bottom: 0px;">${article.title }</h5>
+								<p class="card-text text-overFlow" id="content">${article.content }</p>
 
 								<a href="${contextPath }/read.do?no=${article.boardNum}" class="stretched-link"></a> 									
 									<small style="color: gray; margin-left:10px; margin-top: 10px;"><b><i>-Author:${article.userId } </i></b></small>
