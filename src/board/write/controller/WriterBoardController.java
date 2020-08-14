@@ -52,7 +52,7 @@ public class WriterBoardController implements Controller {
 		int boardNo = dao.selectBoardNo(con);		
 		
 		if (!(fileName == null || fileName.isEmpty() || filePart.getSize() == 0)) {
-			writeFile.write(filePart,WriteReq,user,boardNo);
+			writeFile.write(filePart,user,boardNo);
 		}
 		
 		return "redirect /list/total.do";

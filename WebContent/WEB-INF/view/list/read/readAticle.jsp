@@ -69,14 +69,13 @@ if(${checkPw}==true){
 		</div>
 		</div>
 		<div class="row">
-		<div class="col-md-3" style="margin-bottom: 30px; "><figure class="figure">
-  <img src="/image/${boardInfo.userNo }/${boardInfo.boardNo }/${boardInfo.imageName }" class="figure-img img-fluid rounded" alt="..." style="width:100%; height: 100%;">
+		<div class="d-flex justify-content-center" style="margin-left:auto; margin-right:auto; margin-top: 0px; margin-bottom: 0px">
+		<figure class="figure">
+  <img src="/image/${boardInfo.userNo }/${boardInfo.boardNo }/${boardInfo.imageName }" class="figure-img img-fluid rounded" alt="..." style="max-width: 255px; max-height: 255px">
   <figcaption class="figure-caption" style="font-size: small; font-style: italic;"> -Uploaded : <convertTime:ConversionLocalDataTime dateTime="${boardInfo.regdate}"/></figcaption>
-</figure></div>
-		<div class="col-md-9"><p>${boardInfo.content }</p></div>
-		
-					
+</figure></div>		
 		</div>
+		<div class="d-flex justify-content-center" style="margin: auto;"><p>${boardInfo.content }</p></div>
 		<div class="row">
 		<c:if test="${not empty sessionScope.userInfo and sessionScope.userInfo.userId eq boardInfo.userId }">
 			<div class="col d-flex justify-content-start">

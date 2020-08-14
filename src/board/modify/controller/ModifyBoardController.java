@@ -59,8 +59,14 @@ public class ModifyBoardController implements Controller{
 		Part filePart = request.getPart("fileName");
 		String fileName = filePart.getSubmittedFileName();
 		
-		fileName = fileName == null ? "" : fileName ;
-				
+		String temp = request.getParameter("filePath");
+		
+		fileName = fileName == null ? temp : fileName ;
+
+		if(fileName.equals("")) {
+			fileName = temp;
+		}
+		
 		ModifyArticleRequest req = mappingObject(request,fileName);
 		User user = (User) request.getSession().getAttribute("userInfo");
 		
@@ -80,7 +86,8 @@ public class ModifyBoardController implements Controller{
 			System.out.println("넘어온 파일 정보 : "+filePart.getSubmittedFileName()+" : "+filePart.getSize());
 			System.out.println("----------------------------------------------");
 			if(!(fileName  == null || fileName.isEmpty() || filePart.getSize() ==0)) {
-				writeFile.write(filePart,req,user,oldFileName);//< 중복 파일 로직 추가 필요
+				writeFile.delete(filePart, user, req.getBoardNo());
+				writeFile.write(filePart, user, req.getBoardNo());//< 중복 파일 로직 추가 필요
 			}
 		}catch(Exception e) {
 			e.printStackTrace();

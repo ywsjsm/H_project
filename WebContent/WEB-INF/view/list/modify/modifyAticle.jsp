@@ -96,7 +96,8 @@
   <div class="row justify-content-center">
   		<div class="form-group">
     	<label for="Image">Upload Your Image!</label>
-    	<input type="file" class="form-control-file" id="Image" name="fileName" >
+    	<input type="file" class="form-control-file" id="Image" name="fileName">
+    	<input type="text" hidden="true" name ="filePath" value="${boardInfo.imageName }" />
   		</div>
 		</div>
 		
