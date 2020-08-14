@@ -106,7 +106,7 @@
          </div>
         <c:if test="${empty userInfo }">
 			<!-- 로그인 폼 -->
-			<form  class="border" id="mainLoginForm" action="${contextPath }/main/login.do" method="post">
+			<form  class="" id="mainLoginForm" action="${contextPath }/main/login.do" method="post">
 			<c:if test="${errors.memberNotFound}">
     <small id="formIdHelp" class="form-text text-muted error" ><label id="formIdHelp">존재하지않는 회원입니다.</label></small>
     </c:if>

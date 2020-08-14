@@ -25,41 +25,142 @@
 #LoginForm {
 	width: 40%;
 	margin-left: 30%;
+	z-index: 1;
 }
 #developers{
 	position: absolute;
 	bottom: 0;
 }
-.background {
-position:absolute;
-background-image:url("https://cdn.pixabay.com/photo/2018/05/28/22/11/message-in-a-bottle-3437294_960_720.jpg");
-/* background-image:url("https://cdn.pixabay.com/photo/2016/09/07/15/48/sunset-1651878_960_720.jpg"); */
-	/* background-image: url('${contextPath}/image/hello.jpg'); */
-	background-size: cover;
-	opacity:0.8;
-	z-index: -99;
-	width: 100%;
-	height: 100%;
-	top:0;
-	left: 0;
-}
+
+ #basic{
+            background-image: url('<c:url value='/viewImage/fadeBackground/city.jpg' />');
+            position: absolute;
+            display: none;
+            top: 0;
+            left: 0;
+            z-index: -99;
+              opacity:0.9;
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        #item1{
+            background-image: url('<c:url value='/viewImage/fadeBackground/boats.jpg' />');
+            position: absolute;
+            display: none;
+            top: 0;
+            left: 0;
+            z-index: -99;
+              opacity:0.9;
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        #item2{
+            background-image: url('<c:url value='/viewImage/fadeBackground/lighthouse.jpg' />');
+            position: absolute;
+            display: none;
+            top: 0;
+            left: 0;
+            z-index: -99;
+              opacity:0.9;
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        #item3{
+            background-image: url('<c:url value='/viewImage/fadeBackground/pier.jpg' />');
+            position: absolute;
+            display: none;
+            top: 0;
+            left: 0;
+            opacity:0.9;
+            z-index: -99;
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #background-item{
+        position:absolute;
+        top:0;
+        left:0;
+        z-index: -99;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        body{
+            overflow: hidden; 
+        }
+        .loginHelp{
+        color: orange;
+        }
+	
+
 </style>
 </head>
 <body>
 	<script type="text/javascript">
-	$(function(number a){
-		Array urlArr = new Array();
-		
-		urlArr.push("https://cdn.pixabay.com/photo/2018/05/28/22/11/message-in-a-bottle-3437294_960_720.jpg");
-		urlArr.push("https://cdn.pixabay.com/photo/2016/09/07/15/48/sunset-1651878_960_720.jpg");
-		if()
-		$('#background').attr("background-image", urlArr[i]);
+	 $(function(){
+         $(function(){
+ changeView();   
+     });
 
-	});
+     function changeView(){
+         setTimeout(1000);
+        //하나가 보이면 하나가 사라져야함
+         var i =0;
+         $('#basic').show();
+         setInterval(() => {
+             if(i == 4){
+                 i = 0;
+             }
+             console.log(i);
+             switch(i >= 0){
+                 case i==0:
+                     console.log(i==0);
+                     $('#item1').fadeIn(2500);
+                     $('#naverTotal').attr('class', 'navbar navbar-expand-lg navbar-dark');
+                     $('#basic').fadeOut(2500);
+                     break;
+                 case i==1:
+                 console.log(i==1);
+                     $('#item2').fadeIn(2500);
+                     $('#naverTotal').attr('class', 'navbar navbar-expand-lg navbar-dark');
+                     $('#item1').fadeOut(2500);
+                     break;
+                 case i==2:
+                 console.log(i==2);
+                 $('#item3').fadeIn(2500);
+                 $('#naverTotal').attr('class', 'navbar navbar-expand-lg navbar-light');
+                     $('#item2').fadeOut(2500);
+                     break;
+                 default:
+                     $('#item3').fadeOut(2500);
+                     $('#basic').fadeIn(2500);
+                 $('#naverTotal').attr('class', 'navbar navbar-expand-lg navbar-dark');
+             }
+             i++;
+         }, 4000);
+     }
+     });
 </script>
-
 	<div class="container-fluid">
-	<div class="background">
+	
+	<div class="container-fluid">
+        <ul id="background-item">  
+            <li id="basic"></li>
+            <li id="item1"></li>
+            <li id="item2"></li>
+            <li id="item3"></li>
+        </ul>
+    </div>
+
 	</div>
 		<form  method="post" id="LoginForm">
 			<div class="form-group">
@@ -67,20 +168,20 @@ background-image:url("https://cdn.pixabay.com/photo/2018/05/28/22/11/message-in-
 				<input type="text" class="form-control" id="Id" aria-describedby="IdHelp"
 				 value="${UserIdCookie}" required="required" name="id" placeholder="input your Id"> 
 					<c:if test="${errors.id}">
-					<small id="Id" class="form-text text-muted">공백은 허용하지 않습니다.</small>
+					<small id="Id" class="form-text text-muted"><label class="loginHelp">공백은 허용하지 않습니다.</label></small>
 					</c:if>
 					<c:if test="${!errors.id and errors.memberNotFound}">
-					<small id="Id" class="form-text text-muted">해당 아이디는 존재하지 않습니다.</small>
+					<small id="Id" class="form-text text-muted"><label class="loginHelp">해당 아이디는 존재하지 않습니다.</label></small>
 					</c:if>
 			</div>
 			<div class="form-group">
 				<label for="Password">Password</label> 
 				<input type="password" class="form-control" id="Password" required="required" name="password" placeholder="input your password"> 
 					<c:if test="${errors.password}">
-					<small id="Id" class="form-text text-muted">공백은 허용하지 않습니다.</small>
+					<small id="Id" class="form-text text-muted"><label class="loginHelp">공백은 허용하지 않습니다.</label></small>
 					</c:if>
 					<c:if test="${errors.passwordNotMatch}">
-					<small id="Id" class="form-text text-muted">비밀번호가 일치하지 않습니다.</small>
+					<small id="Id" class="form-text text-muted"><label class="loginHelp">비밀번호가 일치하지 않습니다.</label></small>
 					</c:if>
 			</div>
 			

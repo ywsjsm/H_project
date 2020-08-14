@@ -106,8 +106,8 @@ $(function() {
 <body>
 <div class="container-fluid" id="Navar">
 
-	<nav class="navbar navbar-expand-lg navbar-dark">
-		<a class="navbar-brand" href="${contextPath}"><b> [H_Project]
+	<nav id="naverTotal" class="navbar navbar-expand-lg navbar-dark">
+		<a class="navbar-brand" href="${contextPath}"><b><label class="navbarFont">H - PROjECT</label>
 		</b></a>
 		<button class="navbar-toggler"  type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
@@ -119,20 +119,20 @@ $(function() {
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a class="nav-link"
-					href="${contextPath}/list/animal.do">동물 <span class="sr-only">(current)</span></a>
+					href="${contextPath}/list/animal.do"><label class="navbarFont">동물</label> <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item"><a class="nav-link"
-					href="${contextPath}/list/music.do">음악</a></li>
+					href="${contextPath}/list/music.do"><label class="navbarFont">음악</label></a></li>
 				<li class="nav-item"><a class="nav-link"
-					href="${contextPath}/list/moters.do">자동차</a></li>
+					href="${contextPath}/list/moters.do"><label class="navbarFont">자동차</label></a></li>
 
 
 				<li class="nav-item"><a class="nav-link"
-					href="${contextPath}/signUp.do" tabindex="-1" aria-disabled="true">회원가입</a>
+					href="${contextPath}/signUp.do" tabindex="-1" aria-disabled="true"><label class="navbarFont">회원가입</label></a>
 					<!-- disabled --></li>
 				<c:if test="${empty sessionScope.userInfo}">
 					<li class="nav-item"><a class="nav-link"
-						href="${contextPath}/login.do" tabindex="-1" aria-disabled="true">로그인</a>
+						href="${contextPath}/login.do" tabindex="-1" aria-disabled="true"><label class="navbarFont">로그인</label></a>
 						<!-- disabled --></li>
 				</c:if>
 				<c:if test="${not empty sessionScope.userInfo}">
@@ -157,7 +157,7 @@ $(function() {
 				<input class="form-control mr-sm-2" type="search" id="search"
 					name="find" placeholder="글찾기" aria-label="글찾기">
 				<button class="btn btn-outline-black my-2 my-sm-0" type="submit"
-					id="btnFound">글찾기</button>
+					id="btnFound"><label class="navbarFont">글찾기</label></button>
 			</form>
 			</div>
 		</div>
