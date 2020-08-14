@@ -29,15 +29,16 @@
 	margin-bottom: 0px;
 	-webkit-line-clamp: 3;
 	-webkit-box-orient: vertical;
-  	text-overflow: ellipsis; 
- 	display: -webkit-box;  
+	text-overflow: ellipsis;
+	display: -webkit-box;
 }
 
-.title-overFlow{
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.title-overFlow {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
+
 .card-body {
 	padding: 5px;
 }
@@ -57,14 +58,20 @@ hr#hr1 {
 	margin-bottom: 0px;
 }
 
-#background{
-			position: absolute;
-			z-index: -99;
-			top: 0;
-			left: 0;
-			opacity: 0.9;
-			background-size: contain; 
-		}
+#background {
+	position: absolute;
+	z-index: -99;
+	top: 0;
+	left: 0;
+	opacity: 0.9;
+	background-size: contain;
+}
+
+#developers {
+	position: absolute;
+	bottom: 0;
+	color: white;
+}
 </style>
 
 <title>전체 게시물</title>
@@ -76,13 +83,10 @@ hr#hr1 {
 			<video src="${contextPath }/video/Boat - 44549.mp4" muted="muted"
 				autoplay="autoplay" loop="loop"></video>
 		</div>
-
+		<c:if test="${empty articlePage.content }">
+			<b style="color: white;">작성 된 글이 없습니다, 첫 글의 주인공이 되어보세요!</b>
+		</c:if>
 		<c:forEach var="article" items="${articlePage.content }">
-			<c:if test="${empty article}">
-				<div class="row">
-					<h5>작성 된 글이 없습니다, 첫 글의 주인공이 되어보세요!</h5>
-				</div>
-			</c:if>
 			<c:if test="${not empty article }">
 				<div class="row my-underline" id="articles"
 					style="margin-left: 20%; margin-Right: 20%; text-align: left;">
@@ -97,18 +101,23 @@ hr#hr1 {
 							<div class="col-md-9 card-body border rounded"
 								style="height: 150px; background-color: rgba(255, 255, 255, 0.7);">
 								<div class="d-flex justify-content-between">
-									<small style="color: FF3399; float: right;"><b><i>Category : <tc:categoryNumConvert categoryNum="${article.categoryNum }" /></i></b></small>
-					 		<a role="button" href="" class="btn btn-success btn-sm" style="margin-right: 1.1%; margin-bottom: 1px;"> 조회수<span
+									<small style="color: FF3399; float: right;"><b><i>Category
+												: <tc:categoryNumConvert
+													categoryNum="${article.categoryNum }" />
+										</i></b></small> <a role="button" href="" class="btn btn-success btn-sm"
+										style="margin-right: 1.1%; margin-bottom: 1px;"> 조회수<span
 										class="badge badge-light">${article.readCount }</span>
 									</a>
 								</div>
 								<hr id="hr1" />
-								<h5 class="card-title title-overFlow" id="title" style="margin-bottom: 0px;">${article.title }</h5>
+								<h5 class="card-title title-overFlow" id="title"
+									style="margin-bottom: 0px;">${article.title }</h5>
 								<p class="card-text text-overFlow" id="content">${article.content }</p>
 
-								<a href="${contextPath }/read.do?no=${article.boardNum}" class="stretched-link"></a> 									
-									<small style="color: gray; margin-left:10px; margin-top: 10px;"><b><i>-Author:${article.userId } </i></b></small>
-									<small style="color: #0B3861; float: right;">-${article.regdate }</small>
+								<a href="${contextPath }/read.do?no=${article.boardNum}"
+									class="stretched-link"></a> <small
+									style="color: gray; margin-left: 10px; margin-top: 10px;"><b><i>-Author:${article.userId }
+									</i></b></small> <small style="color: #0B3861; float: right;">-${article.regdate }</small>
 							</div>
 						</div>
 					</div>

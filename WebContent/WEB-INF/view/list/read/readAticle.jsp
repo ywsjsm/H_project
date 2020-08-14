@@ -24,6 +24,11 @@ if(${checkPw}==true){
 </script>
 
 <style>
+#developers{
+			position: absolute;
+			bottom: 0;
+			color: white;
+		}
 #background{
 			position: absolute;
 			z-index: -99;

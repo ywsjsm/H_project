@@ -13,7 +13,9 @@
 							<a class="page-link" href="${contextPath }/read.do?no=${boardNo}&compageNo=${CommentPage.startPage - 3 }">Previous</a></li>
 					</c:if>
 					<c:forEach var="pNo" begin="${CommentPage.startPage }" end="${CommentPage.endPage }">
+					<c:if test="${CommentPage.total > 0 }">
 						<li class="page-item"><a class="page-link" href="${contextPath }/read.do?no=${boardNo}&compageNo=${pNo }">${pNo }</a></li>
+					</c:if>
 					</c:forEach>
 					<c:if test="${CommentPage.endPage < CommentPage.totalPages }">
 						<li class="page-item">

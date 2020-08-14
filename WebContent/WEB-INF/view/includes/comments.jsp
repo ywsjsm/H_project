@@ -30,6 +30,9 @@ function deletecheck() {
 </c:if>
 
 <!--  -->
+<c:if test="${empty CommentPage.content }">
+	<b>👍첫 댓글의 주인공이 되어주세요!</b>
+</c:if>
 <c:forEach var="Comment" items="${CommentPage.content }">
 	<form name ="deleteform" id="deleteform" action="${contextPath}/comment/delete.do" method="post">
 	<input name="checkPW" id="checkPW" type="text" hidden="true" value="" />
