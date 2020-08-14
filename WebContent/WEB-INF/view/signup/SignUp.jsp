@@ -14,8 +14,15 @@
 <%--  <script src='<c:url value='/js/head.js' />'></script>   --%>
 
 <style type="text/css">
+#developers{
+position: absolute;
+bottom: 0;
+}
 	#signup{
 		margin-left: 30%;
+	}
+	#btnSignUp{
+		position: relative;
 	}
 	#background{
 			position: absolute;
@@ -34,26 +41,77 @@
 	.help{
 		color: orange;
 	}
+	body {
+	 overflow:hidden;
+	 }
+	 
 </style>
 <title>SignUp</title>
 </head>
 <body>
  <script type="text/javascript">
  $(function(){
-	 var check  = new Array();  
- $('#btnSignUp').mouseenter(function() {
+	
+	setInterval(checkForm, 1000);
+/* 	 var check  = new Array();  
+  $('#btnSignUp').mouseenter(function() {
 	 $('#btnSignUp').attr("class", 'btn btn-outline-warning');
-	 check.push($('#inputEmail').val());
+	 if($('#inputEmail').val().trim().length > 0){			 
+		 check.push($('#inputEmail').val());//<<
+			 }
 	 $('input:text').each(function(i, element) {
-	 	check.push($(element).val());
+		 if($(element).val().trim().length > 0){			 
+	 	check.push($(element).val());//<<
+		 }
 	 });
-	/* check += $('#inputEmail').val(); */
 	 $('input:password').each(function(i, element) {
-		 	check.push($(element).val());
+		 if($(element).val().trim().length > 0){			 
+			 check.push($(element).val());//<<
+				 }
 		 });
-	 console.log(check.toString());
- });
+	 console.log($(check).length);
+	 
+	
+ });  */
+ function checkForm(){
+	 var check  = new Array();  
+		 $('#btnSignUp').attr("class", 'btn btn-outline-warning');
+		 if($('#inputEmail').val().trim().length > 0){			 
+			 check.push($('#inputEmail').val());//<<
+				 }
+		/*  check.push($('#inputEmail').val()); */
+		 $('input:text').each(function(i, element) {
+			 if($(element).val().trim().length > 0){			 
+		 	check.push($(element).val());//<<
+			 }
+		 });
+		/*  ------- */
+		/* check += $('#inputEmail').val(); */
+		 $('input:password').each(function(i, element) {
+			 if($(element).val().trim().length > 0){			 
+				 check.push($(element).val());//<<
+					 }/* 
+			 	check.push($(element).val()); */
+			 });
+		console.log($(check).length);
+			if($(check).length == 5){
+			//	var obj = $('<i class="far fa-address-card fa-spin fa-fw"></i>');// fa-spin fa-fw
+			$('#card').attr("class", "far fa-address-card fa-spin fa-fw");
+			//버튼 애니메이션 구현
+			$('#btnSignUp').animate({
+				left:'+=10px'
+			},200);
+			$('#btnSignUp').animate({
+				left:'-=20px'
+			},200);
+			$('#btnSignUp').animate({
+				left:'+=10px'
+			},200);
+		}else{
+			$('#card').attr("class", "far fa-address-card");
+		}
 
+ }
  
  $('#btnSignUp').mouseout(function() {
 	 $('#btnSignUp').attr("class", 'btn btn-outline-secondary');
@@ -128,6 +186,7 @@
     </div>
   </div>
   <button type="button" class="btn btn-outline-secondary" id="btnSignUp">Sign in</button>
+&nbsp;&nbsp;&nbsp; <i class="far fa-address-card" id="card"></i>
 </form>
   
   </div>

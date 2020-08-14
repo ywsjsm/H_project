@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- css -->
 <script src='<c:url value='/js/head.js' />'></script>
 	<style type="text/css">
 		.backgorund{
@@ -70,7 +71,9 @@
 	#mainBtn:hover{
 		color: black;
 	}
-	
+	 body {
+	 overflow:hidden;
+	 }
 	</style>
 <title>메인 페이지</title>
 </head>
