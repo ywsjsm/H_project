@@ -63,6 +63,8 @@ public class WithDrawalController implements Controller{
 		if(!errors.isEmpty()) {
 			return VIEW_CODE;
 		}
+		HttpSession session =request.getSession();
+		session.invalidate();
 		  return VIEW_REDIRECT;
 	}
 	

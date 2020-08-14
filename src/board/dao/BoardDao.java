@@ -26,7 +26,7 @@ public class BoardDao {
 	/*JSON Parse Data */
 	public List<String> selectTotalTitleData(){
 		ArrayList<String> list = new ArrayList<>();
-		final String sql = "SELECT title FROM board";
+		final String sql = "SELECT title FROM board where userNo Not in (select userNo from withdrawaluser)";
 		try(Connection con= ConnectionProvider.getConnection(); Statement stmt = con.createStatement()
 				;  ResultSet rs = stmt.executeQuery(sql)){
 			while(rs.next()) {

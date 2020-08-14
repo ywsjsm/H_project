@@ -19,11 +19,7 @@
 		.container-fluid{
             background-color: rgb(rgba(255, 0, 0, 0), rgba(0, 128, 0, 0), rgba(0, 0, 255, 0));
         }
-		#developers{
-			position: absolute;
-			bottom: 0;
-			color: white;
-		}
+
 		.row.mainText{
 			position: fixed;
 			left: 30%;

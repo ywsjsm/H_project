@@ -189,7 +189,7 @@
 				<input type="checkbox" class="form-check-input" id="RemeberId" name="rememberId" required="required"> 
 				<label class="form-check-label" for="RemeberId">Remember my Id</label>
 			</div>
-			<button type="button" class="btn btn-outline-primary" id="loginBtn">Login</button>
+			<button type="button" class="btn btn-outline-warning" id="loginBtn">Login</button>
 		</form>
 
 	</div>

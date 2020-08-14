@@ -65,7 +65,29 @@ hr#hr1 {
 			opacity: 0.9;
 			background-size: contain; 
 		}
+		#noArtilceCard{
+			opacity: 0.6;
+			display: none;
+			margin: auto;
+			position: relative;
+			top: 0;
+			left: -400px;
+		}
 </style>
+<script type="text/javascript">
+	$(function(){
+		$('#noArtilceCard').slideToggle(1500,function(){
+			$('#noArtilceCard').animate({left: '45%'}, 1000,function(){
+				$('#noArtilceCard').css('opacity', '1.0');
+				setTimeout(function() {
+					$('#noArtilceBtn').attr('class', 'btn btn-warning');
+				},250);
+			});
+			
+		});
+	});
+
+</script>
 
 <title>전체 게시물</title>
 </head>
@@ -77,12 +99,23 @@ hr#hr1 {
 				autoplay="autoplay" loop="loop"></video>
 		</div>
 
-		<c:forEach var="article" items="${articlePage.content }">
-			<c:if test="${empty article}">
-				<div class="row">
-					<h5>작성 된 글이 없습니다, 첫 글의 주인공이 되어보세요!</h5>
+			<c:if test="${empty articlePage.content}">
+				<div class="row" id="noArtilceCard">
+				<div >
+					
+				<div class="card" style="width: 18rem;" id="">
+  <img src="<c:url value='/image/writeArticle.jpg' />" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h6 class="card-title">(●'◡'●)</h6>
+    <p class="card-text">작성 된 글이 없습니다, 첫 글의 주인공이 되어보세요!</p>
+    <a href="${contextPath }/write.do" class="btn btn-outline-warning" id="noArtilceBtn">작성하겠습니다 :)</a>
+  </div>
+</div>
+				
+					</div>
 				</div>
 			</c:if>
+		<c:forEach var="article" items="${articlePage.content }">
 			<c:if test="${not empty article }">
 				<div class="row my-underline" id="articles"
 					style="margin-left: 20%; margin-Right: 20%; text-align: left;">
