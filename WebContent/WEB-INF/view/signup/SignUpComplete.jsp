@@ -28,10 +28,7 @@
 
 		
 	});
-	$('.parallax-window').parallax({
-		imageSrc: '${contextPath }/image/스프링.jpg',
-		imageSrc: '${contextPath }/image/MySQL.jpg''
-		});
+	
 	</script>
 	
 	<style type="text/css">
