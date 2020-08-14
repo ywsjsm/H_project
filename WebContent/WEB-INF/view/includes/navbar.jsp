@@ -106,7 +106,7 @@ $(function() {
 <body>
 <div class="container-fluid" id="Navar">
 
-	<nav id="naverTotal" class="navbar navbar-expand-lg navbar-dark">
+	<nav id="naverTotal" class="navbar navbar-expand-lg navbar-dark" >
 		<a class="navbar-brand" href="${contextPath}"><b><label class="navbarFont">H - PROjECT</label>
 		</b></a>
 		<button class="navbar-toggler"  type="button" data-toggle="collapse"

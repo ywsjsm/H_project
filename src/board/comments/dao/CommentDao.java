@@ -20,11 +20,12 @@ public class CommentDao {
 
 		PreparedStatement pstmt = null;
 		try {
-			pstmt = conn.prepareStatement("INSERT INTO comment (Board_no, userId, content, userPw) VALUES (?, ?, ?, ?)");
+			pstmt = conn.prepareStatement("INSERT INTO comment (Board_no, userId, content, userPw,user_no) VALUES (?, ?, ?, ?,?)");
 			pstmt.setInt(1, boardno);
 			pstmt.setString(2, user.getUserId());
 			pstmt.setString(3, req.getContent());
 			pstmt.setString(4, user.getPassword());
+			pstmt.setInt(5, user.getUserNo());
 			pstmt.executeUpdate();
 
 		} finally {
@@ -37,7 +38,7 @@ public class CommentDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		final String sql = "SELECT * FROM comment where board_no=? ORDER BY reply_no DESC LIMIT ?, ?";
+		final String sql = "SELECT * FROM comment where user_no Not in (select userNo from withdrawaluser) and board_no=? ORDER BY reply_no DESC LIMIT ?, ?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, boardno);
@@ -66,7 +67,7 @@ public class CommentDao {
 
 		try {
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("SELECT count(*) FROM comment where board_no= "+boardno);
+			rs = stmt.executeQuery("SELECT count(*) FROM comment where (user_no Not in (select userNo from withdrawaluser)) and board_no= "+boardno);//추후 확인 요망.
 			if (rs.next()) {
 				return rs.getInt(1);
 			}

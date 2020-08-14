@@ -6,7 +6,7 @@
 	<div class="row">
 		<c:if test="${not empty sessionScope.userInfo}">
 			<div class="col">
-				<a class="btn btn-outline-info" style="width: 100px"
+				<a class="btn btn-outline-warning" style="width: 100px"
 					href="${contextPath}/write.do?" role="button">Writing</a>
 			</div>
 		</c:if>

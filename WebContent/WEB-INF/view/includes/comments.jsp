@@ -40,7 +40,9 @@ function deletecheck() {
 					<input name="commentNo" type="text" hidden="true" value="${Comment.reply_no }" />
 					<!-- 해당버튼은 유저아이디와 개시한 댓글 아이디가 같은 경우 사용  댓글 작성자 정보 와 세션 유저 번호가 같으면 활성-->
 					<input type="text" hidden="true" name="no" value="${boardNo}"/>
+					<c:if test="${not empty sessionScope.userInfo and sessionScope.userInfo.userId eq boardInfo.userId }">
 					<button type="button" onclick="deletecheck()" class="btn btn-danger btn-sm" style="width: 70px;">Delete</button>
+					</c:if>
 				</div>
 			</div>
 		</div>

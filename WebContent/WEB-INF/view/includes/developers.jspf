@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+    <style>
+#developers{
+			position: absolute;
+			bottom: 0;
+			color: white;
+		}
+</style>
     
    <div  class="container-fluid" id="developers">
     <hr />
