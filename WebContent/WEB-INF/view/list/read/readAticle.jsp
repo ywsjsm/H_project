@@ -21,53 +21,61 @@ if(${checkPw}==true){
 	alert("삭제 완료");
 	
 }
-
 </script>
+
+<style>
+#background{
+			position: absolute;
+			z-index: -99;
+			top: 0;
+			left: 0;
+			opacity: 0.9;
+			background-size: contain; 
+		}
+</style>
 <c:set var="checkPw" value="false" scope="session"/>
 <title>게시물 보기</title>
 </head>
 <body>
-	<div class="container border">
+	<div class="border rounded" style="background-color: rgba(255, 255, 255, 0.7); margin-left: 20%; margin-right: 20%;">
+	<div id="background">
+			<video src="${contextPath }/video/Ocean - 36589.mp4" muted="muted"
+				autoplay="autoplay" loop="loop"></video>
+		</div>
 		<div class="row d-flex justify-content-between">
 		<div class="col">
 			<h5>
 			<br />
-				<b> <i>Title : ${boardInfo.title }</i></b>
+				<b style="margin-left: 10px"> <i>Title : ${boardInfo.title }</i></b>
 			</h5>
 			</div>
-			<div class="justify-content-end">
+			<div>
 				<h5>
 			<br />
-				<figcaption class="figure-caption" style="font-size: small; font-style: oblique; margin-right:25px; font-weight: bold; font-size: medium;">- Category : <category:categoryNumConvert categoryNum="${boardInfo.categoryNo}"/></figcaption>
+				<small style="color: FF3399; margin-right:20px;"><i><b>- Category : <category:categoryNumConvert categoryNum="${boardInfo.categoryNo}"/></b></i></small>
 			</h5>
 			</div>
 		</div>
 		
-		
-		
-		<hr  class="border"/>
+		<hr  class="border" style="margin-bottom: 2px"/>
 		<div class="row">
-		<div class="col d-flex justify-content-center" style="margin-bottom: -5px; padding-bottom: 0px;padding-top: 10px;margin-top: -5px">
-			<h6>
-				<b> <i> Author : ${boardInfo.userId }</i></b>
-			</h6>
+		<div class="col" style="float: right;">
+			<small style="float: right;"><b> <i> Author : ${boardInfo.userId }</i></b></small>
 		</div>
-		<div class="d-flex justify-content-sm-end" style="margin-bottom: 0px;">
+		<div class="d-flex justify-content-sm-end" style="margin-bottom: 0px; margin-right: 15px">
 			<a role="button" href="" class="col btn btn-success btn-sm" style="margin-right: 1.1% width: 50px; margin-right: 10px;">
   									조회수<span class="badge badge-light">${boardInfo.readCount }</span>
 									</a>
 		</div>
 		</div>
-		
-		<hr />
-		<div class="row" style="white-space: pre-wrap;">
-		
+		<div class="row">
+		<div class="d-flex justify-content-center" style="margin-left:auto; margin-right:auto; margin-top: 0px; margin-bottom: 0px">
 		<figure class="figure">
-  <img src="/image/${boardInfo.userNo }/${boardInfo.boardNo }/${boardInfo.imageName }" class="figure-img img-fluid rounded" alt="..." style="max-height: 255px;max-width: 255px">
+  <img src="/image/${boardInfo.userNo }/${boardInfo.boardNo }/${boardInfo.imageName }" class="figure-img img-fluid rounded" alt="..." style="max-width: 255px; max-height: 255px">
   <figcaption class="figure-caption" style="font-size: small; font-style: italic;"> -Uploaded : <convertTime:ConversionLocalDataTime dateTime="${boardInfo.regdate}"/></figcaption>
-</figure>
-			<p>${boardInfo.content }</p>		
+</figure></div>		
 		</div>
+		<div class="d-flex justify-content-center" style="margin: auto;"><p>${boardInfo.content }</p></div>
 		<div class="row">
 		<c:if test="${not empty sessionScope.userInfo and sessionScope.userInfo.userId eq boardInfo.userId }">
 			<div class="col d-flex justify-content-start">

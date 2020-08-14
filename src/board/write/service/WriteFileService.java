@@ -12,7 +12,7 @@ import user.model.User;
 
 public class WriteFileService {
 
-	public void write(Part part,WriteRequest req , User user, int boardNo) {
+	public void write(Part part, User user, int boardNo) {
 		String path = "C:/image/"+user.getUserNo()+"/"+boardNo;
 		System.out.println("생성될 경로 : "+path);
 		File file = new File(path);
@@ -26,6 +26,15 @@ public class WriteFileService {
 			part.write(path + "/" + part.getSubmittedFileName());
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	public void delete(Part part, User user, int boardNo) {
+		String path = "C:/image/"+user.getUserNo()+"/"+boardNo;
+		File file = new File(path);
+		
+		if (file.exists() ) {
+			file.delete();
 		}
 	}
 	
