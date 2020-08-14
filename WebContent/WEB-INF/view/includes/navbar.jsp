@@ -118,8 +118,11 @@ $(function() {
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
+			<li class="nav-item" id="Notice"><a class="nav-link"
+					href="${contextPath}/main/notice.do"><label class="navbarFont">Notice</label><span class="sr-only">(current)</span> </a>
+				</li>
 				<li class="nav-item"><a class="nav-link"
-					href="${contextPath}/list/animal.do"><label class="navbarFont">동물</label> <span class="sr-only">(current)</span></a>
+					href="${contextPath}/list/animal.do"><label class="navbarFont">동물</label> </a>
 				</li>
 				<li class="nav-item"><a class="nav-link"
 					href="${contextPath}/list/music.do"><label class="navbarFont">음악</label></a></li>
@@ -145,21 +148,25 @@ $(function() {
 					</li>
 					<li class="nav-item"><a class="nav-link" href="#" tabindex="-1"
 					aria-disabled="true"> </a> <!-- clock --></li>
-				<li class="nav-item"><a class="nav-link" href="#" tabindex="-1"
-					aria-disabled="true" > 현재 시간 </a> <!-- clock --></li>
+				<li class="nav-item"><a class="nav-link" href="${contextPath }" tabindex="-1"
+					aria-disabled="true" > 현재 시간 </a><!-- clock --></li>
 					<li class="nav-item"><a class="nav-link" href="#" tabindex="-1"
-					aria-disabled="true" id="clock">00::00:00</a> <!-- clock --></li>
+					aria-disabled="false" id="clock" >00::00:00</a> <!-- clock --></li>
 
 			</ul>
 			<div class="ui-widget">
+			<div class="col">
 			<form class="form-inline my-2 my-lg-0" id="searchForm"
 				action="${contextPath }/selectPart.do" method="post">
+				
+				
 				<input class="form-control mr-sm-2" type="search" id="search"
 					name="find" placeholder="글찾기" aria-label="글찾기">
 				<button class="btn btn-outline-black my-2 my-sm-0" type="submit"
 					id="btnFound"><label class="navbarFont">글찾기</label></button>
 			</form>
 			</div>
+		</div>
 		</div>
 	</nav>
 </div>

@@ -15,15 +15,42 @@
 	src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js'></script>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <title>게시글 작성</title>
+<style>
+#background{
+	position: absolute;
+	z-index: -99;
+	top: 0;
+	left: 0;
+	opacity: 1;
+	width:100vw;
+	height:100vh;
+	background-image:url('${contextPath}/viewImage/modifyImage/pencil.jpg');
+	background-size: cover; 
+}
+#modifyForm{
+	opacity: 0.8;
+}
+</style>
+<script type="text/javascript">
+	$(function(){
+		$('#naverTotal').attr('class', 'navbar navbar-expand-lg navbar-light');
+		
+		$('.ui-widget').mouseenter(function(event) {
+			$('#btnFound').attr('class', 'btn btn-outline-warning my-2 my-sm-0');
+		});
+	});
+</script>
 </head>
 <body>
-	<div class="container">
-		<div class="row justify-content-center">
-			<h5>
-				<i>Writing your Infomations! :)</i>
-			</h5>
+	<div class="container-fluid" >
+	<div id="background">
 		</div>
 		<div class="row justify-content-center">
+			<h5>
+				<i>Writing your Informations! :)</i>
+			</h5>
+		</div>
+		<div class="row justify-content-center" id="modifyForm">
 			<form action="" method="post" style="width: 500px;" enctype="multipart/form-data">
 				<div class="form-group">
 					<label for="Title">Category</label>

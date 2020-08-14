@@ -11,7 +11,6 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-
 import board.delete.model.DeleteArticleRequest;
 import board.modify.model.ModifyArticleRequest;
 import board.read.model.readBoardInfo;
@@ -22,43 +21,43 @@ import jdbc.JdbcUtil;
 import user.model.User;
 
 public class BoardDao {
-	
-	/*JSON Parse Data */
-	public List<String> selectTotalTitleData(){
+
+	/* JSON Parse Data */
+	public List<String> selectTotalTitleData() {
 		ArrayList<String> list = new ArrayList<>();
 		final String sql = "SELECT title FROM board where userNo Not in (select userNo from withdrawaluser)";
-		try(Connection con= ConnectionProvider.getConnection(); Statement stmt = con.createStatement()
-				;  ResultSet rs = stmt.executeQuery(sql)){
-			while(rs.next()) {
+		try (Connection con = ConnectionProvider.getConnection();
+				Statement stmt = con.createStatement();
+				ResultSet rs = stmt.executeQuery(sql)) {
+			while (rs.next()) {
 				list.add(rs.getString(1));
 			}
-			return list;			
-		}catch(Exception e) {
+			return list;
+		} catch (Exception e) {
 			e.printStackTrace();
 			return Collections.<String>emptyList();
 		}
 	}
-	
-	public void deleteArticle(Connection con, DeleteArticleRequest req) throws RuntimeException{
-		final String sql ="DELETE FROM board WHERE board_no=?";
-		try(PreparedStatement pstmt = con.prepareStatement(sql)){
+
+	public void deleteArticle(Connection con, DeleteArticleRequest req) throws RuntimeException {
+		final String sql = "DELETE FROM board WHERE board_no=?";
+		try (PreparedStatement pstmt = con.prepareStatement(sql)) {
 			pstmt.setInt(1, req.getBoardNo());
 			pstmt.executeUpdate();
-		}catch(Exception e) {
+		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}
-		
-	
+
 	public int selectBoardNo(Connection con) {
 		ResultSet rs = null;
-		try(Statement stmt = con.createStatement()){
+		try (Statement stmt = con.createStatement()) {
 			rs = stmt.executeQuery("select max(last_insert_id(board_no)) from board");
-			if(rs.next()) {
+			if (rs.next()) {
 				return rs.getInt(1);
 			}
 			return 0;
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return 0;
 		}
@@ -84,16 +83,16 @@ public class BoardDao {
 			JdbcUtil.close(pstmt);
 		}
 	}
-	
-	public List<totalRequest> selectPartList(Connection conn, int startRow, int size, String find ) throws SQLException {
+
+	public List<totalRequest> selectPartList(Connection conn, int startRow, int size, String find) throws SQLException {
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
-			final String sql ="SELECT * FROM board where userNo Not in (select userNo from withdrawaluser) AND title LIKE ? ORDER BY board_no DESC LIMIT ?, ?";
+
+		final String sql = "SELECT * FROM board where userNo Not in (select userNo from withdrawaluser) AND title LIKE ? ORDER BY board_no DESC LIMIT ?, ?";
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "%"+find+"%");
+			pstmt.setString(1, "%" + find + "%");
 			pstmt.setInt(2, startRow);
 			pstmt.setInt(3, size);
 
@@ -108,14 +107,13 @@ public class BoardDao {
 			JdbcUtil.close(rs, pstmt);
 		}
 	}
-	
 
 	public List<totalRequest> selectList(Connection conn, int startRow, int size) throws SQLException {
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
-			final String sql ="SELECT * FROM board where userNo Not in (select userNo from withdrawaluser) ORDER BY board_no DESC LIMIT ?, ?";
+
+		final String sql = "SELECT * FROM board where userNo Not in (select userNo from withdrawaluser) ORDER BY board_no DESC LIMIT ?, ?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, startRow);
@@ -134,8 +132,9 @@ public class BoardDao {
 	}
 
 	private totalRequest convertTotalRequest(ResultSet rs) throws SQLException {
-		return new totalRequest(rs.getInt(1), rs.getString("title"), rs.getString("content"),rs.getInt(4), rs.getString("imageName"),
-				rs.getString(7), toDate(rs.getTimestamp("regdate")),rs.getInt(9),rs.getInt(10));
+		return new totalRequest(rs.getInt(1), rs.getString("title"), rs.getString("content"), rs.getInt(4),
+				rs.getString("imageName"), rs.getString(7), toDate(rs.getTimestamp("regdate")), rs.getInt(9),
+				rs.getInt(10));
 	}
 
 	private Date toDate(Timestamp timestamp) {
@@ -148,7 +147,8 @@ public class BoardDao {
 
 		try {
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("SELECT count(*) FROM board where userNo Not in (select userNo from withdrawaluser) ORDER BY board_no DESC");
+			rs = stmt.executeQuery(
+					"SELECT count(*) FROM board where userNo Not in (select userNo from withdrawaluser) ORDER BY board_no DESC");
 			if (rs.next()) {
 				return rs.getInt(1);
 			}
@@ -158,14 +158,35 @@ public class BoardDao {
 			JdbcUtil.close(rs, stmt);
 		}
 	}
-	
+
+	public int selectCount(Connection conn, String find) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			final String sql = "SELECT count(*) FROM board where userNo Not in (select userNo from withdrawaluser) and title like ?  ORDER BY board_no DESC";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + find + "%");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				return rs.getInt(1);
+			}
+
+			return 0;
+		} finally {
+			JdbcUtil.close(rs, pstmt);
+		}
+	}
+
 	public int selectCateCount(Connection conn, int cateNum) throws SQLException {
 		Statement stmt = null;
 		ResultSet rs = null;
 
 		try {
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("SELECT count(*) FROM board where userNo Not in (select userNo from withdrawaluser) AND category_no = " + cateNum);
+			rs = stmt.executeQuery(
+					"SELECT count(*) FROM board where userNo Not in (select userNo from withdrawaluser) AND category_no = "
+							+ cateNum);
 			if (rs.next()) {
 				return rs.getInt(1);
 			}
@@ -175,7 +196,6 @@ public class BoardDao {
 			JdbcUtil.close(rs, stmt);
 		}
 	}
-	
 
 	public readBoardInfo SelectbyBoardId(Connection conn, int boardNo) throws SQLException {
 		PreparedStatement pstmt = null;
@@ -198,32 +218,30 @@ public class BoardDao {
 	}
 
 	private readBoardInfo convertToBoardInfo(ResultSet rs) throws SQLException {
-		return new readBoardInfo(
-				rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),
-				rs.getString(6),rs.getString(7),rs.getTimestamp(8).toLocalDateTime(),rs.getInt(9),rs.getInt(10)
-				);
+		return new readBoardInfo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),
+				rs.getString(6), rs.getString(7), rs.getTimestamp(8).toLocalDateTime(), rs.getInt(9), rs.getInt(10));
 	}
-	
+
 	public void SelectbyCategory(Connection conn, int CateNo) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		pstmt = conn.prepareStatement("select * from board where category_no = ?");
 		pstmt.setInt(1, CateNo);
 		rs = pstmt.executeQuery();
-		
-		if(rs.next()) {
-			
+
+		if (rs.next()) {
+
 		}
-		
+
 	}
-	
+
 	public List<totalRequest> selectCateList(Connection conn, int startRow, int size, int cateNum) throws SQLException {
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
-			final String sql ="SELECT * FROM board where userNo Not in (select userNo from withdrawaluser) AND category_no = ? ORDER BY board_no DESC LIMIT ?, ?";
+
+		final String sql = "SELECT * FROM board where userNo Not in (select userNo from withdrawaluser) AND category_no = ? ORDER BY board_no DESC LIMIT ?, ?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, cateNum);
@@ -242,9 +260,9 @@ public class BoardDao {
 		}
 	}
 
-	public void update(Connection con, ModifyArticleRequest req, User user) throws RuntimeException{
-		final String sql ="update board set category_no=?,title=?, content=?, imageName=? where board_no =?";
-		try(PreparedStatement pstmt = con.prepareStatement(sql)){
+	public void update(Connection con, ModifyArticleRequest req, User user) throws RuntimeException {
+		final String sql = "update board set category_no=?,title=?, content=?, imageName=? where board_no =?";
+		try (PreparedStatement pstmt = con.prepareStatement(sql)) {
 			con.setAutoCommit(false);
 			pstmt.setInt(1, req.getCategoryNo());
 			pstmt.setString(2, req.getTitle());
@@ -253,7 +271,7 @@ public class BoardDao {
 			pstmt.setInt(5, req.getBoardNo());
 			pstmt.executeUpdate();
 			con.commit();
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			try {
 				con.rollback();
 			} catch (SQLException e1) {
@@ -263,35 +281,31 @@ public class BoardDao {
 		}
 	}
 
-
 	public void increaseReadCount(int boardNo) {
 		System.out.println("================================");
-		System.out.println("조회수 증가 로직 실행 할 보드 PK : "+boardNo);
+		System.out.println("조회수 증가 로직 실행 할 보드 PK : " + boardNo);
 		System.out.println("================================");
 		final String sql = "UPDATE board SET readCount = readCount+1 WHERE board_no = ? ";
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		try{
-			 con = ConnectionProvider.getConnection(); 
-			pstmt =con.prepareStatement(sql); 
+		try {
+			con = ConnectionProvider.getConnection();
+			pstmt = con.prepareStatement(sql);
 			con.setAutoCommit(false);
-			
-			
+
 			pstmt.setInt(1, boardNo);
 			pstmt.executeUpdate();
 			con.commit();
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			try {
 				con.rollback();
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
-		}finally {
-			JdbcUtil.close(pstmt,con);
+		} finally {
+			JdbcUtil.close(pstmt, con);
 		}
 	}
 
-
-	
 }

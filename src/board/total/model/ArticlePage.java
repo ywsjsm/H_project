@@ -2,6 +2,9 @@ package board.total.model;
 
 import java.util.List;
 
+import lombok.ToString;
+
+@ToString
 public class ArticlePage {
 	private int total;
 	private int currentPage;
@@ -9,12 +12,12 @@ public class ArticlePage {
 	private int totalPages;
 	private int startPage;
 	private int endPage;
-	
+
 	public ArticlePage(int total, int currentPage, int size, List<totalRequest> content) {
 		this.total = total;
 		this.currentPage = currentPage;
 		this.content = content;
-		
+
 		if (total == 0) {
 			totalPages = 0;
 			startPage = 0;
@@ -24,45 +27,45 @@ public class ArticlePage {
 			if (total % size > 0) {
 				totalPages++;
 			}
-			
-			startPage = (currentPage-1) / 5 * 5 + 1;
-			
+
+			startPage = (currentPage - 1) / 5 * 5 + 1;
+
 			endPage = startPage + 4;
-			endPage = Math.min(endPage, totalPages);			
-			
+			endPage = Math.min(endPage, totalPages);
+
 		}
 	}
-	
+
 	public int getTotal() {
 		return total;
 	}
-	
+
 	public boolean hasNoArticles() {
 		return total == 0;
 	}
-	
+
 	public boolean hasArticles() {
 		return total > 0;
 	}
-	
+
 	public int getCurrentPage() {
 		return currentPage;
 	}
-	
+
 	public int getTotalPages() {
 		return totalPages;
 	}
-	
+
 	public List<totalRequest> getContent() {
 		return content;
 	}
-	
+
 	public int getStartPage() {
 		return startPage;
 	}
-	
+
 	public int getEndPage() {
 		return endPage;
 	}
-	
+
 }
