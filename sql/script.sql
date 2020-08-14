@@ -20,6 +20,7 @@ CREATE TABLE `comment` (
   `userId` varchar(255) DEFAULT NULL,
   `content` varchar(255) DEFAULT NULL,
   `userPw` varchar(255) DEFAULT NULL,
+  `user_no` varchar(255) NOT NULL,
   PRIMARY KEY (`reply_no`),
   KEY `comment_ibfk_1` (`Board_no`),
   CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`Board_no`) REFERENCES `board` (`board_no`) ON DELETE CASCADE ON UPDATE CASCADE

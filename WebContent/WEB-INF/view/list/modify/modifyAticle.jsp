@@ -19,16 +19,16 @@
 	top: 0;
 	left: 0;
 	opacity: 0.9;
-	background-size: contain; 
+	background-size: cover; 
 }
 </style>
 <title>게시물 수정</title>
 </head>
 <body>
 
-	<div class="container" >
+	<div class="container-fluid" >
 		<div id="background">
-			<video src="${contextPath }/video/Ocean - 36589.mp4" muted="muted"
+			<video src="${contextPath }/video/Rain.mp4" muted="muted"
 				autoplay="autoplay" loop="loop"></video>
 		</div>
 	<%-- <input type="hidden" name="no" value="${boardInfo.boardNo}" /> --%>

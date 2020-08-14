@@ -10,7 +10,6 @@ import java.util.List;
 
 import board.comments.model.CommentInfo;
 import board.comments.model.commentWriteRequest;
-import board.total.model.totalRequest;
 import jdbc.JdbcUtil;
 import user.model.User;
 
@@ -20,7 +19,8 @@ public class CommentDao {
 
 		PreparedStatement pstmt = null;
 		try {
-			pstmt = conn.prepareStatement("INSERT INTO comment (Board_no, userId, content, userPw,user_no) VALUES (?, ?, ?, ?,?)");
+			pstmt = conn.prepareStatement(
+					"INSERT INTO comment (Board_no, userId, content, userPw,user_no) VALUES (?, ?, ?, ?,?)");
 			pstmt.setInt(1, boardno);
 			pstmt.setString(2, user.getUserId());
 			pstmt.setString(3, req.getContent());
@@ -60,14 +60,16 @@ public class CommentDao {
 	private CommentInfo convertCommentInfo(ResultSet rs) throws SQLException {
 		return new CommentInfo(rs.getInt(1), rs.getInt(2), rs.getString("userId"), rs.getString("content"));
 	}
-	
+
 	public int selectCount(Connection conn, int boardno) throws SQLException {
 		Statement stmt = null;
 		ResultSet rs = null;
 
 		try {
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("SELECT count(*) FROM comment where (user_no Not in (select userNo from withdrawaluser)) and board_no= "+boardno);//추후 확인 요망.
+			rs = stmt.executeQuery(
+					"SELECT count(*) FROM comment where (user_no Not in (select userNo from withdrawaluser)) and board_no= "
+							+ boardno);// 추후 확인 요망.
 			if (rs.next()) {
 				return rs.getInt(1);
 			}
@@ -77,21 +79,21 @@ public class CommentDao {
 			JdbcUtil.close(rs, stmt);
 		}
 	}
-	
+
 	public void delete(Connection conn, String replyNo) throws SQLException {
 		PreparedStatement pstmt = null;
-		
+
 		try {
 			pstmt = conn.prepareStatement("delete from comment where reply_no = ?");
-			
+
 			pstmt.setString(1, replyNo);
 			pstmt.executeUpdate();
-			
+
 		} finally {
 			JdbcUtil.close(pstmt);
 		}
 	}
-	
+
 	public String selectBypassword(Connection conn, String replyNo) throws SQLException {
 
 		PreparedStatement pstmt = null;
@@ -103,7 +105,7 @@ public class CommentDao {
 			pstmt.setString(1, replyNo);
 
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				return rs.getString("userPw");
 			}
 			return "";
