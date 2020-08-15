@@ -45,7 +45,7 @@
   		jdbcDriver=com.mysql.cj.jdbc.Driver
   		jdbcUrl=jdbc:mysql://localhost/h_project?serverTimezone=Asia/Seoul
   		dbUser=root
-  		dbPass=doli0413@
+  		dbPass=doli94359@
   		validationQuery=SELECT 1
   		minIdle=3
   		maxTotal=30
@@ -54,7 +54,7 @@
   </context-param>
   <error-page>
     <error-code>404</error-code>
-    <location>/WEB-INF/view/404/handle404.jsp</location>
+    <location>/handle404.jsp</location>
   </error-page>
   <jsp-config>
     <jsp-property-group>

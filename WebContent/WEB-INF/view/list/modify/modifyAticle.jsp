@@ -21,15 +21,14 @@
 	opacity: 0.9;
 	width:100vw;
 	height:150%;
-	background-image:url('${contextPath}/viewImage/modifyImage/modifyNote.jpg');
+	/* background-image:url('${contextPath}/viewImage/modifyImage/modifyNote.jpg'); */
 	background-size: cover;
 	background-repeat: no-repeat; 
 }
 body {
 	overflow-x : hidden;
-	height: 100%;
 }
-#modifyForm{
+#validatedInputGroupSelect,#Title,#content,#Image{
 	opacity: 0.8;
 }
 #modifyBox{
@@ -52,16 +51,17 @@ $('#naverTotal').attr('class', 'navbar navbar-expand-lg navbar-light');
 <title>게시물 수정</title>
 </head>
 <body>
-
-	<div class="container-fluid" id="modifyBox" >
-		<div id="background">
-		</div>
+	
+		<img id="background" alt="" src="${contextPath}/viewImage/modifyImage/modifyNote.jpg"></img>
+	<div class="container-fluid" id="modifyBox" style="margin-top: 5%" >
+		<!-- <div id="background"> -->
+		<!-- </div> -->
 	<%-- <input type="hidden" name="no" value="${boardInfo.boardNo}" /> --%>
 		<div class="row justify-content-center">
 				<h5 > <i>Modify your Infomation :)</i></h5>			
 		</div>
 		<div class="row justify-content-center">			
-			<form id="modifyForm" method="post" action="${contextPath }/modify.do" style="width: 500px;" enctype="multipart/form-data">
+			<form  method="post" action="${contextPath }/modify.do" style="width: 50%;" enctype="multipart/form-data">
 			<input type="hidden" name="no" value="${boardInfo.boardNo}" />
 			<div class="form-group">
 					<label for="Title">Category</label>
@@ -110,7 +110,7 @@ $('#naverTotal').attr('class', 'navbar navbar-expand-lg navbar-light');
      
      <c:if test="${not empty  boardInfo.imageName}">
      <figure class="figure border">
-  <img src="/image/${boardInfo.userNo }/${boardInfo.boardNo }/${boardInfo.imageName }" class="figure-img img-fluid rounded" alt="..." style="max-width: 255px;max-height: 255px">
+  <img src="/image/${boardInfo.userNo }/${boardInfo.boardNo }/${boardInfo.imageName }" class="figure-img img-fluid rounded" alt="..." style="max-width: 255px;max-height: 255px;">
    <figcaption class="figure-caption" style="font-size: small; font-style: italic;"> -Uploaded : <convertTime:ConversionLocalDataTime dateTime="${boardInfo.regdate}"/></figcaption>
 </figure>
 </c:if>

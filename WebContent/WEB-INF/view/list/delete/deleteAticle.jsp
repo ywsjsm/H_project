@@ -23,14 +23,15 @@
 	left: 0;
 	opacity: 0.9;
 	width:100vw;
-	height:120%;
-	background-image:url('${contextPath}/viewImage/deleteImage/pen.jpg');
+	height:150%;
+	/* background-image:url('${contextPath}/viewImage/deleteImage/pen.jpg'); */
 	background-size: cover; 
 }
 #testD{
 	
 }
 </style>
+	<img id="background" alt="" src="${contextPath}/viewImage/deleteImage/pen.jpg"></img>
 <div class="container border" style="background-color: rgba(255, 255, 255, 0.7)" >
 	
 	<div id="background">

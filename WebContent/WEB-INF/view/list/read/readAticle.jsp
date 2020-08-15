@@ -78,12 +78,10 @@ if(${checkPw}==true){
 		<hr  class="border" style="margin-bottom: 2px"/>
 		<div class="row">
 		<div class="col" style="float: right;">
-			<small style="float: right;"><b> <i> Author : ${boardInfo.userId }</i></b></small>
+			<small style="float: right;"><b> <i> - Author : ${boardInfo.userId }</i></b></small>
 		</div>
-		<div class="d-flex justify-content-sm-end" style="margin-bottom: 0px; margin-right: 15px">
-			<a role="button" href="" class="col btn btn-success btn-sm" style="margin-right: 1.1% width: 50px; margin-right: 10px;">
-  									조회수<span class="badge badge-light">${boardInfo.readCount }</span>
-									</a>
+		<div class="d-flex justify-content-sm-end" style="margin-bottom: 0px;margin-left: 1.1%;margin-right: 5%;margin-top: 5%">
+		<span class="badge badge-light" style="margin-right: 1.1%;margin-bottom: 1.1%"><small ><b> <i> - 조회수 : ${boardInfo.readCount } </i> </b> </small> </span>
 		</div>
 		</div>
 		<div class="row">

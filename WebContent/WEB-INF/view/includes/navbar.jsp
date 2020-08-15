@@ -100,7 +100,11 @@ $(function() {
 		
 		$('#logOut').click(function(event) {
 			alert('로그아웃 되었습니다.');
-		})
+		});
+		
+		$('#check').click(function() {
+			$('#navbarSupportedContent').slideToggle(800);
+		});
 		
 	});
 </script>
@@ -110,7 +114,7 @@ $(function() {
 	<nav id="naverTotal" class="navbar navbar-expand-lg navbar-dark" >
 		<a class="navbar-brand" href="${contextPath}"><b><label class="navbarFont">H - PROjECT</label>
 		</b></a>
-		<button class="navbar-toggler"  type="button" data-toggle="collapse"
+		<button class="navbar-toggler" id="check"  type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
 			aria-label="Toggle navigation">

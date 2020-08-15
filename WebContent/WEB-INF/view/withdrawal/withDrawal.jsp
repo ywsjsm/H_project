@@ -11,6 +11,36 @@
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js'></script>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <title>회원 탈퇴</title>
+<style>
+#background{
+	position: absolute;
+	z-index: -99;
+	top: 0;
+	left: 0;
+	opacity: 0.9;
+	width:100vw;
+	height:150%;
+	/* background-image:url('${contextPath}/viewImage/withdrawal/out.jpg'); */
+	background-size: cover;
+	background-repeat: no-repeat; 
+}
+body{
+	overflow-x:hidden 
+}
+#Navar{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 10;
+}
+</style>
+<script type="text/javascript">
+$(function(){
+	
+$('#naverTotal').attr('class', 'navbar navbar-expand-lg navbar-light');
+});
+</script>
 </head>
 <body>
 <%-- 	<form action="" method="post">
@@ -38,8 +68,9 @@
 		<input type="submit" value="test" />
 	</form> --%>
 	
-	
- 	<div class="container d-flex justify-content-center">
+		<img id="background" src="${contextPath}/viewImage/withdrawal/out.jpg">
+		</img>
+ 	<div class="container d-flex justify-content-center" style="margin-top: 5%">
 <form method="post" action="${contextPath }/withDrawal.do" style="width: 40%">
   <div class="form-row">
     <div class="form-group col-md-6">
