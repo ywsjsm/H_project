@@ -33,7 +33,7 @@
 }
 
  #basic{
-            background-image: url('<c:url value='/viewImage/fadeBackground/city.jpg' />');
+            /* background-image: url('<c:url value='/viewImage/fadeBackground/city.jpg' />'); */
             position: absolute;
             display: none;
             top: 0;
@@ -46,7 +46,7 @@
             background-size: cover;
         }
         #item1{
-            background-image: url('<c:url value='/viewImage/fadeBackground/boats.jpg' />');
+            /* background-image: url('<c:url value='/viewImage/fadeBackground/boats.jpg' />'); */
             position: absolute;
             display: none;
             top: 0;
@@ -59,7 +59,7 @@
             background-size: cover;
         }
         #item2{
-            background-image: url('<c:url value='/viewImage/fadeBackground/lighthouse.jpg' />');
+            /* background-image: url('<c:url value='/viewImage/fadeBackground/lighthouse.jpg' />'); */
             position: absolute;
             display: none;
             top: 0;
@@ -72,7 +72,7 @@
             background-size: cover;
         }
         #item3{
-            background-image: url('<c:url value='/viewImage/fadeBackground/pier.jpg' />');
+           /*  background-image: url('<c:url value='/viewImage/fadeBackground/pier.jpg' />'); */
             position: absolute;
             display: none;
             top: 0;
@@ -154,14 +154,26 @@
 	
 	<div class="container-fluid">
         <ul id="background-item">  
-            <li id="basic"></li>
-            <li id="item1"></li>
-            <li id="item2"></li>
-            <li id="item3"></li>
+            <li id="basic">
+            <img id="" src="${contextPath }/viewImage/fadeBackground/city.jpg" 
+            style="width: 100vw;height: 100%" />
+            </li>
+            <li id="item1">
+            <img id="" src="${contextPath }/viewImage/fadeBackground/boats.jpg" 
+            style="width: 100vw;height: 100%" />
+            </li>
+            <li id="item2">
+            <img id="" src="${contextPath }/viewImage/fadeBackground/lighthouse.jpg" 
+            style="width: 100vw;height: 100%" />
+            </li>
+            <li id="item3">
+            <img id="" src="${contextPath }/viewImage/fadeBackground/pier.jpg" 
+            style="width: 100vw;height: 100%" />
+            </li>
         </ul>
     </div>
 
-	</div>
+	
 		<form  method="post" id="LoginForm">
 			<div class="form-group">
 				<label for="Id">Id</label> 
@@ -186,7 +198,7 @@
 			</div>
 			
 			<div class="form-group form-check">
-				<input type="checkbox" class="form-check-input" id="RemeberId" name="rememberId" required="required"> 
+				<input type="checkbox" class="form-check-input" id="RemeberId" name="rememberId"  required="required"> 
 				<label class="form-check-label" for="RemeberId">Remember my Id</label>
 			</div>
 			<button type="button" class="btn btn-outline-warning" id="loginBtn">Login</button>

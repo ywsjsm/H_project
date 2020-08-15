@@ -27,25 +27,27 @@ position: absolute;
 top: 0;
 left: 0;
 width: 100vw;
-height: 673px;
+/* height: 673px; */
+height: 200%
 }
 #noticeBackground2{
 background-color:#FF6666;
 z-index: -100000;
 position: absolute;
-top: 673px;
+ top: 110%;
 left: 0;
 width: 100vw;
-height: 608px;
+/* height: 608px; */
+height: 200%;
 }
 #noticeBackground3{
 background-color:#9999FF;
 z-index: -100000;
 position: absolute;
-top: 1280px;
+top: 205%;
 left: 0;
 width: 100vw;
-height: 800px;
+height: 120%;
 }
 #Navar{
 	position: fixed;
@@ -106,10 +108,9 @@ height: 800px;
     당신이 보기에, 그리고 듣기에 좋은 음악들이나 정보가 존재한다면, 망설이지말고 기고해주세요.
      그것에 우리가 음악 카테고리를 만든 이유이자 목표입니다.
       
-      <label style="font-style: oblique;">긴 글을 정독해주신 당신에게 작은 감사의 인사를 미리 하며 글을 마무리 짓겠습니다.</label>  <label style="font-style: oblique; font-weight: bold;">이제, 시작해보세요.</label>
-
-</p>
+      <label style="font-style: oblique;">긴 글을 정독해주신 당신에게 작은 감사의 인사를 미리 하며 글을 마무리 짓겠습니다.</label>  <label style="font-style: oblique; font-weight: bold;">이제, 시작해보세요.</label></p>
 	<a class="btn btn-outline-warning btn-lg" href="${contextPath }" role="button" style="margin-left: 50%">Main</a>
+	<%@include file="/WEB-INF/view/includes/developers.jspf" %>
 </div>
 </body>
 </html>

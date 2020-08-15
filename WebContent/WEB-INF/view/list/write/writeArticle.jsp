@@ -23,9 +23,10 @@
 	left: 0;
 	opacity: 1;
 	width:100vw;
-	height:120%;
-	background-image:url('${contextPath}/viewImage/modifyImage/pencil.jpg');
+	height:150%;
+	/* background-image:url('${contextPath}/viewImage/modifyImage/pencil.jpg'); */
 	background-size: cover; 
+	background-repeat: no-repeat; 
 }
 #modifyForm{
 	opacity: 0.8;
@@ -55,16 +56,16 @@ z-index:10;
 </script>
 </head>
 <body>
-	<div class="container-fluid" >
-	<div id="background">
-		</div>
-		<div class="row justify-content-center" id="modifyBox">
+	<img id="background" src="${contextPath}/viewImage/modifyImage/pencil.jpg">
+		</img>
+	<div class="container-fluid" style="margin-top: 10%"  >
+		<div class="row justify-content-center"  id="modifyBox">
 			<h5>
 				<i>Writing your Informations! :)</i>
 			</h5>
 		</div>
 		<div class="row justify-content-center" id="modifyForm">
-			<form action="" method="post" style="width: 500px;" enctype="multipart/form-data">
+			<form action="" method="post" style="width: 50%;" enctype="multipart/form-data">
 				<div class="form-group">
 					<label for="Title">Category</label>
 					<select name="category" class="custom-select" id="validatedInputGroupSelect" required>

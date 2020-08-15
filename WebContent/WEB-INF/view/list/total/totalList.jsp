@@ -81,7 +81,7 @@ hr#hr1 {
 <script type="text/javascript">
 	$(function(){
 		$('#noArtilceCard').slideToggle(1500,function(){
-			$('#noArtilceCard').animate({left: '45%'}, 1000,function(){
+			$('#noArtilceCard').animate({left: '35%'}, 1000,function(){
 				$('#noArtilceCard').css('opacity', '1.0');
 				setTimeout(function() {
 					$('#noArtilceBtn').attr('class', 'btn btn-warning');
@@ -104,7 +104,7 @@ hr#hr1 {
 		</div>
 
 			<c:if test="${empty articlePage.content}">
-				<div class="row" id="noArtilceCard">
+				<div class="row" id="noArtilceCard" >
 				<div >
 					
 				<div class="card" style="width: 18rem;" id="">
@@ -112,12 +112,18 @@ hr#hr1 {
   <div class="card-body">
     <h6 class="card-title">(●'◡'●)</h6>
     <p class="card-text">작성 된 글이 없습니다, 첫 글의 주인공이 되어보세요!</p>
+    <c:if test="${not empty sessionScope.userInfo }">
     <a href="${contextPath }/write.do" class="btn btn-outline-warning" id="noArtilceBtn">작성하겠습니다 :)</a>
+    </c:if>
+    <c:if test="${empty sessionScope.userInfo }">
+    <a href="${contextPath }/login.do" class="btn btn-outline-warning" id="noArtilceBtn">로그인부터 할게요 :)</a>
+    </c:if>
   </div>
 </div>
 				
 					</div>
 				</div>
+				
 			</c:if>
 		<c:forEach var="article" items="${articlePage.content }">
 			<c:if test="${not empty article }">
@@ -135,9 +141,7 @@ hr#hr1 {
 								style="height: 150px; background-color: rgba(255, 255, 255, 0.7);">
 								<div class="d-flex justify-content-between">
 									<small style="color: FF3399; float: right;"><b><i>Category : <tc:categoryNumConvert categoryNum="${article.categoryNum }" /></i></b></small>
-					 		<a role="button" href="" class="btn btn-success btn-sm" style="margin-right: 1.1%; margin-bottom: 1px;"> 조회수<span
-										class="badge badge-light">${article.readCount }</span>
-									</a>
+					 		<span class="badge badge-light" style="margin-right: 1.1%;margin-bottom: 1.1%"><small ><b> <i>조회수 ${article.readCount } </i> </b> </small> </span>
 								</div>
 								<hr id="hr1" />
 								<h5 class="card-title title-overFlow" id="title" style="margin-bottom: 0px;">${article.title }</h5>
