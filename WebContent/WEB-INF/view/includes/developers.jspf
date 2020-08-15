@@ -4,13 +4,12 @@
 #developers{
 			position: absolute;
 			bottom: 0;
-			color: white;
 		}
 </style>
     
-   <div  class="container-fluid" id="developers">
+   <div  class="container-fluid" id="developers" style="position: relative;">
     <hr />
-   <div class="row justify-content-center">
-<address style="text"> <i>&copy; H_Project's [ developers JungSM , YunWS ]</i></address>
+   <div class="row justify-content-center" style="">
+<i style="color: white;">&copy; H_Project's [ developers JungSM , YunWS ]</i>
 </div>
 </div>

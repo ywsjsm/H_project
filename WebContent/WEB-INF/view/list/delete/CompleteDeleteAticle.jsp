@@ -28,7 +28,27 @@
 <title>게시글 삭제완료</title>
 </head>
 <body>
-<div class="container border">
+<style>
+#background{
+	position: absolute;
+	z-index: -99;
+	top: 0;
+	left: 0;
+	opacity: 0.9;
+	width:100vw;
+	height:120%;
+	background-image:url('${contextPath}/viewImage/deleteImage/pen.jpg');
+	background-size: cover; 
+}
+#testD{
+	
+}
+</style>
+<div class="container border" style="background-color: rgba(255, 255, 255, 0.7)" >
+	
+	<div id="background">
+		</div>
+	<div class="">
 	<div class="row d-flex justify-content-between">
 		<div class="col">
 			<h5>
@@ -45,17 +65,24 @@
 		</div>
 		
 		<hr  class="border"/>
-		<div class="row d-flex justify-content-center">
+		<div class="row">
+		<div class="col d-flex justify-content-center" style="margin-bottom: -5px; padding-bottom: 0px;padding-top: 10px;margin-top: -5px">
 			<h6>
 				<b> <i> Author : ${boardInfo.userId }</i></b>
 			</h6>
+		</div>
+		<div class="d-flex justify-content-sm-end" style="margin-bottom: 0px;">
+			<a role="button" href="" class="col btn btn-success btn-sm" style="margin-right: 1.1% width: 50px; margin-right: 10px;">
+  									조회수<span class="badge badge-light">${boardInfo.readCount }</span>
+									</a>
+		</div>
 		</div>
 		
 		<hr />
 		<div class="row" style="white-space: pre-wrap;">
 		
 		<figure class="figure">
-  <img src="${contextPath}/image/${boardInfo.userNo }/${boardInfo.boardNo }/${boardInfo.imageName }" class="figure-img img-fluid rounded" alt="..." style="max-height: 255px;max-width: 255px">
+ <img src="/image/${boardInfo.userNo }/${boardInfo.boardNo }/${boardInfo.imageName }" class="figure-img img-fluid rounded" alt="..." style="max-width: 255px;max-height: 255px">
   <figcaption class="figure-caption" style="font-size: small; font-style: italic;"> -Uploaded : <convertTime:ConversionLocalDataTime dateTime="${boardInfo.regdate}"/></figcaption>
 </figure>
 			<p>${boardInfo.content }</p>		
@@ -89,6 +116,7 @@
 					</c:if>
     			<button type="submit" class="btn btn-danger btn-sm" style="width: 70px;">Delete</button>
 			</form>
+		</div>
 		</div>
 </body>
 </html>

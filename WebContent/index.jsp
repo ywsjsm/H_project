@@ -70,6 +70,7 @@
 	 body {
 	 overflow:hidden;
 	 }
+	
 	</style>
 <title>메인 페이지</title>
 </head>
@@ -133,7 +134,11 @@
 </c:if>
 			
 		
-		<%@ include file="/WEB-INF/view/includes/developers.jspf" %>
+		<div  class="container-fluid" id="developers" style="position: absolute;bottom: 0">
+    <hr />
+   <div class="row justify-content-center" >
+<i style="color: white;">&copy; H_Project's [ developers JungSM , YunWS ]</i>
+</div>
 		</div>
 </body>
 </html>
