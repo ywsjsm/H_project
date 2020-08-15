@@ -141,7 +141,7 @@ hr#hr1 {
 
 								<a href="${contextPath }/read.do?no=${article.boardNum}" class="stretched-link"></a> 									
 									<small style="color: gray; margin-left:10px; margin-top: 10px;"><b><i>-Author:${article.userId } </i></b></small>
-									<small style="color: #0B3861; float: right;">-${article.regdate }</small>
+									<small style="color: #0B3861; float: right;">-<tc:ConversionLocalDataTime date="${article.regdate }"/></small>
 							</div>
 						</div>
 					</div>

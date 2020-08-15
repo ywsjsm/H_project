@@ -32,6 +32,12 @@ if(${checkPw}==true){
 			opacity: 0.9;
 			background-size: contain; 
 		}
+		 #contentModal{
+			margin: 0%,10%;
+			padding: 0;
+			width: 70%;
+			height: 70%;
+		} 
 </style>
 <c:set var="checkPw" value="false" scope="session"/>
 <title>게시물 보기</title>
@@ -71,7 +77,9 @@ if(${checkPw}==true){
 		<div class="row">
 		<div class="d-flex justify-content-center" style="margin-left:auto; margin-right:auto; margin-top: 0px; margin-bottom: 0px">
 		<figure class="figure">
-  <img src="/image/${boardInfo.userNo }/${boardInfo.boardNo }/${boardInfo.imageName }" class="figure-img img-fluid rounded" alt="..." style="max-width: 255px; max-height: 255px">
+  <img src="/image/${boardInfo.userNo }/${boardInfo.boardNo }/${boardInfo.imageName }" id="image" 
+  class="figure-img img-fluid rounded" alt="..." style="max-width: 255px; max-height: 255px"
+   data-toggle="modal" data-target="#myModal">
   <figcaption class="figure-caption" style="font-size: small; font-style: italic;"> -Uploaded : <convertTime:ConversionLocalDataTime dateTime="${boardInfo.regdate}"/></figcaption>
 </figure></div>		
 		</div>
@@ -100,7 +108,28 @@ if(${checkPw}==true){
 		
 		<!-- 페이지네이션 -->
 		<%@include file="/WEB-INF/view/includes/commentPagination.jsp"%>
-
+		
+		<script type="text/javascript">
+		$('#myModal').modal("toggle");
+		</script>
+		<!-- modal -->
+		<div class="modal fade" id="myModal">
+  <div class="modal-dialog modal-lg" id="contentModal">
+    <div class="modal-content" >
+      <div class="modal-header">
+      	FileName : ${boardInfo.imageName }
+      </div>
+      <div class="modal-body">
+       <img src="/image/${boardInfo.userNo }/${boardInfo.boardNo }/${boardInfo.imageName }" id="image" 
+  class="figure-img img-fluid rounded" alt="..." >
+      </div>
+      <div class="modal-footer">
+      	 -Uploaded : <convertTime:ConversionLocalDataTime dateTime="${boardInfo.regdate}"/>
+      </div>
+    </div>
+  </div>
+</div>
+	
 	</div>
 </body>
 </html>
