@@ -21,6 +21,9 @@
 
 
 <style type="text/css">
+body{
+	overflow-x:hidden; 
+}
 .text-overFlow {
 	font-size: 13px;
 	overflow: hidden;
@@ -63,7 +66,8 @@ hr#hr1 {
 			top: 0;
 			left: 0;
 			opacity: 0.9;
-			background-size: contain; 
+			height:100%;
+			background-size: cover; 
 		}
 		#noArtilceCard{
 			opacity: 0.6;

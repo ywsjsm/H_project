@@ -23,12 +23,25 @@
 	left: 0;
 	opacity: 1;
 	width:100vw;
-	height:100vh;
+	height:120%;
 	background-image:url('${contextPath}/viewImage/modifyImage/pencil.jpg');
 	background-size: cover; 
 }
 #modifyForm{
 	opacity: 0.8;
+}
+#modifyBox{
+margin-top: 5%
+}
+body {
+	overflow-x: hidden;
+}
+#Navar{
+z-index:10;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
 }
 </style>
 <script type="text/javascript">
@@ -45,7 +58,7 @@
 	<div class="container-fluid" >
 	<div id="background">
 		</div>
-		<div class="row justify-content-center">
+		<div class="row justify-content-center" id="modifyBox">
 			<h5>
 				<i>Writing your Informations! :)</i>
 			</h5>

@@ -19,24 +19,49 @@
 	top: 0;
 	left: 0;
 	opacity: 0.9;
-	background-size: cover; 
+	width:100vw;
+	height:150%;
+	background-image:url('${contextPath}/viewImage/modifyImage/modifyNote.jpg');
+	background-size: cover;
+	background-repeat: no-repeat; 
+}
+body {
+	overflow-x : hidden;
+	height: 100%;
+}
+#modifyForm{
+	opacity: 0.8;
+}
+#modifyBox{
+margin-top: 3%
+}
+#Navar{
+	z-index: 10;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
 }
 </style>
+<script type="text/javascript">
+$(function(){
+	
+$('#naverTotal').attr('class', 'navbar navbar-expand-lg navbar-light');
+});
+</script>
 <title>게시물 수정</title>
 </head>
 <body>
 
-	<div class="container-fluid" >
+	<div class="container-fluid" id="modifyBox" >
 		<div id="background">
-			<video src="${contextPath }/video/Rain.mp4" muted="muted"
-				autoplay="autoplay" loop="loop"></video>
 		</div>
 	<%-- <input type="hidden" name="no" value="${boardInfo.boardNo}" /> --%>
 		<div class="row justify-content-center">
 				<h5 > <i>Modify your Infomation :)</i></h5>			
 		</div>
 		<div class="row justify-content-center">			
-			<form method="post" action="${contextPath }/modify.do" style="width: 500px;" enctype="multipart/form-data">
+			<form id="modifyForm" method="post" action="${contextPath }/modify.do" style="width: 500px;" enctype="multipart/form-data">
 			<input type="hidden" name="no" value="${boardInfo.boardNo}" />
 			<div class="form-group">
 					<label for="Title">Category</label>

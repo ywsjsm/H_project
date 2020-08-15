@@ -24,6 +24,13 @@ if(${checkPw}==true){
 </script>
 
 <style>
+#Navar{
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 10;
+}
 #background{
 			position: absolute;
 			z-index: -99;
@@ -31,6 +38,8 @@ if(${checkPw}==true){
 			left: 0;
 			opacity: 0.9;
 			background-size: contain; 
+			width: 100%;
+			height: 100%;
 		}
 		 #contentModal{
 			margin: 0%,10%;
@@ -38,14 +47,17 @@ if(${checkPw}==true){
 			width: 70%;
 			height: 70%;
 		} 
+		body {
+	overflow-x: hidden;
+}
 </style>
 <c:set var="checkPw" value="false" scope="session"/>
 <title>게시물 보기</title>
 </head>
-<body>
-	<div class="border rounded" style="background-color: rgba(255, 255, 255, 0.7); margin-left: 20%; margin-right: 20%;">
+<body >
+	<div class="border rounded" style="background-color: rgba(255, 255, 255, 0.7); margin-top:5%; margin-left: 20%; margin-right: 20%;">
 	<div id="background">
-			<video src="${contextPath }/video/Ocean - 36589.mp4" muted="muted"
+			<video  src="${contextPath }/video/Ocean - 36589.mp4" muted="muted"
 				autoplay="autoplay" loop="loop"></video>
 		</div>
 		<div class="row d-flex justify-content-between">
@@ -84,19 +96,19 @@ if(${checkPw}==true){
 </figure></div>		
 		</div>
 		<div class="d-flex justify-content-center" style="margin: auto;"><p>${boardInfo.content }</p></div>
-		<div class="row">
+		<div class="row" style="width: 100%">
 		<c:if test="${not empty sessionScope.userInfo and sessionScope.userInfo.userId eq boardInfo.userId }">
 			<div class="col d-flex justify-content-start">
 				<a class="btn btn-outline-info"
-					style="margin-left: 50%; width: 100px;"
+					style=" margin-left:10%; width: 10vh;"
 					href="${contextPath}/modify.do?no=${boardNo}" role="button">Modify</a>
 			</div>
 					</c:if>
 			<c:if test="${not empty sessionScope.userInfo and sessionScope.userInfo.userId eq boardInfo.userId }">
 			<!-- 세션정보 아이디와 작성자가 일치할때만 띄움 -->
-			<div class="col">
+			<div class="col d-flex justify-content-end">
 				<a class="btn btn-outline-danger"
-					style="margin-left: 50%; width: 100px;"
+					style=" width: 10vh;"
 					href="${contextPath}/delete.do?no=${boardNo}" role="button">Delete</a>
 			</div>
 			</c:if>
