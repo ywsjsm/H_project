@@ -64,10 +64,11 @@ $(function() {
 	$(function() {
 		
 		 $('#btnFound').mouseenter(function() {
-			 $('#btnFound').attr("class", 'btn btn-outline-warning');
+			 $('#btnFound').attr("class", 'btn btn-outline-warning my-2 my-sm-0');
 		 });
 		 $('#btnFound').mouseout(function() {
-			 $('#btnFound').attr("class", 'btn btn-outline-secondary');
+			 $('#btnFound').attr("class", 'btn btn-outline-warning my-2 my-sm-0');
+			/*  $('#btnFound').attr("class", 'btn btn-outline-secondary'); */
 		 });
 
 		function getValidationTime() {

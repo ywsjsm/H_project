@@ -32,7 +32,7 @@
 		<c:if test="${not empty sessionScope.userInfo}">
 			<div class="col">
 				<a class="btn btn-outline-danger"
-					style="margin-left: 50%; width: 100px;"
+					style="margin-left: 0%; width: 100px; "
 					href="${contextPath}/withDrawal.do" role="button">Withdrawal</a>
 			</div>
 		</c:if>

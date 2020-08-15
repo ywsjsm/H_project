@@ -109,7 +109,7 @@ height: 800px;
       <label style="font-style: oblique;">긴 글을 정독해주신 당신에게 작은 감사의 인사를 미리 하며 글을 마무리 짓겠습니다.</label>  <label style="font-style: oblique; font-weight: bold;">이제, 시작해보세요.</label>
 
 </p>
-	<a class="btn btn-outline-warning btn-lg" href="${contextPath }/list/total.do" role="button" style="margin-left: 50%">Link</a>
+	<a class="btn btn-outline-warning btn-lg" href="${contextPath }" role="button" style="margin-left: 50%">Main</a>
 </div>
 </body>
 </html>
