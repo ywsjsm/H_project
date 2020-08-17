@@ -14,7 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @WebFilter(urlPatterns = { "/modify.do", "/delete.do", "/withDrawal.do", "/logout.do", "/withDrawal/redirect.do",
-		"/withDrawal/redirect.do", "/delete/redirect.do", "/comment/delete.do", "/comments/write.do", "/write.do" })
+		"/withDrawal/redirect.do", "/delete/redirect.do", "/comment/delete.do", "/comments/write.do", "/write.do",
+		"/userInfo.do", "/sendArticle.do" })
 public class CheckLoginFilter implements Filter {
 
 	public CheckLoginFilter() {

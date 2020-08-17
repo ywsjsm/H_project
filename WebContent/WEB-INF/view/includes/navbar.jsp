@@ -40,6 +40,7 @@ $(function() {
     var availableTitle = dataa; //< 검색어 리스트
     var titleData = JSON.parse(availableTitle);
 	console.log(titleData);
+	
     $("#search").autocomplete({
 	       source: titleData, 
 	       minLength: 2,
@@ -170,7 +171,7 @@ $(function() {
 					<li class="nav-item" ><a class="nav-link"
 						href="${contextPath}/userInfo.do" tabindex="-1" aria-disabled="true"
 						id="logOut">${userInfo.userId }</a> <!-- disabled --></li>
-				</c:if>
+				</c:if> 
 			</ul>
 			<div class="ui-widget">
 			<div class="col">
