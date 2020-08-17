@@ -58,7 +58,8 @@ public class CommentDao {
 	}
 
 	private CommentInfo convertCommentInfo(ResultSet rs) throws SQLException {
-		return new CommentInfo(rs.getInt(1), rs.getInt(2), rs.getString("userId"), rs.getString("content"));
+		return new CommentInfo(rs.getInt(1), rs.getInt(2), rs.getString("userId"), rs.getString("content"),
+				rs.getTimestamp("regdate").toLocalDateTime());
 	}
 
 	public int selectCount(Connection conn, int boardno) throws SQLException {
