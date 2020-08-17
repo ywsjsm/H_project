@@ -9,7 +9,11 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import com.google.gson.Gson;
 
 import board.delete.model.DeleteArticleRequest;
 import board.modify.model.ModifyArticleRequest;
@@ -21,6 +25,34 @@ import jdbc.JdbcUtil;
 import user.model.User;
 
 public class BoardDao {
+	/* JSON Parse Data Map */
+	public HashMap<String, String> selectArticleUserInfo(User userInfo) {
+		Map<String, String> map = new HashMap<>();
+
+		final String sql = "SELECT board_no,title,readCount from board where userNo Not in (select userNo from withdrawaluser) and userNo =?\r\n"
+				+ " order by readCount desc limit 0,6";
+		ResultSet rs = null;
+		try (Connection con = ConnectionProvider.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql)) {
+			pstmt.setInt(1, userInfo.getUserNo());
+			rs = pstmt.executeQuery();
+			Gson gson = new Gson();
+			int i = 0;
+			while (rs.next()) {
+				i += 1;
+				String num = String.valueOf(i);
+				ArrayList<String> list = new ArrayList<>();
+				list.add(rs.getString(2));
+				list.add(rs.getString(3));
+				String dataParse = gson.toJson(list);
+				map.put(num, dataParse);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			map = null;
+		}
+
+		return (HashMap<String, String>) map;
+	}
 
 	/* JSON Parse Data */
 	public List<String> selectTotalTitleData() {
@@ -108,6 +140,31 @@ public class BoardDao {
 		}
 	}
 
+	public List<totalRequest> selectListUserInfo(Connection conn, int startRow, int size, int userNo)
+			throws SQLException {
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		final String sql = "SELECT * FROM board where userNo Not in (select userNo from withdrawaluser) and userNo=? ORDER BY board_no DESC LIMIT ?, ?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, size);
+
+			rs = pstmt.executeQuery();
+			List<totalRequest> result = new ArrayList<>();
+			while (rs.next()) {
+				result.add(convertTotalRequest(rs));
+			}
+			return result;
+
+		} finally {
+			JdbcUtil.close(rs, pstmt);
+		}
+	}
+
 	public List<totalRequest> selectList(Connection conn, int startRow, int size) throws SQLException {
 
 		PreparedStatement pstmt = null;
@@ -156,6 +213,25 @@ public class BoardDao {
 			return 0;
 		} finally {
 			JdbcUtil.close(rs, stmt);
+		}
+	}
+
+	public int selectCountUserInfo(Connection conn, int userNo) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			final String sql = "SELECT count(*) FROM board where userNo Not in (select userNo from withdrawaluser) and userNo = ?  ORDER BY board_no DESC";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				return rs.getInt(1);
+			}
+
+			return 0;
+		} finally {
+			JdbcUtil.close(rs, pstmt);
 		}
 	}
 

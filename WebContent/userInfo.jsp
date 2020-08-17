@@ -19,6 +19,24 @@
     <link rel="stylesheet" href="${contextPath }/js/Chart.js/Chart.css">
     <link rel="stylesheet" href="${contextPath }/js/Chart.js/Chart.min.css">
    
+ <!--   <script type="text/javascript">
+   $(function() {
+		var datee = "";
+		$.ajax({
+			type:'get',
+			url:'/H_Project/sendArticle.do'
+		}).done(function(data) {
+			datee = data;
+		if(datee != null){
+			console.log('동작');
+	    var availableTitlee = datee; //< 검색어 리스트
+	    var titleDatae = JSON.parse(availableTitlee);
+		console.log(titleDatae);
+		}
+		});
+   });
+   </script> -->
+   
     <head>
     <meta charset='UTF-8'>
     <title></title>
@@ -41,13 +59,18 @@
                 margin-left: 25%;
                 margin-right: 30%;
             }
+           .check:hover * {
+            	text-decoration: underline;
+            }
         </style>
     </head>
 
 
      <body >
-        <img id="background" src="${contextPath }/viewImage/fadeBackground/pier.jpg" 
-            style="width: 100vw;height: 100%" />
+     <%@include file="/WEB-INF/view/includes/navbar.jsp" %>
+     
+        <img id="background" src="${contextPath }/viewImage/modifyImage/pencil.jpg" 
+            style="width: 100vw;height: 150%" />
         <div class="container-fluid"id=conn>
         
         	<div class="text">
@@ -55,32 +78,51 @@
             <i><b>${userInfo.userId} 님 , 오늘 하루는 어떠신가요?</b></i>
             </small>
             <hr />
-            <div class="row border" style="width: 50%; height: 50%px;background-color:white; opacity: 0.9">
+            <div class="row border" style="width: 50%; height: 50%;background-color:white; opacity: 1.0">
                 
         <canvas id="myChart"></canvas>
         </div>
+        <div style="">
 		<hr />
         <small style=" margin-right:20px;">
-            <i><b>일주일 간 기제한 게시글</b></i>
+            <i><b>기제한 게시글 (●'◡'●)</b></i>
             </small>
         <div class="row" style="width: 50%; height: 50%px;background-color:">
-		 <c:forEach items="${articlePage.content}" var="article">
+				<table class="table table-hover table-sm" style="opacity: 1.0">
+				 <thead class="thead-dark">
+				   <tr class="">
+				   <th scope="col">number</th>
+				     <th scope="col">Title</th>
+				     <th scope="col">RegisterDate</th>
+				     <th scope="col">readCount</th>
+				   </tr>
+				 </thead>
+		 <c:forEach items="${articlePage.content}" var="article" varStatus="status">
 				
 				<c:if test="${not empty article }">
-				<div class="col d-flex justify-content-center border">
+				 <tbody>
+				<tr class="check" onclick="location.href='http://localhost:8080/H_Project/read.do?no=${article.boardNum}'">
+					<th scope="row">${status.index +1 }</th>
+					<td>${article.title }</td>
+					<td><tc:ConversionLocalDataTime date="${article.regdate }"/><a href="${contextPath }/read.do?no=${article.boardNum}" class="link"></a> </td>
+					<td> ${article.readCount }</td>
+				</tr>
+				<%--  <div class="col d-flex justify-content-center border">
 					<h6 class="card-title title-overFlow" id="title" style="margin-bottom: 0px;">Title : ${article.title }</h6>
 					<small style="color: #0B3861;"> 조회 : ${article.readCount }</small>
 					<small style="color: #0B3861; margin-left: 50%">-<tc:ConversionLocalDataTime date="${article.regdate }"/></small>
 				</div>
-				<hr />
+				<hr />  --%>
+				</tbody>
 			</c:if>
 				
 			</c:forEach> 
-			
+			</table>
+			</div>
             
         </div>
-        <div class="row">
-        <div class="col d-flex justify-content-center">
+        <div class="row" style="margin-right: 50%">
+        <div class="col justify-content-center">
 			<nav aria-label="Page navigation example">
 				<ul class="pagination justify-content-center">
 					<c:if test="${articlePage.startPage > 5 }">
@@ -104,21 +146,82 @@
         </div>
         
     </div>
-
+	
+	<div  class="container-fluid" id="developers" style="position: relative;">
+    <hr />
+   <div class="row justify-content-center" >
+<i style="color: white;">&copy; H_Project's [ developers JungSM , YunWS ]</i>
+</div>
+		</div>
 
     </body>
 
 
     <script type="text/javascript">
+		var datee = "";
+		var titleDatae ="";
+		$.ajax({
+			type:'get',
+			url:'/H_Project/sendArticle.do'
+		}).done(function(data) {
+			datee = data;
+		if(datee != null){
+	    var availableTitlee = datee; //< 검색어 리스트
+	    var titleDatae = JSON.parse(availableTitlee);
+		 console.log(titleDatae); 
+		 
+		 var Arrayitem= JSON.parse(titleDatae[1]);
+		 var Arrayitem1= JSON.parse(titleDatae[2]);
+		 var Arrayitem2= JSON.parse(titleDatae[3]);
+		 var Arrayitem3= JSON.parse(titleDatae[4]);
+		 var Arrayitem4= JSON.parse(titleDatae[5]);
+		 var Arrayitem5= JSON.parse(titleDatae[6]);
+		 
+		 var ctx = $('#myChart');
+		    var myChart = new Chart(ctx, {
+		        type : "line",
+		        data : {
+		              labels: [Arrayitem5[0], Arrayitem4[0], Arrayitem3[0], Arrayitem2[0], Arrayitem1[0], Arrayitem[0]]
+		            , datasets : [{
+		                  label: "조회 수 추이"
+		                , data: [Arrayitem5[1], Arrayitem4[1], Arrayitem3[1], Arrayitem2[1], Arrayitem1[1], Arrayitem[1]]
+		                , backgroundColor : [
+		                      "rgba(0, 0, 0, 0.0)"
+		                ]
+		                , borderColor: [
+		                      "rgba(255, 159, 64, 1)"
+		                    , "rgba(255, 159, 64, 1)"
+		                    , "rgba(255, 159, 64, 1)"
+		                    , "rgba(255, 159, 64, 1)"
+		                    , "rgba(255, 159, 64, 1)"
+		                    , "rgba(255, 159, 64, 1)"
+		                ]
+		                , borderWidth : 1
+		            }]
+		        }
+		        , options : {
+		            scales : {
+		                yAxes : [{
+		                    ticks : { beginAtZero : true, }
+		                }]
+		            }
+		        }
+		    });
+		 
+		}
+		});
+
+    
+    
     $('#naverTotal').attr('class', 'navbar navbar-expand-lg navbar-light');
     
-    var ctx = $('#myChart');
+   /*  var ctx = $('#myChart');
     var myChart = new Chart(ctx, {
         type : "line",
         data : {
               labels: ["날짜1", "날짜2", "날짜3", "날짜4", "날짜5", "날짜6"]
             , datasets : [{
-                  label: "일주일 간 조회수"
+                  label: "최근 글 조회 수"
                 , data: [1, 12, 3, 5, 0, 0]
                 , backgroundColor : [
                       "rgba(0, 0, 0, 0.0)"
@@ -141,6 +244,6 @@
                 }]
             }
         }
-    });
+    }); */
     </script>
 </html>

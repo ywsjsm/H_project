@@ -14,6 +14,27 @@ public class totalListArticleService {
 	private BoardDao boardDao = new BoardDao();
 	private int size = 4;
 
+	public ArticlePage getArticlePageUserInfo(int pageNum, int userNo) {// <<유저 번호로 오버라이딩
+		Connection conn = null;
+		try {
+
+			conn = ConnectionProvider.getConnection();
+
+			int total = boardDao.selectCountUserInfo(conn, userNo);
+
+			List<totalRequest> content = boardDao.selectListUserInfo(conn, (pageNum - 1) * size, size, userNo);
+//			System.out.println("--------------------------------------------------");
+//			System.out.println("total가져온 글목록 수 : "+content.size());
+//			System.out.println("--------------------------------------------------");
+			return new ArticlePage(total, pageNum, size, content);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		} finally {
+			JdbcUtil.close(conn);
+		}
+	}
+
 	public ArticlePage getArticlePage(int pageNum) {
 		Connection conn = null;
 		try {
