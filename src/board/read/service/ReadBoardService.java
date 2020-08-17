@@ -12,21 +12,21 @@ import jdbc.JdbcUtil;
 public class ReadBoardService {
 
 	private BoardDao boardDao = new BoardDao();
-	
+
 	public readBoardInfo getArticle(int boardNo) {
 		Connection conn = null;
-		
-		try{
+
+		try {
 			conn = ConnectionProvider.getConnection();
-      boardDao.increaseReadCount(boardNo);
+			boardDao.increaseReadCount(boardNo);
 			readBoardInfo boardinfo = boardDao.SelectbyBoardId(conn, boardNo);
-			if(boardinfo == null) {
+			if (boardinfo == null) {
 				throw new ArticleNotFoundException();
 			}
-			
-			System.out.println("======================================");
-			System.out.println("조회수 증가 후 게시글 정보 "+boardinfo.toString());
-			System.out.println("======================================");
+
+//			System.out.println("======================================");
+//			System.out.println("조회수 증가 후 게시글 정보 "+boardinfo.toString());
+//			System.out.println("======================================");
 			return boardinfo;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -20,12 +20,12 @@ public class writeCommentController implements Controller {
 		// TODO Auto-generated method stub
 		String ReqServletPath = request.getServletPath();
 		String tokenPath = ReqServletPath.replace("/comment/", "").replace(".do", "");
-		System.out.println(tokenPath);
+//		System.out.println(tokenPath);
 
 		String strNo = request.getParameter("no");
 		int boardno = Integer.parseInt(strNo);
 
-		System.out.println(boardno);
+//		System.out.println(boardno);
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("userInfo");
 
@@ -48,7 +48,7 @@ public class writeCommentController implements Controller {
 		// COPLETE_VIEW_CODE="/WEB-INF/view/signup/SignUpComplete.jsp";
 		String pathTemp = "/read.do?no=" + boardno;
 
-		System.out.println(pathTemp);
+//		System.out.println(pathTemp);
 
 		// response.sendRedirect(request.getContextPath() + "/read.do?no=" + boardno);
 		return "redirect " + pathTemp;

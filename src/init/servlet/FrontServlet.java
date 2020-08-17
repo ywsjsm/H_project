@@ -22,7 +22,7 @@ public class FrontServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		String filePath = getInitParameter("configFileLocation");
-		System.out.println("\n파일경로: " + filePath);
+//		System.out.println("\n파일경로: " + filePath);
 		String realPath = getServletContext().getRealPath(filePath);
 
 		try (FileInputStream fis = new FileInputStream(realPath);) {
@@ -32,14 +32,14 @@ public class FrontServlet extends HttpServlet {
 
 			while (keys.hasMoreElements()) {
 				String key = keys.nextElement();
-				System.out.println("키 : " + key);
+//				System.out.println("키 : " + key);
 				String className = properties.getProperty(key);
-				System.out.println("클래스이름 : " + className);
+//				System.out.println("클래스이름 : " + className);
 
 				Class<Controller> clazz = (Class<Controller>) Class.forName(className);
 
 				Controller com = clazz.newInstance();
-				System.out.println(com);
+//				System.out.println(com);
 
 				controllerMap.put(key, com);
 
@@ -75,26 +75,26 @@ public class FrontServlet extends HttpServlet {
 
 		String uri = requestUri.substring(startIndex + contextPath.length(), requestUri.length());
 
-		System.out.println(uri);
+//		System.out.println(uri);
 
 		Controller com = controllerMap.get(uri);
 		String view = "";
 //				System.out.println(com);
 		try {
-			System.out.println("프로세스 진입");
+//			System.out.println("프로세스 진입");
 			view = com.process(request, response);
-			System.out.println("프로세스 아웃");
-			System.out.println("날아온 뷰코드 : " + view);
-			System.out.println("요청 경로 : " + request.getServletPath());
+//			System.out.println("프로세스 아웃");
+//			System.out.println("날아온 뷰코드 : " + view);
+//			System.out.println("요청 경로 : " + request.getServletPath());
 		} catch (Throwable e) {
 			throw new ServletException(e);
 		}
 		if (view != null) {
 			if (view.startsWith("redirect ")) {
 				String redirectview = view.replace("redirect ", "");
-				System.out.println("------------------------------------------------");
-				System.out.println("리다이렉트 발생 : " + redirectview);
-				System.out.println("------------------------------------------------");
+//				System.out.println("------------------------------------------------");
+//				System.out.println("리다이렉트 발생 : " + redirectview);
+//				System.out.println("------------------------------------------------");
 				response.sendRedirect(request.getServletContext().getContextPath() + redirectview);
 				return;
 			} else if (view.startsWith("Json ")) {

@@ -21,14 +21,14 @@ public class UserArticleController implements Controller {
 		HttpSession session = request.getSession();
 		User userInfo = (User) session.getAttribute("userInfo");
 		Map<String, String> map = dao.selectArticleUserInfo(userInfo);
-		System.out.println("요청받은 Json 데이터 : " + map.toString());
+//		System.out.println("요청받은 Json 데이터 : " + map.toString());
 
 		Gson gson = new Gson();
 
 		String jsonData = gson.toJson(map);
-		System.out.println("========================");
-		System.out.println("보낸 데이터 Map : " + jsonData);
-		System.out.println("========================");
+//		System.out.println("========================");
+//		System.out.println("보낸 데이터 Map : " + jsonData);
+//		System.out.println("========================");
 		return "Json " + jsonData;
 	}
 }

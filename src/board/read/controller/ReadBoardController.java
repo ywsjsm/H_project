@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import board.comments.model.CommentPage;
 import board.comments.service.ReadCommentService;
-import board.dao.BoardDao;
 import board.read.exception.ArticleNotFoundException;
 import board.read.model.readBoardInfo;
 import board.read.service.ReadBoardService;
@@ -20,8 +19,8 @@ public class ReadBoardController implements Controller {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		System.out.println("Readboard진입");
-		
+//		System.out.println("Readboard진입");
+
 		// 게시글 번호
 		String noVal = request.getParameter("no");
 		int boardNum = Integer.parseInt(noVal);
@@ -32,15 +31,15 @@ public class ReadBoardController implements Controller {
 		if (pageNoVal != null) {
 			pageNo = Integer.parseInt(pageNoVal);
 		}
-			
+
 		try {
-			System.out.println("getArticle 시작");
+//			System.out.println("getArticle 시작");
 			readBoardInfo boardInfo = boardservice.getArticle(boardNum);
 			request.setAttribute("boardInfo", boardInfo);
-			request.setAttribute("boardNo",boardNum);
-			
+			request.setAttribute("boardNo", boardNum);
+
 			// 댓글 리스트
-			System.out.println("getCommentPage 시작");
+//			System.out.println("getCommentPage 시작");
 			CommentPage commentpage = readcommentservice.getCommentPage(pageNo, boardNum);
 			request.setAttribute("CommentPage", commentpage);
 

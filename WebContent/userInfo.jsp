@@ -56,8 +56,6 @@
             }
             #conn{
                 margin-top:0%;
-                margin-left: 25%;
-                margin-right: 30%;
             }
            .check:hover * {
             	text-decoration: underline;
@@ -70,24 +68,22 @@
      <%@include file="/WEB-INF/view/includes/navbar.jsp" %>
      
         <img id="background" src="${contextPath }/viewImage/modifyImage/pencil.jpg" 
-            style="width: 100vw;height: 150%" />
-        <div class="container-fluid"id=conn>
-        
+            style="width: 100vw;height: 170%" />
+        <div class="container"id=conn>
+        	
         	<div class="text">
             <small style=" margin-right:20px;">
             <i><b>${userInfo.userId} 님 , 오늘 하루는 어떠신가요?</b></i>
             </small>
             <hr />
-            <div class="row border" style="width: 50%; height: 50%;background-color:white; opacity: 1.0">
+            <div class="row border align-items-center" style="width: 100%; height: auto;background-color:white; opacity: 1.0">
                 
         <canvas id="myChart"></canvas>
         </div>
-        <div style="">
+        <div style="width: 100%; height: 50%;">
 		<hr />
-        <small style=" margin-right:20px;">
-            <i><b>기제한 게시글 (●'◡'●)</b></i>
-            </small>
-        <div class="row" style="width: 50%; height: 50%px;background-color:">
+        <small style=""><i><b>기제한 게시글 (●'◡'●)</b></i></small>
+        <div class="row align-self-center" style="width: inherit; height: 50%">
 				<table class="table table-hover table-sm" style="opacity: 1.0">
 				 <thead class="thead-dark">
 				   <tr class="">
@@ -121,7 +117,7 @@
 			</div>
             
         </div>
-        <div class="row" style="margin-right: 50%">
+        <div class="row" style="">
         <div class="col justify-content-center">
 			<nav aria-label="Page navigation example">
 				<ul class="pagination justify-content-center">

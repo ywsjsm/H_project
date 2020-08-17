@@ -13,23 +13,22 @@ import jdbc.JdbcUtil;
 public class ReadCommentService {
 	CommentDao commentdao = new CommentDao();
 	private int size = 5;
-	
+
 	public CommentPage getCommentPage(int contPageNum, int boardno) {
-		
+
 		Connection conn = null;
 		try {
 			conn = ConnectionProvider.getConnection();
-	
+
 			int total = commentdao.selectCount(conn, boardno);
-			
+
 			List<CommentInfo> comment_content = commentdao.selectList(conn, boardno, (contPageNum - 1) * size, size);
-			
+
 			return new CommentPage(total, contPageNum, size, comment_content);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw new RuntimeException(e);
-		}finally {
+		} finally {
 			JdbcUtil.close(conn);
 		}
 	}

@@ -146,7 +146,7 @@ public class BoardDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		final String sql = "SELECT * FROM board where userNo Not in (select userNo from withdrawaluser) and userNo=? ORDER BY board_no DESC LIMIT ?, ?";
+		final String sql = "SELECT * FROM board where userNo Not in (select userNo from withdrawaluser) and userNo=? ORDER BY readCount DESC LIMIT ?, ?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, userNo);
@@ -358,9 +358,9 @@ public class BoardDao {
 	}
 
 	public void increaseReadCount(int boardNo) {
-		System.out.println("================================");
-		System.out.println("조회수 증가 로직 실행 할 보드 PK : " + boardNo);
-		System.out.println("================================");
+//		System.out.println("================================");
+//		System.out.println("조회수 증가 로직 실행 할 보드 PK : " + boardNo);
+//		System.out.println("================================");
 		final String sql = "UPDATE board SET readCount = readCount+1 WHERE board_no = ? ";
 		Connection con = null;
 		PreparedStatement pstmt = null;

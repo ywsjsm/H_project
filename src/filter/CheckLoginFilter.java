@@ -27,9 +27,9 @@ public class CheckLoginFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
-		System.out.println("==============================");
-		System.out.println("로그인 필터 작동 ");
-		System.out.println("==============================");
+//		System.out.println("==============================");
+//		System.out.println("로그인 필터 작동 ");
+//		System.out.println("==============================");
 
 		HttpSession session = req.getSession();
 

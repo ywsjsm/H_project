@@ -62,11 +62,11 @@ public class totalListArticleService {
 			int total = boardDao.selectCount(conn);
 
 			List<totalRequest> content = boardDao.selectPartList(conn, (pageNum - 1) * size, size, find);
-			System.out.println("--------------------------------------------------");
-			System.out.println("검색어입력 후 가져온 글목록 수 : " + content.size());
-			System.out.println("검색어입력 후 가져온 글 : ");
-			content.forEach(c -> System.out.println(c.toString()));
-			System.out.println("--------------------------------------------------");
+//			System.out.println("--------------------------------------------------");
+//			System.out.println("검색어입력 후 가져온 글목록 수 : " + content.size());
+//			System.out.println("검색어입력 후 가져온 글 : ");
+//			content.forEach(c -> System.out.println(c.toString()));
+//			System.out.println("--------------------------------------------------");
 			return new ArticlePage(total, pageNum, size, content);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -80,11 +80,11 @@ public class totalListArticleService {
 			int total = boardDao.selectCount(conn, find);
 
 			List<totalRequest> content = boardDao.selectPartList(conn, (pageNum - 1) * size, size, find);
-			System.out.println("--------------------------------------------------");
-			System.out.println("검색어입력 후 가져온 글목록 수 : " + content.size());
-			System.out.println("검색어입력 후 가져온 글 : ");
-			content.forEach(c -> System.out.println(c.toString()));
-			System.out.println("--------------------------------------------------");
+//			System.out.println("--------------------------------------------------");
+//			System.out.println("검색어입력 후 가져온 글목록 수 : " + content.size());
+//			System.out.println("검색어입력 후 가져온 글 : ");
+//			content.forEach(c -> System.out.println(c.toString()));
+//			System.out.println("--------------------------------------------------");
 			return new ArticlePage(total, pageNum, size, content);
 		} catch (SQLException e) {
 			e.printStackTrace();

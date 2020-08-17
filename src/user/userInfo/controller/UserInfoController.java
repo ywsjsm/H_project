@@ -30,7 +30,7 @@ public class UserInfoController implements Controller {
 		}
 
 		articlePage = totallistService.getArticlePageUserInfo(pageNo, userInfo.getUserNo());
-		System.out.println(articlePage.toString());
+//		System.out.println(articlePage.toString());
 		request.setAttribute("articlePage", articlePage);
 
 		return VIEW_CODE;

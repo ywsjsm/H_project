@@ -135,8 +135,8 @@ public class UserDao {
 			pstmt.setTimestamp(3, Timestamp.valueOf(userInfo.getRegdate()));
 			pstmt.executeUpdate();
 			con.commit();
-			System.out.println("회원 탈퇴 회원 정보 중: " + userInfo.getUserNo() + " : " + userInfo.getUserId() + " : "
-					+ userInfo.getRegdate() + "가 보관 조치 됨");
+//			System.out.println("회원 탈퇴 회원 정보 중: " + userInfo.getUserNo() + " : " + userInfo.getUserId() + " : "
+//					+ userInfo.getRegdate() + "가 보관 조치 됨");
 		} catch (SQLException e) {
 			JdbcUtil.rollback(con);
 			throw new RuntimeException(e);
