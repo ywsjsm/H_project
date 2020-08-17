@@ -37,9 +37,9 @@ if(${checkPw}==true){
 			top: 0;
 			left: 0;
 			opacity: 0.9;
-			background-size: contain; 
+			background-size: cover; 
 			width: 100%;
-			height: 100%;
+			height: 200%;
 		}
 		 #contentModal{
 			margin: 0%,10%;
@@ -55,11 +55,8 @@ if(${checkPw}==true){
 <title>게시물 보기</title>
 </head>
 <body >
+	<img id="background" alt="" src="${contextPath }/viewImage/readImage/books.jpg">
 	<div class="border rounded" style="background-color: rgba(255, 255, 255, 0.7); margin-top:5%; margin-left: 20%; margin-right: 20%;">
-	<div id="background">
-			<video  src="${contextPath }/video/Ocean - 36589.mp4" muted="muted"
-				autoplay="autoplay" loop="loop"></video>
-		</div>
 		<div class="row d-flex justify-content-between">
 		<div class="col">
 			<h5>

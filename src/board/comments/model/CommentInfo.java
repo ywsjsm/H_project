@@ -1,11 +1,21 @@
 package board.comments.model;
 
+import java.time.LocalDateTime;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.ToString;
+
+@AllArgsConstructor
+@Getter
+@ToString
 public class CommentInfo {
 	private int reply_no;
 	private int board_no;
 	private String userid;
 	private String content;
-	
+	private LocalDateTime regdate;
+
 	public CommentInfo(int reply_no, int board_no, String userid, String content) {
 		super();
 		this.reply_no = reply_no;
@@ -29,5 +39,5 @@ public class CommentInfo {
 	public String getContent() {
 		return content;
 	}
-	
+
 }
