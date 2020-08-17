@@ -157,7 +157,20 @@ $(function() {
 					aria-disabled="true" > 현재 시간 </a><!-- clock --></li>
 					<li class="nav-item"><a class="nav-link" href="#" tabindex="-1"
 					aria-disabled="false" id="clock" >00::00:00</a> <!-- clock --></li>
-
+					<li class="nav-item"><a class="nav-link" href="#" tabindex="-1"
+					aria-disabled="true"> </a> 
+					</li>
+					<li class="nav-item"><a class="nav-link" href="#" tabindex="-1"
+					aria-disabled="true"> </a> 
+					</li>
+					<li class="nav-item"><a class="nav-link" href="#" tabindex="-1"
+					aria-disabled="true"> </a> 
+					</li>
+				<c:if test="${not empty sessionScope.userInfo}">
+					<li class="nav-item" ><a class="nav-link"
+						href="${contextPath}/userInfo.do" tabindex="-1" aria-disabled="true"
+						id="logOut">${userInfo.userId }</a> <!-- disabled --></li>
+				</c:if>
 			</ul>
 			<div class="ui-widget">
 			<div class="col">

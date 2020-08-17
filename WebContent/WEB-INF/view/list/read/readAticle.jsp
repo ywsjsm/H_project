@@ -21,6 +21,10 @@ if(${checkPw}==true){
 	alert("삭제 완료");
 	
 }
+	$(function(){
+		  $('#naverTotal').attr('class', 'navbar navbar-expand-lg navbar-light');
+	});
+
 </script>
 
 <style>
@@ -76,10 +80,9 @@ if(${checkPw}==true){
 		<div class="row">
 		<div class="col" style="float: right;">
 			<small style="float: right;"><b> <i> - Author : ${boardInfo.userId }</i></b></small>
+			<span class="badge badge-light" style="margin-left: 1.1%;margin-bottom: 1.1%"><small ><b> <i> - 조회수 : ${boardInfo.readCount } </i> </b> </small> </span>
 		</div>
-		<div class="d-flex justify-content-sm-end" style="margin-bottom: 0px;margin-left: 1.1%;margin-right: 5%;margin-top: 5%">
-		<span class="badge badge-light" style="margin-right: 1.1%;margin-bottom: 1.1%"><small ><b> <i> - 조회수 : ${boardInfo.readCount } </i> </b> </small> </span>
-		</div>
+
 		</div>
 		<div class="row">
 		<div class="d-flex justify-content-center" style="margin-left:auto; margin-right:auto; margin-top: 0px; margin-bottom: 0px">

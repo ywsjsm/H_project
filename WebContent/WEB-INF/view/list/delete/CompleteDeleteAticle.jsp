@@ -71,11 +71,9 @@
 				<b> <i> Author : ${boardInfo.userId }</i></b>
 			</h6>
 		</div>
-		<div class="d-flex justify-content-sm-end" style="margin-bottom: 0px;">
-			<a role="button" href="" class="col btn btn-success btn-sm" style="margin-right: 1.1% width: 50px; margin-right: 10px;">
-  									조회수<span class="badge badge-light">${boardInfo.readCount }</span>
-									</a>
-		</div>
+		<!-- <div class="d-flex justify-content-sm-end" style="margin-bottom: 0px;"> -->
+			<span class="badge badge-light" style="margin-right: 1.1%;margin-bottom: 1.1%"><small ><b> <i> - 조회수 : ${boardInfo.readCount } </i> </b> </small> </span>
+<!-- 		</div> -->
 		</div>
 		
 		<hr />
