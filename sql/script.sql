@@ -18,13 +18,14 @@ CREATE TABLE `comment` (
   `reply_no` int unsigned NOT NULL AUTO_INCREMENT,
   `Board_no` int unsigned DEFAULT NULL,
   `userId` varchar(255) DEFAULT NULL,
-  `content` varchar(255) DEFAULT NULL,
+  `content` text,
   `userPw` varchar(255) DEFAULT NULL,
   `user_no` varchar(255) NOT NULL,
+  `regdate` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`reply_no`),
   KEY `comment_ibfk_1` (`Board_no`),
   CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`Board_no`) REFERENCES `board` (`board_no`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8
 
 
 CREATE TABLE `user` (
