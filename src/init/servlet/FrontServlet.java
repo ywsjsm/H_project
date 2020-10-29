@@ -32,14 +32,14 @@ public class FrontServlet extends HttpServlet {
 
 			while (keys.hasMoreElements()) {
 				String key = keys.nextElement();
-//				System.out.println("키 : " + key);
+				System.out.println("키 : " + key);
 				String className = properties.getProperty(key);
-//				System.out.println("클래스이름 : " + className);
+				System.out.println("클래스이름 : " + className);
 
 				Class<Controller> clazz = (Class<Controller>) Class.forName(className);
 
 				Controller com = clazz.newInstance();
-//				System.out.println(com);
+				System.out.println(com);
 
 				controllerMap.put(key, com);
 
@@ -83,9 +83,9 @@ public class FrontServlet extends HttpServlet {
 		try {
 //			System.out.println("프로세스 진입");
 			view = com.process(request, response);
-//			System.out.println("프로세스 아웃");
-//			System.out.println("날아온 뷰코드 : " + view);
-//			System.out.println("요청 경로 : " + request.getServletPath());
+			System.out.println("프로세스 아웃");
+			System.out.println("날아온 뷰코드 : " + view);
+			System.out.println("요청 경로 : " + request.getServletPath());
 		} catch (Throwable e) {
 			throw new ServletException(e);
 		}
