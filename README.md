@@ -5,6 +5,8 @@ MVC2 JSP &amp; Servlet Project
  
 * Model 2 방식을 따르며, Mvc 패턴
 
+* https://www.youtube.com/watch?v=OwaWU1Tvprw
+
 <hr>
 
 **언어**
