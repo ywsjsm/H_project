@@ -83,8 +83,6 @@ MVC2 JSP &amp; Servlet Project
 
 <hr>
 
-<hr>
-
 **Delete Post**
 
 ![](https://github.com/ywsjsm/H_project/blob/master/WebContent/imageUpload/H%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B8%80%EC%82%AD%EC%A0%9C.PNG)
@@ -100,6 +98,12 @@ MVC2 JSP &amp; Servlet Project
 **WithDrawal Complete**
 
 ![](https://github.com/ywsjsm/H_project/blob/master/WebContent/imageUpload/h%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%ED%9A%8C%EC%9B%90%ED%83%88%ED%87%B4%EC%99%84%EB%A3%8C.PNG)
+
+<hr>
+
+**자동 검색어 기능**
+
+![](https://github.com/ywsjsm/H_project/blob/master/WebContent/imageUpload/H%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B8%80%20%EC%B0%BE%EA%B8%B0.png)
 
 <hr>
 
